@@ -1,0 +1,1439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BlueOak Capital Partners — From Idea to Real Funding</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --green-deep:   #0e2a1a;
+  --green-mid:    #1a4a2e;
+  --green-rich:   #2a6644;
+  --green-light:  #3d8a5c;
+  --gold:         #c9a84c;
+  --gold-light:   #e2c97e;
+  --gold-muted:   #a88a3b;
+  --gold-pale:    #f5edd8;
+  --krishna:      #1a3d7c;
+  --krishna-mid:  #2952a3;
+  --krishna-glow: rgba(26,61,124,0.15);
+  --cream:        #f7f3eb;
+  --cream-dark:   #ece7dc;
+  --white:        #ffffff;
+  --ink:          #0d1a0f;
+  --text-mid:     #3a4a3d;
+  --text-muted:   #7a8a7c;
+  --border:       rgba(201,168,76,0.18);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: 'Outfit', sans-serif;
+  background: var(--ink);
+  color: var(--cream);
+  overflow-x: hidden;
+  cursor: none;
+}
+
+/* ═══════════════════════════════
+   CUSTOM CURSOR
+═══════════════════════════════ */
+.cursor {
+  position: fixed; width: 12px; height: 12px;
+  background: var(--gold); border-radius: 50%;
+  pointer-events: none; z-index: 9999;
+  transform: translate(-50%,-50%);
+  transition: transform 0.1s, width 0.3s, height 0.3s, background 0.3s;
+  mix-blend-mode: difference;
+}
+.cursor-ring {
+  position: fixed; width: 40px; height: 40px;
+  border: 1px solid rgba(201,168,76,0.5); border-radius: 50%;
+  pointer-events: none; z-index: 9998;
+  transform: translate(-50%,-50%);
+  transition: transform 0.12s ease-out, width 0.3s, height 0.3s;
+}
+body:has(a:hover) .cursor, body:has(button:hover) .cursor { width: 20px; height: 20px; }
+
+/* ═══════════════════════════════
+   GRAIN OVERLAY
+═══════════════════════════════ */
+.grain {
+  position: fixed; inset: 0; pointer-events: none; z-index: 9000;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+}
+
+/* ═══════════════════════════════
+   NAV
+═══════════════════════════════ */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 22px 60px;
+  transition: background 0.4s, padding 0.4s, border-color 0.4s;
+  border-bottom: 1px solid transparent;
+}
+nav.scrolled {
+  background: rgba(14,42,26,0.97);
+  backdrop-filter: blur(20px);
+  padding: 14px 60px;
+  border-bottom-color: var(--border);
+}
+.nav-logo {
+  display: flex; align-items: center; gap: 14px;
+  text-decoration: none;
+}
+.nav-logo-mark {
+  width: 38px; height: 38px; position: relative; flex-shrink: 0;
+}
+.nav-logo-mark svg { width: 100%; height: 100%; }
+.logo-wordmark {
+  display: flex; flex-direction: column; line-height: 1;
+}
+.logo-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem; font-weight: 600; letter-spacing: 0.08em;
+  color: var(--gold);
+}
+.logo-sub {
+  font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: rgba(255,255,255,0.4); margin-top: 2px;
+}
+.nav-links {
+  display: flex; gap: 40px; list-style: none;
+}
+.nav-links a {
+  font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: rgba(255,255,255,0.55); text-decoration: none;
+  transition: color 0.2s; position: relative; padding-bottom: 2px;
+}
+.nav-links a::after {
+  content: ''; position: absolute; bottom: 0; left: 0;
+  width: 0; height: 1px; background: var(--gold);
+  transition: width 0.3s;
+}
+.nav-links a:hover { color: var(--gold-light); }
+.nav-links a:hover::after { width: 100%; }
+.nav-cta {
+  background: var(--gold); color: var(--green-deep);
+  padding: 11px 26px; font-size: 0.78rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  text-decoration: none; transition: all 0.25s;
+  clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+}
+.nav-cta:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+/* Mobile hamburger */
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+.hamburger span { width: 24px; height: 1.5px; background: var(--gold); transition: all 0.3s; display: block; }
+.hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(4.5px, 4.5px); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(4.5px,-4.5px); }
+
+.mobile-menu {
+  position: fixed; inset: 0; background: var(--green-deep); z-index: 450;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 36px; opacity: 0; pointer-events: none; transition: opacity 0.4s;
+}
+.mobile-menu.open { opacity: 1; pointer-events: all; }
+.mobile-menu a {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.4rem; color: var(--cream); text-decoration: none;
+  font-weight: 300; transition: color 0.2s;
+}
+.mobile-menu a:hover { color: var(--gold); }
+.mobile-menu .m-cta {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.9rem; font-weight: 600; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--green-deep);
+  background: var(--gold); padding: 14px 36px;
+}
+
+/* ═══════════════════════════════
+   HERO
+═══════════════════════════════ */
+.hero {
+  min-height: 100vh;
+  background: var(--green-deep);
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 140px 60px 80px;
+  position: relative; overflow: hidden;
+}
+.hero-bg-glow {
+  position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(ellipse 70% 60% at 75% 40%, rgba(201,168,76,0.07) 0%, transparent 65%),
+    radial-gradient(ellipse 50% 70% at 15% 80%, rgba(26,61,124,0.12) 0%, transparent 55%),
+    radial-gradient(ellipse 40% 40% at 50% 50%, rgba(42,102,68,0.3) 0%, transparent 70%);
+}
+
+/* Animated floating particles */
+.particles { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+.particle {
+  position: absolute; border-radius: 50%;
+  background: var(--gold); opacity: 0;
+  animation: floatUp linear infinite;
+}
+@keyframes floatUp {
+  0%   { opacity: 0; transform: translateY(0) scale(0); }
+  10%  { opacity: 0.6; }
+  90%  { opacity: 0.2; }
+  100% { opacity: 0; transform: translateY(-100vh) scale(1.5); }
+}
+
+.hero-content { position: relative; z-index: 2; }
+.hero-eyebrow {
+  font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 30px;
+  display: flex; align-items: center; gap: 14px;
+  opacity: 0; animation: revealUp 0.8s 0.1s forwards;
+}
+.hero-eyebrow-line { width: 44px; height: 1px; background: linear-gradient(90deg, var(--gold), transparent); }
+
+.hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3.2rem, 6.5vw, 6rem);
+  font-weight: 300; line-height: 1.05; color: var(--cream);
+  max-width: 900px; margin-bottom: 34px;
+  opacity: 0; animation: revealUp 1s 0.3s forwards;
+}
+.hero h1 .accent { color: var(--gold-light); font-style: italic; }
+.hero h1 .krishna-word { color: #6fb3ff; position: relative; }
+
+.hero-sub {
+  font-size: 1.05rem; line-height: 1.8; font-weight: 300;
+  color: rgba(255,255,255,0.58); max-width: 540px; margin-bottom: 52px;
+  opacity: 0; animation: revealUp 0.9s 0.5s forwards;
+}
+.hero-actions {
+  display: flex; gap: 20px; align-items: center; flex-wrap: wrap;
+  opacity: 0; animation: revealUp 0.8s 0.7s forwards;
+}
+.btn-primary {
+  background: var(--gold); color: var(--green-deep);
+  padding: 16px 36px; font-weight: 600; font-size: 0.85rem;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  text-decoration: none; transition: all 0.3s; display: inline-block;
+  clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+  position: relative; overflow: hidden;
+}
+.btn-primary::before {
+  content: ''; position: absolute; inset: 0;
+  background: var(--gold-light); transform: translateX(-100%);
+  transition: transform 0.3s;
+}
+.btn-primary:hover::before { transform: translateX(0); }
+.btn-primary span { position: relative; z-index: 1; }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(201,168,76,0.3); }
+
+.btn-outline {
+  color: rgba(255,255,255,0.6); font-size: 0.85rem;
+  text-decoration: none; display: flex; align-items: center; gap: 10px;
+  transition: color 0.2s; letter-spacing: 0.04em;
+  padding: 16px 0;
+}
+.btn-outline:hover { color: var(--gold-light); }
+.arrow-icon { font-size: 1.1rem; transition: transform 0.2s; }
+.btn-outline:hover .arrow-icon { transform: translateX(6px); }
+
+/* Hero stats */
+.hero-stats {
+  display: flex; gap: 0; margin-top: 80px;
+  border-top: 1px solid rgba(201,168,76,0.12);
+  opacity: 0; animation: revealUp 0.8s 0.9s forwards;
+}
+.h-stat {
+  flex: 1; padding: 32px 0 0; border-right: 1px solid rgba(201,168,76,0.12);
+}
+.h-stat:last-child { border-right: none; }
+.h-stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3rem; font-weight: 300; color: var(--gold);
+  line-height: 1; display: block;
+}
+.h-stat-lbl {
+  font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: rgba(255,255,255,0.35); margin-top: 6px; display: block;
+}
+
+/* Hero oak silhouette */
+.hero-oak {
+  position: absolute; right: -40px; bottom: 0;
+  width: 55%; max-width: 700px; opacity: 0.06;
+  pointer-events: none;
+}
+
+/* ═══════════════════════════════
+   SCROLL REVEAL
+═══════════════════════════════ */
+@keyframes revealUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.reveal {
+  opacity: 0; transform: translateY(36px);
+  transition: opacity 0.75s ease, transform 0.75s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-d1 { transition-delay: 0.1s; }
+.reveal-d2 { transition-delay: 0.2s; }
+.reveal-d3 { transition-delay: 0.3s; }
+.reveal-d4 { transition-delay: 0.4s; }
+
+/* ═══════════════════════════════
+   MARQUEE TICKER
+═══════════════════════════════ */
+.ticker {
+  background: var(--gold); overflow: hidden; padding: 14px 0;
+  white-space: nowrap;
+}
+.ticker-inner {
+  display: inline-flex; gap: 60px;
+  animation: ticker 25s linear infinite;
+}
+.ticker-inner:hover { animation-play-state: paused; }
+@keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.ticker-item {
+  font-size: 0.75rem; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--green-deep); font-weight: 600; display: flex; align-items: center; gap: 20px;
+}
+.ticker-dot { width: 4px; height: 4px; background: var(--green-deep); border-radius: 50%; opacity: 0.5; flex-shrink: 0; }
+
+/* ═══════════════════════════════
+   SECTION COMMONS
+═══════════════════════════════ */
+.sec { padding: 110px 60px; }
+.sec-eyebrow {
+  font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--gold-muted); margin-bottom: 18px;
+  display: flex; align-items: center; gap: 12px;
+}
+.sec-eyebrow-line { width: 28px; height: 1px; background: var(--gold-muted); flex-shrink: 0; }
+.sec-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.4rem, 4vw, 3.8rem);
+  font-weight: 300; line-height: 1.1; color: var(--cream);
+  margin-bottom: 24px;
+}
+.sec-title em { font-style: italic; color: var(--gold-light); }
+.sec-title.dark { color: var(--green-deep); }
+.sec-title.dark em { color: var(--gold-muted); }
+
+/* ═══════════════════════════════
+   PROBLEM SECTION
+═══════════════════════════════ */
+.problem-sec { background: var(--cream); }
+.problem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; margin-top: 60px; }
+.problem-left { }
+.prob-text { font-size: 1rem; line-height: 1.8; color: var(--text-mid); font-weight: 300; margin-bottom: 32px; }
+.prob-points { display: flex; flex-direction: column; gap: 16px; }
+.prob-point {
+  display: flex; gap: 16px; align-items: flex-start;
+  padding: 18px 20px; background: var(--cream-dark);
+  border-left: 3px solid var(--gold-muted);
+  transition: border-color 0.2s, transform 0.2s;
+}
+.prob-point:hover { border-color: var(--gold); transform: translateX(4px); }
+.prob-point-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 1px; }
+.prob-point p { font-size: 0.9rem; color: var(--text-mid); line-height: 1.6; font-weight: 300; }
+
+.quote-card {
+  background: var(--green-deep);
+  padding: 52px 44px; position: relative; overflow: hidden;
+}
+.quote-card::before {
+  content: ''; position: absolute; top: 0; right: 0;
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(201,168,76,0.08), transparent);
+  border-radius: 0 0 0 100%;
+}
+.quote-card blockquote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.7rem; font-weight: 300; font-style: italic;
+  line-height: 1.45; color: var(--cream); margin-bottom: 24px;
+  position: relative; z-index: 1;
+}
+.quote-card blockquote::before {
+  content: '\201C';
+  font-size: 5rem; color: var(--gold); line-height: 0;
+  vertical-align: -1.8rem; margin-right: 4px; opacity: 0.5;
+}
+.quote-author {
+  font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--gold); position: relative; z-index: 1;
+}
+
+/* ═══════════════════════════════
+   OAK TREE SECTION (Services/Phases)
+═══════════════════════════════ */
+.oak-sec {
+  background: var(--ink);
+  position: relative; overflow: hidden; padding: 120px 60px;
+}
+.oak-sec-bg {
+  position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 100%, rgba(26,74,46,0.4) 0%, transparent 65%),
+    radial-gradient(ellipse 40% 30% at 20% 20%, var(--krishna-glow) 0%, transparent 60%);
+}
+.oak-header { text-align: center; margin-bottom: 80px; position: relative; z-index: 2; }
+.oak-header .sec-eyebrow { justify-content: center; }
+.oak-header .sec-eyebrow-line { display: none; }
+
+/* SVG Tree Canvas */
+.tree-canvas-wrap {
+  position: relative; width: 100%; max-width: 1100px;
+  margin: 0 auto 80px; z-index: 2;
+}
+.tree-canvas {
+  width: 100%; height: auto;
+  filter: drop-shadow(0 0 40px rgba(42,102,68,0.2));
+}
+
+/* Branch service cards — positioned absolutely over SVG */
+.branch-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  position: relative; z-index: 2;
+  max-width: 1100px; margin: 0 auto;
+}
+.branch-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(201,168,76,0.15);
+  padding: 36px 30px;
+  position: relative; overflow: hidden;
+  transition: all 0.4s;
+  cursor: pointer;
+}
+.branch-card::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(42,102,68,0.15) 0%, transparent 60%);
+  opacity: 0; transition: opacity 0.4s;
+}
+.branch-card:hover { border-color: var(--gold); transform: translateY(-6px); }
+.branch-card:hover::before { opacity: 1; }
+.branch-card.active { border-color: var(--gold); background: rgba(201,168,76,0.06); }
+
+.bc-phase {
+  font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--gold-muted); margin-bottom: 12px;
+  display: flex; align-items: center; gap: 8px;
+}
+.bc-phase::before { content: ''; width: 18px; height: 1px; background: var(--gold-muted); flex-shrink: 0; }
+.bc-num {
+  position: absolute; top: 24px; right: 24px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 4rem; font-weight: 300; color: rgba(201,168,76,0.08);
+  line-height: 1;
+}
+.bc-icon { font-size: 2rem; margin-bottom: 16px; }
+.bc-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem; font-weight: 400; color: var(--cream);
+  margin-bottom: 6px;
+}
+.bc-hindi {
+  font-size: 0.78rem; color: var(--gold-muted); font-style: italic; margin-bottom: 14px;
+}
+.bc-desc { font-size: 0.88rem; line-height: 1.7; color: rgba(255,255,255,0.55); font-weight: 300; margin-bottom: 22px; }
+.bc-items { display: flex; flex-direction: column; gap: 8px; }
+.bc-item {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: 0.82rem; color: rgba(255,255,255,0.5); line-height: 1.5;
+}
+.bc-item::before { content: '⬡'; color: var(--gold); font-size: 0.6rem; margin-top: 3px; flex-shrink: 0; }
+.bc-timeline {
+  margin-top: 20px; padding-top: 18px;
+  border-top: 1px solid rgba(201,168,76,0.1);
+  font-size: 0.75rem; color: var(--gold-muted);
+  display: flex; align-items: center; gap: 6px;
+  letter-spacing: 0.06em;
+}
+
+/* ═══════════════════════════════
+   HEALTH CHECK
+═══════════════════════════════ */
+.health-sec { background: var(--green-deep); }
+.health-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.health-desc { font-size: 1rem; line-height: 1.8; color: rgba(255,255,255,0.55); font-weight: 300; margin: 18px 0 36px; }
+
+.score-widget {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(201,168,76,0.2); padding: 40px;
+}
+.sw-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem; color: var(--gold-light); font-weight: 400;
+  margin-bottom: 8px;
+}
+.sw-sub { font-size: 0.78rem; color: rgba(255,255,255,0.3); margin-bottom: 32px; letter-spacing: 0.04em; }
+.score-rows { display: flex; flex-direction: column; gap: 18px; }
+.sr {
+  display: flex; flex-direction: column; gap: 8px;
+}
+.sr-header { display: flex; justify-content: space-between; align-items: center; }
+.sr-label { font-size: 0.84rem; color: rgba(255,255,255,0.6); }
+.sr-pts { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--gold); }
+.sr-bar { height: 3px; background: rgba(255,255,255,0.06); border-radius: 2px; overflow: hidden; }
+.sr-fill {
+  height: 100%; border-radius: 2px;
+  background: linear-gradient(90deg, var(--green-rich), var(--gold));
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.sr-fill.animated { transform: scaleX(1); }
+
+/* ═══════════════════════════════
+   INVESTOR NETWORK
+═══════════════════════════════ */
+.network-sec { background: var(--cream); }
+.network-inner { display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: center; }
+.network-visual {
+  position: relative; aspect-ratio: 1;
+  display: flex; align-items: center; justify-content: center;
+}
+.net-circle {
+  position: absolute; border-radius: 50%;
+  border: 1px solid; opacity: 0.4;
+  animation: pulseRing 3s ease-in-out infinite;
+}
+.net-circle:nth-child(1) { width: 90%; height: 90%; border-color: var(--gold-muted); animation-delay: 0s; }
+.net-circle:nth-child(2) { width: 65%; height: 65%; border-color: var(--green-rich); animation-delay: 0.5s; }
+.net-circle:nth-child(3) { width: 40%; height: 40%; border-color: var(--krishna); animation-delay: 1s; }
+@keyframes pulseRing {
+  0%, 100% { transform: scale(1); opacity: 0.4; }
+  50% { transform: scale(1.04); opacity: 0.7; }
+}
+.net-center {
+  position: relative; z-index: 2; text-align: center;
+  background: var(--green-deep); width: 130px; height: 130px;
+  border-radius: 50%; display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  border: 2px solid var(--gold);
+}
+.net-center-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.8rem; color: var(--gold); font-weight: 300; line-height: 1;
+}
+.net-center-lbl { font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-top: 4px; }
+
+.net-dots { position: absolute; inset: 0; }
+.net-dot {
+  position: absolute; width: 10px; height: 10px; border-radius: 50%;
+  background: var(--gold); opacity: 0.7;
+  animation: dotPulse 2s ease-in-out infinite;
+}
+@keyframes dotPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.5); }
+}
+
+.network-content { }
+.network-content .sec-title.dark { color: var(--green-deep); }
+.net-desc { font-size: 1rem; line-height: 1.8; color: var(--text-mid); font-weight: 300; margin: 18px 0 32px; }
+.net-points { display: flex; flex-direction: column; gap: 20px; }
+.net-point {
+  display: flex; gap: 18px; align-items: flex-start;
+  padding-bottom: 20px; border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+.net-point:last-child { border-bottom: none; padding-bottom: 0; }
+.net-point-icon {
+  width: 44px; height: 44px; flex-shrink: 0;
+  background: var(--green-deep); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem;
+}
+.net-point h4 { font-size: 0.92rem; font-weight: 600; color: var(--green-deep); margin-bottom: 4px; }
+.net-point p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; font-weight: 300; }
+
+/* ═══════════════════════════════
+   GUARANTEE
+═══════════════════════════════ */
+.guarantee-sec {
+  background: var(--ink);
+  text-align: center; padding: 100px 60px;
+  position: relative; overflow: hidden;
+}
+.guarantee-sec::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(26,61,124,0.12) 0%, transparent 65%);
+  pointer-events: none;
+}
+.guarantee-badge {
+  display: inline-flex; align-items: center; gap: 10px;
+  border: 1px solid var(--gold); padding: 8px 20px;
+  margin-bottom: 36px;
+  font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold);
+}
+.guarantee-badge span { font-size: 1rem; }
+.g-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.2rem, 4.5vw, 4rem);
+  font-weight: 300; color: var(--cream); margin-bottom: 20px;
+  max-width: 700px; margin-left: auto; margin-right: auto; line-height: 1.15;
+}
+.g-title em { font-style: italic; color: var(--gold-light); }
+.g-desc {
+  font-size: 1rem; color: rgba(255,255,255,0.5); line-height: 1.8;
+  max-width: 560px; margin: 0 auto 52px; font-weight: 300;
+}
+.g-cards {
+  display: flex; justify-content: center; gap: 2px;
+  max-width: 700px; margin: 0 auto 52px; flex-wrap: wrap;
+}
+.g-card {
+  background: rgba(255,255,255,0.03); border: 1px solid rgba(201,168,76,0.12);
+  padding: 28px 32px; flex: 1; min-width: 180px; text-align: center;
+}
+.g-card-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.4rem; color: var(--gold); font-weight: 300; line-height: 1;
+}
+.g-card-lbl { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-top: 6px; }
+
+/* ═══════════════════════════════
+   WHY BLUEOAK
+═══════════════════════════════ */
+.why-sec { background: var(--cream-dark); }
+.why-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; margin-top: 56px; }
+.why-card {
+  background: var(--cream); padding: 44px 36px;
+  transition: background 0.3s, transform 0.3s;
+  position: relative; overflow: hidden;
+}
+.why-card::after {
+  content: ''; position: absolute; bottom: 0; left: 0;
+  width: 0; height: 3px; background: var(--gold);
+  transition: width 0.4s;
+}
+.why-card:hover { background: var(--white); transform: translateY(-3px); }
+.why-card:hover::after { width: 100%; }
+.wc-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 4rem; color: rgba(201,168,76,0.15); font-weight: 300; line-height: 1; margin-bottom: 18px;
+}
+.wc-icon { font-size: 1.6rem; margin-bottom: 14px; }
+.wc-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem; color: var(--green-deep); font-weight: 400; margin-bottom: 12px;
+}
+.wc-text { font-size: 0.88rem; line-height: 1.7; color: var(--text-mid); font-weight: 300; }
+
+/* ═══════════════════════════════
+   TESTIMONIAL / PROOF
+═══════════════════════════════ */
+.proof-sec { background: var(--green-deep); padding: 80px 60px; }
+.proof-inner { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2px; }
+.proof-card {
+  background: rgba(255,255,255,0.03); padding: 36px 30px;
+  border: 1px solid rgba(201,168,76,0.1);
+  transition: border-color 0.3s;
+}
+.proof-card:hover { border-color: rgba(201,168,76,0.3); }
+.proof-icon { font-size: 1.8rem; margin-bottom: 20px; opacity: 0.7; }
+.proof-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem; color: var(--gold-light); font-weight: 400; margin-bottom: 12px;
+}
+.proof-text { font-size: 0.86rem; line-height: 1.7; color: rgba(255,255,255,0.5); font-weight: 300; }
+
+/* ═══════════════════════════════
+   CTA FINAL
+═══════════════════════════════ */
+.cta-sec {
+  background: var(--green-deep); padding: 130px 60px; text-align: center;
+  position: relative; overflow: hidden;
+}
+.cta-sec::before {
+  content: 'BLUEOAK';
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18vw; font-weight: 700;
+  color: rgba(255,255,255,0.018);
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  white-space: nowrap; pointer-events: none; letter-spacing: 0.1em;
+}
+.cta-sec .sec-eyebrow { justify-content: center; }
+.cta-sec .sec-eyebrow-line { display: none; }
+.cta-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.6rem, 5.5vw, 4.5rem);
+  font-weight: 300; color: var(--cream); line-height: 1.1;
+  max-width: 750px; margin: 0 auto 24px;
+}
+.cta-title em { color: var(--gold-light); font-style: italic; }
+.cta-desc {
+  font-size: 1rem; color: rgba(255,255,255,0.5); max-width: 480px;
+  margin: 0 auto 52px; line-height: 1.8; font-weight: 300;
+}
+.cta-actions { display: flex; gap: 20px; justify-content: center; align-items: center; flex-wrap: wrap; }
+.btn-outline-light {
+  color: rgba(255,255,255,0.55); font-size: 0.85rem;
+  text-decoration: none; padding: 16px 28px;
+  border: 1px solid rgba(255,255,255,0.15);
+  transition: all 0.25s;
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.btn-outline-light:hover { border-color: var(--gold); color: var(--gold-light); }
+
+/* ═══════════════════════════════
+   FOOTER
+═══════════════════════════════ */
+footer {
+  background: var(--ink); padding: 52px 60px;
+  border-top: 1px solid rgba(201,168,76,0.1);
+}
+.footer-inner {
+  display: grid; grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 60px; margin-bottom: 40px;
+}
+.footer-brand-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem; color: var(--gold); letter-spacing: 0.06em; margin-bottom: 8px;
+}
+.footer-brand-sub { font-size: 0.75rem; color: rgba(255,255,255,0.3); letter-spacing: 0.08em; margin-bottom: 16px; }
+.footer-tagline { font-size: 0.85rem; color: rgba(255,255,255,0.35); font-style: italic; line-height: 1.6; }
+.footer-col h5 {
+  font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--gold-muted); margin-bottom: 20px;
+}
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.footer-col ul a {
+  font-size: 0.85rem; color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s;
+}
+.footer-col ul a:hover { color: var(--gold-light); }
+.footer-bottom {
+  padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.05);
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 12px;
+}
+.footer-copy { font-size: 0.75rem; color: rgba(255,255,255,0.2); letter-spacing: 0.04em; }
+.footer-krishna { font-size: 0.72rem; color: rgba(255,255,255,0.18); font-style: italic; }
+
+/* ═══════════════════════════════
+   RESPONSIVE
+═══════════════════════════════ */
+@media (max-width: 1024px) {
+  .branch-cards { grid-template-columns: 1fr 1fr; }
+  .proof-inner { grid-template-columns: 1fr 1fr; }
+  .footer-inner { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 768px) {
+  nav { padding: 16px 24px; }
+  nav.scrolled { padding: 12px 24px; }
+  .nav-links, .nav-cta { display: none; }
+  .hamburger { display: flex; }
+
+  .sec, .hero, .cta-sec, .guarantee-sec, .proof-sec, .health-sec { padding: 70px 24px; }
+  .oak-sec { padding: 80px 24px; }
+
+  .hero h1 { font-size: 2.8rem; }
+  .hero-stats { gap: 0; }
+  .h-stat { padding: 24px 16px 0; }
+  .h-stat-num { font-size: 2.2rem; }
+
+  .problem-grid,
+  .health-inner,
+  .network-inner { grid-template-columns: 1fr; gap: 48px; }
+
+  .branch-cards { grid-template-columns: 1fr; }
+  .why-grid { grid-template-columns: 1fr; }
+  .proof-inner { grid-template-columns: 1fr; }
+  .g-cards { flex-direction: column; }
+  .g-card { min-width: unset; }
+
+  .footer-inner { grid-template-columns: 1fr; gap: 36px; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+
+  .phase-timeline-badge { position: static; margin-top: 16px; }
+  .cta-actions { flex-direction: column; align-items: stretch; text-align: center; }
+  .btn-outline-light { justify-content: center; }
+}
+
+@media (max-width: 480px) {
+  .hero { padding: 110px 20px 60px; }
+  .hero h1 { font-size: 2.2rem; }
+  .hero-sub { font-size: 0.95rem; }
+  .h-stat-num { font-size: 1.8rem; }
+}
+
+/* ═══════════════════════════════
+   KRISHNA FLUTE DECORATION
+═══════════════════════════════ */
+.krishna-accent {
+  position: absolute; width: 2px;
+  background: linear-gradient(to bottom, transparent, rgba(111,179,255,0.3), transparent);
+  animation: krishnaGlow 3s ease-in-out infinite;
+}
+@keyframes krishnaGlow {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 0.8; }
+}
+
+/* Progress indicator */
+.scroll-progress {
+  position: fixed; top: 0; left: 0; height: 2px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light));
+  z-index: 1000; transition: width 0.1s;
+}
+</style>
+</head>
+<body>
+
+<!-- CURSOR -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+<div class="grain"></div>
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="closeMobile()">About</a>
+  <a href="#services" onclick="closeMobile()">Services</a>
+  <a href="#health" onclick="closeMobile()">Health Check</a>
+  <a href="#network" onclick="closeMobile()">Our Network</a>
+  <a href="#contact" onclick="closeMobile()">Contact</a>
+  <a href="#contact" class="m-cta" onclick="closeMobile()">Book Free Startup Health Check</a>
+</div>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-mark">
+      <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="20" cy="20" r="19" stroke="#c9a84c" stroke-width="0.8" opacity="0.4"/>
+        <!-- Oak trunk -->
+        <rect x="18.5" y="22" width="3" height="14" fill="#c9a84c" opacity="0.9" rx="1"/>
+        <!-- Roots -->
+        <path d="M18.5 34 C16 36 13 36 12 35" stroke="#c9a84c" stroke-width="1" opacity="0.5" fill="none"/>
+        <path d="M21.5 34 C24 36 27 36 28 35" stroke="#c9a84c" stroke-width="1" opacity="0.5" fill="none"/>
+        <!-- Main canopy -->
+        <ellipse cx="20" cy="16" rx="10" ry="9" fill="#2a6644" opacity="0.85"/>
+        <!-- Left branch leaf -->
+        <ellipse cx="11" cy="14" rx="6" ry="5" fill="#3d8a5c" opacity="0.75" transform="rotate(-15 11 14)"/>
+        <!-- Right branch leaf -->
+        <ellipse cx="29" cy="14" rx="6" ry="5" fill="#3d8a5c" opacity="0.75" transform="rotate(15 29 14)"/>
+        <!-- Top leaf -->
+        <ellipse cx="20" cy="8" rx="5" ry="6" fill="#2a6644" opacity="0.9"/>
+        <!-- Krishna blue accent dot -->
+        <circle cx="20" cy="14" r="2.5" fill="#6fb3ff" opacity="0.7"/>
+        <circle cx="20" cy="14" r="1.2" fill="#ffffff" opacity="0.5"/>
+      </svg>
+    </div>
+    <div class="logo-wordmark">
+      <span class="logo-name">BlueOak Capital Partners</span>
+      <span class="logo-sub">Startup Growth Advisory</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#health">Health Check</a></li>
+    <li><a href="#network">Our Network</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Free Startup Health Check</a>
+  <div class="hamburger" id="hamburger" onclick="toggleMobile()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg-glow"></div>
+  <div class="particles" id="particles"></div>
+
+  <!-- Oak silhouette bg -->
+  <svg class="hero-oak" viewBox="0 0 600 700" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="270" y="400" width="60" height="300" fill="white" rx="8"/>
+    <ellipse cx="300" cy="280" rx="220" ry="200" fill="white"/>
+    <ellipse cx="160" cy="300" rx="140" ry="120" fill="white"/>
+    <ellipse cx="440" cy="300" rx="140" ry="120" fill="white"/>
+    <ellipse cx="300" cy="140" rx="120" ry="130" fill="white"/>
+    <path d="M240 680 C200 700 150 695 130 685" stroke="white" stroke-width="20" fill="none" stroke-linecap="round"/>
+    <path d="M360 680 C400 700 450 695 470 685" stroke="white" stroke-width="20" fill="none" stroke-linecap="round"/>
+  </svg>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <div class="hero-eyebrow-line"></div>
+      Pan-India Investor Network · Startup Growth Advisory
+    </div>
+    <h1>
+      Your Vision Deserves<br>
+      <span class="accent">Real Capital</span> &amp;<br>
+      <span class="krishna-word">Real Partners</span>
+    </h1>
+    <p class="hero-sub">
+      BlueOak Capital Partners guides serious Indian founders from idea to funded — with investor-grade preparation, 300+ warm investor connections, and a partnership built on trust and results.
+    </p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary"><span>Book Your Free Startup Health Check</span></a>
+      <a href="#services" class="btn-outline">Explore Our Services <span class="arrow-icon">→</span></a>
+    </div>
+    <div class="hero-stats">
+      <div class="h-stat">
+        <span class="h-stat-num">300<span style="font-size:1.5rem;color:var(--gold-muted)">+</span></span>
+        <span class="h-stat-lbl">Investor Network</span>
+      </div>
+      <div class="h-stat">
+        <span class="h-stat-num">3</span>
+        <span class="h-stat-lbl">Structured Phases</span>
+      </div>
+      <div class="h-stat">
+        <span class="h-stat-num">45</span>
+        <span class="h-stat-lbl">Day Guarantee</span>
+      </div>
+      <div class="h-stat">
+        <span class="h-stat-num">6</span>
+        <span class="h-stat-lbl">Min. Investor Meetings</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-inner" id="ticker">
+    <span class="ticker-item">Investor-Grade Pitch Decks <span class="ticker-dot"></span></span>
+    <span class="ticker-item">300+ Investor Network <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Warm Personal Introductions <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Non-Dilutive Funding First <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Company Registration &amp; Compliance <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Financial Modelling <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Pitch Coaching &amp; Mock Meetings <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Startup Health Check — Free <span class="ticker-dot"></span></span>
+    <!-- duplicate for seamless loop -->
+    <span class="ticker-item">Investor-Grade Pitch Decks <span class="ticker-dot"></span></span>
+    <span class="ticker-item">300+ Investor Network <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Warm Personal Introductions <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Non-Dilutive Funding First <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Company Registration &amp; Compliance <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Financial Modelling <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Pitch Coaching &amp; Mock Meetings <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Startup Health Check — Free <span class="ticker-dot"></span></span>
+  </div>
+</div>
+
+<!-- PROBLEM / ABOUT -->
+<section class="problem-sec sec" id="about">
+  <div class="problem-grid">
+    <div class="problem-left reveal">
+      <div class="sec-eyebrow"><div class="sec-eyebrow-line"></div>The Founder's Challenge</div>
+      <h2 class="sec-title dark">
+        Great Ideas Deserve<br><em>Every Chance to Grow</em>
+      </h2>
+      <p class="prob-text">
+        India's startup ecosystem is full of brilliant founders — but most never get in front of the right investor. Not because their business isn't good enough. Because the preparation wasn't there.
+      </p>
+      <div class="prob-points">
+        <div class="prob-point reveal reveal-d1">
+          <div class="prob-point-icon">📋</div>
+          <p>Company structure and legal compliance that investors look for on day one — missing or incomplete</p>
+        </div>
+        <div class="prob-point reveal reveal-d2">
+          <div class="prob-point-icon">📊</div>
+          <p>Pitch materials that look amateur and financial models that don't survive due diligence</p>
+        </div>
+        <div class="prob-point reveal reveal-d3">
+          <div class="prob-point-icon">🌐</div>
+          <p>Cold outreach to investors who have no context — and no reason to respond</p>
+        </div>
+        <div class="prob-point reveal reveal-d4">
+          <div class="prob-point-icon">💡</div>
+          <p>No clarity on valuation, cap table, or what investors actually want to see</p>
+        </div>
+      </div>
+    </div>
+    <div class="reveal reveal-d2">
+      <div class="quote-card">
+        <blockquote>
+          Every well-prepared founder brings their vision one step closer to the capital that will make it real.
+        </blockquote>
+        <div class="quote-author">— BlueOak Capital Partners</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OAK TREE SERVICES / PHASES -->
+<section class="oak-sec" id="services">
+  <div class="oak-sec-bg"></div>
+  <div class="oak-header reveal">
+    <div class="sec-eyebrow" style="justify-content:center;"><div class="sec-eyebrow-line"></div>Our Services &amp; Journey<div class="sec-eyebrow-line" style="transform:rotate(180deg)"></div></div>
+    <h2 class="sec-title" style="text-align:center;">
+      Three Branches.<br><em>One Mighty Oak.</em>
+    </h2>
+    <p style="max-width:580px;margin:0 auto;font-size:0.95rem;color:rgba(255,255,255,0.45);font-weight:300;line-height:1.8;text-align:center;">
+      Like an oak tree — strong roots, broad branches, growing upward — every founder's journey with BlueOak starts at the foundation and grows into real funding.
+    </p>
+  </div>
+
+  <!-- Tree SVG Visual -->
+  <div class="tree-canvas-wrap reveal">
+    <svg class="tree-canvas" viewBox="0 0 1000 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Trunk -->
+      <rect x="492" y="180" width="16" height="130" fill="url(#trunkGrad)" rx="4"/>
+      <!-- Root spread -->
+      <path d="M500 305 C460 315 420 312 400 308" stroke="#2a6644" stroke-width="3" opacity="0.5" fill="none" stroke-linecap="round"/>
+      <path d="M500 305 C540 315 580 312 600 308" stroke="#2a6644" stroke-width="3" opacity="0.5" fill="none" stroke-linecap="round"/>
+      <path d="M500 310 C490 318 475 316 465 314" stroke="#2a6644" stroke-width="2" opacity="0.35" fill="none" stroke-linecap="round"/>
+      <path d="M500 310 C510 318 525 316 535 314" stroke="#2a6644" stroke-width="2" opacity="0.35" fill="none" stroke-linecap="round"/>
+      <!-- Left branch -->
+      <path d="M500 200 C480 180 400 160 280 140" stroke="url(#branchGrad)" stroke-width="6" fill="none" stroke-linecap="round"/>
+      <path d="M390 155 C370 140 340 120 300 105" stroke="#2a6644" stroke-width="3" opacity="0.6" fill="none" stroke-linecap="round"/>
+      <!-- Center branch -->
+      <path d="M500 190 C500 155 500 120 500 80" stroke="url(#branchGrad)" stroke-width="6" fill="none" stroke-linecap="round"/>
+      <path d="M500 120 C490 100 480 80 470 65" stroke="#2a6644" stroke-width="3" opacity="0.6" fill="none" stroke-linecap="round"/>
+      <path d="M500 120 C510 100 520 80 530 65" stroke="#2a6644" stroke-width="3" opacity="0.6" fill="none" stroke-linecap="round"/>
+      <!-- Right branch -->
+      <path d="M500 200 C520 180 600 160 720 140" stroke="url(#branchGrad)" stroke-width="6" fill="none" stroke-linecap="round"/>
+      <path d="M610 155 C630 140 660 120 700 105" stroke="#2a6644" stroke-width="3" opacity="0.6" fill="none" stroke-linecap="round"/>
+      <!-- Leaf clusters left -->
+      <ellipse cx="240" cy="130" rx="55" ry="42" fill="#1a4a2e" opacity="0.85"/>
+      <ellipse cx="210" cy="110" rx="38" ry="30" fill="#2a6644" opacity="0.8"/>
+      <ellipse cx="270" cy="105" rx="35" ry="28" fill="#2a6644" opacity="0.7"/>
+      <!-- Leaf clusters center -->
+      <ellipse cx="500" cy="50" rx="55" ry="50" fill="#1a4a2e" opacity="0.9"/>
+      <ellipse cx="468" cy="35" rx="38" ry="32" fill="#2a6644" opacity="0.75"/>
+      <ellipse cx="532" cy="35" rx="38" ry="32" fill="#2a6644" opacity="0.75"/>
+      <!-- Leaf clusters right -->
+      <ellipse cx="760" cy="130" rx="55" ry="42" fill="#1a4a2e" opacity="0.85"/>
+      <ellipse cx="730" cy="110" rx="38" ry="30" fill="#2a6644" opacity="0.8"/>
+      <ellipse cx="790" cy="105" rx="35" ry="28" fill="#2a6644" opacity="0.7"/>
+      <!-- Golden dots (fruit / opportunities) -->
+      <circle cx="220" cy="115" r="5" fill="#c9a84c" opacity="0.9"/>
+      <circle cx="260" cy="100" r="4" fill="#c9a84c" opacity="0.7"/>
+      <circle cx="240" cy="148" r="3" fill="#c9a84c" opacity="0.5"/>
+      <circle cx="500" cy="30" r="6" fill="#c9a84c" opacity="0.9"/>
+      <circle cx="475" cy="52" r="3.5" fill="#c9a84c" opacity="0.6"/>
+      <circle cx="525" cy="52" r="3.5" fill="#c9a84c" opacity="0.6"/>
+      <circle cx="740" cy="115" r="5" fill="#c9a84c" opacity="0.9"/>
+      <circle cx="780" cy="100" r="4" fill="#c9a84c" opacity="0.7"/>
+      <circle cx="760" cy="148" r="3" fill="#c9a84c" opacity="0.5"/>
+      <!-- Krishna blue center glow -->
+      <circle cx="500" cy="50" r="8" fill="#6fb3ff" opacity="0.35"/>
+      <circle cx="500" cy="50" r="4" fill="#6fb3ff" opacity="0.6"/>
+      <!-- Label lines -->
+      <line x1="240" y1="175" x2="240" y2="188" stroke="#c9a84c" stroke-width="1" opacity="0.4" stroke-dasharray="4,4"/>
+      <line x1="500" y1="100" x2="500" y2="185" stroke="#c9a84c" stroke-width="1" opacity="0.4" stroke-dasharray="4,4"/>
+      <line x1="760" y1="175" x2="760" y2="188" stroke="#c9a84c" stroke-width="1" opacity="0.4" stroke-dasharray="4,4"/>
+      <!-- Phase label points -->
+      <circle cx="240" cy="175" r="5" fill="#c9a84c" opacity="0.8"/>
+      <circle cx="500" cy="185" r="5" fill="#c9a84c" opacity="0.8"/>
+      <circle cx="760" cy="175" r="5" fill="#c9a84c" opacity="0.8"/>
+      <!-- FIRM center label -->
+      <text x="500" y="230" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="13" fill="#c9a84c" opacity="0.6" letter-spacing="4">BLUEOAK</text>
+      <defs>
+        <linearGradient id="trunkGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#3d8a5c"/>
+          <stop offset="100%" stop-color="#1a3a2a"/>
+        </linearGradient>
+        <linearGradient id="branchGrad" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#2a6644"/>
+          <stop offset="100%" stop-color="#3d8a5c"/>
+        </linearGradient>
+      </defs>
+    </svg>
+  </div>
+
+  <!-- Three Branch Cards -->
+  <div class="branch-cards">
+    <!-- Phase 1 -->
+    <div class="branch-card reveal reveal-d1">
+      <div class="bc-num">01</div>
+      <div class="bc-phase">Phase One · Foundation</div>
+      <div class="bc-icon">🌱</div>
+      <div class="bc-title">Shuruaat</div>
+      <div class="bc-hindi">The Beginning — Strong Roots</div>
+      <p class="bc-desc">
+        Every oak starts with deep roots. Before you can raise capital, your business must be legally sound, officially recognized, and investor-ready from the ground up.
+      </p>
+      <div class="bc-items">
+        <div class="bc-item">Private Limited / LLP Company Registration</div>
+        <div class="bc-item">MSME Registration</div>
+        <div class="bc-item">DPIIT Startup India Recognition</div>
+        <div class="bc-item">GST Registration &amp; Compliance Setup</div>
+      </div>
+      <div class="bc-timeline">⏱ 7–15 Working Days</div>
+    </div>
+
+    <!-- Phase 2 -->
+    <div class="branch-card reveal reveal-d2">
+      <div class="bc-num">02</div>
+      <div class="bc-phase">Phase Two · Preparation</div>
+      <div class="bc-icon">🏗️</div>
+      <div class="bc-title">Taiyaari</div>
+      <div class="bc-hindi">The Build — Grow Your Branches</div>
+      <p class="bc-desc">
+        Branches grow strong before bearing fruit. We build every material an investor will evaluate — from your deck to your financials — while exploring non-dilutive grants to protect your equity first.
+      </p>
+      <div class="bc-items">
+        <div class="bc-item">Government Grants &amp; Non-Dilutive Schemes</div>
+        <div class="bc-item">Investor-Grade Pitch Deck</div>
+        <div class="bc-item">Realistic Financial Model</div>
+        <div class="bc-item">Executive One-Pager</div>
+        <div class="bc-item">Brand Foundation &amp; Basic Website</div>
+        <div class="bc-item">Founder Strategy Session</div>
+      </div>
+      <div class="bc-timeline">⏱ 15–25 Working Days</div>
+    </div>
+
+    <!-- Phase 3 -->
+    <div class="branch-card reveal reveal-d3">
+      <div class="bc-num">03</div>
+      <div class="bc-phase">Phase Three · Fundraising</div>
+      <div class="bc-icon">🏆</div>
+      <div class="bc-title">Asli Game</div>
+      <div class="bc-hindi">The Harvest — Reach the Sky</div>
+      <p class="bc-desc">
+        The oak bears fruit when it is ready. We personally introduce you to 15+ qualified angels and VCs from our 300+ investor network — warm, trusted introductions that open real doors.
+      </p>
+      <div class="bc-items">
+        <div class="bc-item">15+ Warm, Personal Investor Introductions</div>
+        <div class="bc-item">1:1 Pitch Coaching Sessions</div>
+        <div class="bc-item">Mock Investor Meetings</div>
+        <div class="bc-item">Data Room Setup</div>
+        <div class="bc-item">Term Sheet Guidance &amp; Support</div>
+      </div>
+      <div class="bc-timeline">⏱ Intros Begin Within 15–30 Days After Phase 2</div>
+    </div>
+  </div>
+</section>
+
+<!-- HEALTH CHECK -->
+<section class="health-sec sec" id="health">
+  <div class="health-inner">
+    <div class="reveal">
+      <div class="sec-eyebrow"><div class="sec-eyebrow-line"></div>Start Here — It's Free</div>
+      <h2 class="sec-title">
+        Your Free 30-Minute<br><em>Startup Health Check</em>
+      </h2>
+      <p class="health-desc">
+        Before anything else, we want to understand exactly where you stand. Our free Startup Health Check gives you a real Funding Readiness Score across 6 critical categories — and a 1-page written report with your strengths and the top 3 gaps to close.
+        <br><br>
+        No sales pitch. No obligation. Just a senior advisor's honest view of your funding readiness.
+      </p>
+      <a href="#contact" class="btn-primary"><span>Book Your Free Startup Health Check</span></a>
+    </div>
+    <div class="score-widget reveal reveal-d2">
+      <div class="sw-title">Funding Readiness Score</div>
+      <div class="sw-sub">100-point evaluation across 6 investor criteria</div>
+      <div class="score-rows" id="scoreRows">
+        <div class="sr">
+          <div class="sr-header"><span class="sr-label">Team &amp; Founder Quality</span><span class="sr-pts">25 pts</span></div>
+          <div class="sr-bar"><div class="sr-fill" style="width:100%"></div></div>
+        </div>
+        <div class="sr">
+          <div class="sr-header"><span class="sr-label">Idea &amp; Market Opportunity</span><span class="sr-pts">20 pts</span></div>
+          <div class="sr-bar"><div class="sr-fill" style="width:100%"></div></div>
+        </div>
+        <div class="sr">
+          <div class="sr-header"><span class="sr-label">Traction &amp; Validation</span><span class="sr-pts">20 pts</span></div>
+          <div class="sr-bar"><div class="sr-fill" style="width:100%"></div></div>
+        </div>
+        <div class="sr">
+          <div class="sr-header"><span class="sr-label">Financial Readiness</span><span class="sr-pts">15 pts</span></div>
+          <div class="sr-bar"><div class="sr-fill" style="width:100%"></div></div>
+        </div>
+        <div class="sr">
+          <div class="sr-header"><span class="sr-label">Legal &amp; Compliance</span><span class="sr-pts">10 pts</span></div>
+          <div class="sr-bar"><div class="sr-fill" style="width:100%"></div></div>
+        </div>
+        <div class="sr">
+          <div class="sr-header"><span class="sr-label">Pitch &amp; Communication</span><span class="sr-pts">10 pts</span></div>
+          <div class="sr-bar"><div class="sr-fill" style="width:100%"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INVESTOR NETWORK -->
+<section class="network-sec sec" id="network">
+  <div class="network-inner">
+    <div class="network-visual reveal">
+      <div class="net-circle"></div>
+      <div class="net-circle"></div>
+      <div class="net-circle"></div>
+      <div class="net-dots" id="netDots"></div>
+      <div class="net-center">
+        <div class="net-center-num">300<span style="font-size:1rem">+</span></div>
+        <div class="net-center-lbl">Investors</div>
+      </div>
+    </div>
+    <div class="network-content reveal reveal-d2">
+      <div class="sec-eyebrow"><div class="sec-eyebrow-line"></div>Our Investor Network</div>
+      <h2 class="sec-title dark">
+        300+ Investors.<br><em>Zero Cold Emails.</em>
+      </h2>
+      <p class="net-desc">
+        Our network spans angels, family offices, sector-focused VCs, and government-backed funds across India. Every introduction we make is personal — built on context, trust, and the right fit for your stage and sector.
+      </p>
+      <div class="net-points">
+        <div class="net-point">
+          <div class="net-point-icon">🎯</div>
+          <div>
+            <h4>Warm, Contextual Introductions</h4>
+            <p>We don't blast your deck to a list. Every introduction is personal, curated, and comes with our endorsement from a place of existing trust.</p>
+          </div>
+        </div>
+        <div class="net-point">
+          <div class="net-point-icon">🏛️</div>
+          <div>
+            <h4>Non-Dilutive First</h4>
+            <p>Before approaching equity investors, we explore government grants and schemes — protecting your cap table from the very start.</p>
+          </div>
+        </div>
+        <div class="net-point">
+          <div class="net-point-icon">🤝</div>
+          <div>
+            <h4>15+ Guaranteed Introductions</h4>
+            <p>Phase 3 includes a minimum of 15 warm investor introductions — qualified, relevant, and personally facilitated by our team.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GUARANTEE -->
+<section class="guarantee-sec" id="guarantee">
+  <div class="guarantee-badge reveal"><span>🛡️</span> Our Commitment to You</div>
+  <h2 class="g-title reveal">
+    If We Don't Deliver<br><em>6 Qualified Meetings</em><br>in 45 Days — We Work Free.
+  </h2>
+  <p class="g-desc reveal">
+    After completing Phase 2, if we don't arrange at least 6 qualified investor meetings within 45 days, the following month of advisory support is entirely on us. We back our work — because we only work with founders we believe in.
+  </p>
+  <div class="g-cards reveal">
+    <div class="g-card">
+      <div class="g-card-num">6+</div>
+      <div class="g-card-lbl">Qualified Meetings Guaranteed</div>
+    </div>
+    <div class="g-card">
+      <div class="g-card-num">45</div>
+      <div class="g-card-lbl">Days After Phase 2</div>
+    </div>
+    <div class="g-card">
+      <div class="g-card-num">Free</div>
+      <div class="g-card-lbl">Next Month if We Fall Short</div>
+    </div>
+  </div>
+  <a href="#contact" class="btn-primary reveal"><span>Book Your Free Startup Health Check</span></a>
+</section>
+
+<!-- WHY BLUEOAK -->
+<section class="why-sec sec" id="why">
+  <div class="reveal">
+    <div class="sec-eyebrow"><div class="sec-eyebrow-line"></div>Why BlueOak</div>
+    <h2 class="sec-title dark">
+      Built Different.<br><em>By Design.</em>
+    </h2>
+  </div>
+  <div class="why-grid">
+    <div class="why-card reveal reveal-d1">
+      <div class="wc-num">01</div>
+      <div class="wc-icon">🌿</div>
+      <h4 class="wc-title">Selective by Nature</h4>
+      <p class="wc-text">We work with a small number of founders at a time — intentionally. Every client gets our full attention, personal involvement, and real commitment. Quality over volume, always.</p>
+    </div>
+    <div class="why-card reveal reveal-d2">
+      <div class="wc-num">02</div>
+      <div class="wc-icon">🏛️</div>
+      <h4 class="wc-title">Equity-Protection First</h4>
+      <p class="wc-text">We explore every non-dilutive avenue — government grants, schemes, and programs — before moving to equity investors. Your ownership matters to us as much as it does to you.</p>
+    </div>
+    <div class="why-card reveal reveal-d3">
+      <div class="wc-num">03</div>
+      <div class="wc-icon">📐</div>
+      <h4 class="wc-title">Materials Built to Survive Due Diligence</h4>
+      <p class="wc-text">Our pitch decks, models, and one-pagers are built to withstand hard investor questions — not just to look impressive at first glance. We prepare you for the full conversation.</p>
+    </div>
+    <div class="why-card reveal reveal-d4">
+      <div class="wc-num">04</div>
+      <div class="wc-icon">🤝</div>
+      <h4 class="wc-title">A Partner, Not a Vendor</h4>
+      <p class="wc-text">We stand with you through every meeting, negotiation, and term sheet. Our success fee is tied to your actual raise — so our interests are perfectly aligned with yours from day one.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF POINTS -->
+<section class="proof-sec">
+  <div class="proof-inner">
+    <div class="proof-card reveal reveal-d1">
+      <div class="proof-icon">📋</div>
+      <div class="proof-title">End-to-End Execution</div>
+      <p class="proof-text">From company registration on day one to investor introductions at the end — we handle every step so you can focus on building your business, not navigating paperwork and processes.</p>
+    </div>
+    <div class="proof-card reveal reveal-d2">
+      <div class="proof-icon">🔒</div>
+      <div class="proof-title">Transparent &amp; Trustworthy</div>
+      <p class="proof-text">No hidden fees, no vague promises, no guaranteed-funding claims. We are completely transparent about what we do, how we work, and what you can realistically expect at each stage.</p>
+    </div>
+    <div class="proof-card reveal reveal-d3">
+      <div class="proof-icon">🌐</div>
+      <div class="proof-title">Pan-India Reach</div>
+      <p class="proof-text">Our investor network and advisory reach spans the entire country — across sectors, stages, and geographies. Whether you're in a metro or a tier-2 city, the right investor is in our network.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-sec" id="contact">
+  <div class="sec-eyebrow reveal">
+    <div class="sec-eyebrow-line" style="background:rgba(201,168,76,0.4)"></div>
+    Take the First Step
+    <div class="sec-eyebrow-line" style="background:rgba(201,168,76,0.4);transform:rotate(180deg)"></div>
+  </div>
+  <h2 class="cta-title reveal">
+    Your Funding Journey<br>
+    Starts with a<br>
+    <em>Free Conversation</em>
+  </h2>
+  <p class="cta-desc reveal">
+    Book your free 30-minute Startup Health Check. Walk away with a clear Funding Readiness Score, honest insights on your gaps, and a path forward — at zero cost.
+  </p>
+  <div class="cta-actions reveal">
+    <a href="mailto:hello@blueoakcapital.in" class="btn-primary"><span>Book Your Free Startup Health Check</span></a>
+    <a href="https://wa.me/91XXXXXXXXXX" class="btn-outline-light">💬 Message on WhatsApp</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand-name">BlueOak Capital Partners</div>
+      <div class="footer-brand-sub">Startup Growth Advisory · Pan-India</div>
+      <p class="footer-tagline">From Idea to Real Funding —<br>Simple, Fast &amp; Reliable.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Our Services</h5>
+      <ul>
+        <li><a href="#services">Foundation Phase (Shuruaat)</a></li>
+        <li><a href="#services">Preparation Phase (Taiyaari)</a></li>
+        <li><a href="#services">Fundraising Phase (Asli Game)</a></li>
+        <li><a href="#health">Free Startup Health Check</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Connect</h5>
+      <ul>
+        <li><a href="mailto:hello@blueoakcapital.in">hello@blueoakcapital.in</a></li>
+        <li><a href="#">LinkedIn</a></li>
+        <li><a href="#">WhatsApp</a></li>
+        <li><a href="#contact">Book a Call</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2025 BlueOak Capital Partners. All rights reserved.</div>
+    <div class="footer-krishna">Named after the wisdom of the oak and the grace of the divine blue — BlueOak.</div>
+  </div>
+</footer>
+
+<script>
+/* ── CURSOR ── */
+const cursor = document.getElementById('cursor');
+const ring = document.getElementById('cursorRing');
+let mx = 0, my = 0, rx = 0, ry = 0;
+document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; cursor.style.left = mx+'px'; cursor.style.top = my+'px'; });
+function animRing() { rx += (mx - rx) * 0.12; ry += (my - ry) * 0.12; ring.style.left = rx+'px'; ring.style.top = ry+'px'; requestAnimationFrame(animRing); }
+animRing();
+
+/* ── SCROLL PROGRESS ── */
+const prog = document.getElementById('scrollProgress');
+window.addEventListener('scroll', () => {
+  const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
+  prog.style.width = pct + '%';
+});
+
+/* ── NAV SCROLL ── */
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+/* ── MOBILE MENU ── */
+const menu = document.getElementById('mobileMenu');
+const burger = document.getElementById('hamburger');
+function toggleMobile() { menu.classList.toggle('open'); burger.classList.toggle('open'); document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : ''; }
+function closeMobile() { menu.classList.remove('open'); burger.classList.remove('open'); document.body.style.overflow = ''; }
+
+/* ── SCROLL REVEAL ── */
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.12 });
+reveals.forEach(el => observer.observe(el));
+
+/* ── SCORE BAR ANIMATION ── */
+const scoreObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const fills = e.target.querySelectorAll('.sr-fill');
+      fills.forEach((f, i) => { setTimeout(() => f.classList.add('animated'), i * 150); });
+      scoreObserver.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.4 });
+const scoreWidget = document.getElementById('scoreRows');
+if (scoreWidget) scoreObserver.observe(scoreWidget);
+
+/* ── PARTICLES ── */
+const particleContainer = document.getElementById('particles');
+for (let i = 0; i < 20; i++) {
+  const p = document.createElement('div');
+  p.className = 'particle';
+  const size = Math.random() * 4 + 2;
+  p.style.cssText = `
+    width:${size}px; height:${size}px;
+    left:${Math.random()*100}%;
+    bottom:${Math.random()*30}%;
+    animation-duration:${8 + Math.random()*12}s;
+    animation-delay:${Math.random()*8}s;
+  `;
+  particleContainer.appendChild(p);
+}
+
+/* ── NETWORK DOTS ── */
+const dotsContainer = document.getElementById('netDots');
+if (dotsContainer) {
+  for (let i = 0; i < 12; i++) {
+    const d = document.createElement('div');
+    d.className = 'net-dot';
+    const angle = (i / 12) * 2 * Math.PI;
+    const r1 = 42 + Math.random() * 5;
+    const x = 50 + r1 * Math.cos(angle);
+    const y = 50 + r1 * Math.sin(angle);
+    d.style.cssText = `left:${x}%;top:${y}%;animation-delay:${i*0.15}s;width:${5+Math.random()*4}px;height:${5+Math.random()*4}px;`;
+    dotsContainer.appendChild(d);
+  }
+}
+
+/* ── SMOOTH ANCHOR SCROLL ── */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+  });
+});
+
+/* ── BRANCH CARD HOVER ACTIVE ── */
+document.querySelectorAll('.branch-card').forEach(card => {
+  card.addEventListener('mouseenter', () => {
+    document.querySelectorAll('.branch-card').forEach(c => c.classList.remove('active'));
+    card.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>
