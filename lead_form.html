@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Startup Health Check — BlueOak Ventures</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Outfit',sans-serif;background:#0a2318;min-height:100vh;}
+.bo-form{padding:40px 20px;display:flex;justify-content:center;align-items:flex-start;}
+.bo-shell{width:100%;max-width:580px;}
+.bo-hdr{text-align:center;margin-bottom:28px;}
+.bo-logo{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:14px;}
+.bo-dot{width:34px;height:34px;border-radius:50%;border:1px solid rgba(201,168,76,0.4);background:rgba(42,102,68,0.35);display:flex;align-items:center;justify-content:center;}
+.bo-dot-in{width:10px;height:10px;border-radius:50%;background:#6fb3ff;opacity:0.85;}
+.bo-brand{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:600;color:#c9a84c;letter-spacing:0.05em;}
+.bo-brand-sub{font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.28);margin-top:2px;}
+.bo-title{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;color:#f7f3eb;line-height:1.2;margin-bottom:6px;}
+.bo-title em{color:#e2c97e;font-style:italic;}
+.bo-subtitle{font-size:13px;color:rgba(255,255,255,0.38);font-weight:300;line-height:1.6;}
+.bo-prog{margin-bottom:24px;}
+.bo-prog-steps{display:flex;justify-content:space-between;margin-bottom:8px;}
+.bps{font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.22);transition:color .3s;}
+.bps.act{color:#c9a84c;}.bps.dn{color:rgba(201,168,76,0.4);}
+.bo-bar{height:2px;background:rgba(255,255,255,0.07);border-radius:1px;}
+.bo-fill{height:100%;background:#c9a84c;border-radius:1px;transition:width .4s ease;}
+.bo-card{background:rgba(255,255,255,0.04);border:1px solid rgba(201,168,76,0.15);border-radius:4px;padding:30px 28px 26px;}
+.s-eye{font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:#a88a3b;margin-bottom:8px;display:flex;align-items:center;gap:8px;}
+.s-eye::before{content:'';width:18px;height:1px;background:#a88a3b;}
+.s-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;color:#f7f3eb;margin-bottom:4px;}
+.s-desc{font-size:12px;color:rgba(255,255,255,0.32);font-weight:300;margin-bottom:22px;line-height:1.5;}
+.f{margin-bottom:15px;}
+.f label{display:block;font-size:12px;color:rgba(255,255,255,0.5);margin-bottom:6px;letter-spacing:0.03em;}
+.f input,.f select,.f textarea{width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(201,168,76,0.18);color:#f7f3eb;font-family:'Outfit',sans-serif;font-size:14px;padding:11px 14px;border-radius:3px;outline:none;transition:border-color .2s;-webkit-appearance:none;}
+.f input::placeholder,.f textarea::placeholder{color:rgba(255,255,255,0.18);}
+.f input:focus,.f select:focus,.f textarea:focus{border-color:rgba(201,168,76,0.7);}
+.f select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23a88a3b' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px;}
+.f select option{background:#0e2a1a;color:#f7f3eb;}
+.f textarea{resize:vertical;min-height:68px;}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+@media(max-width:480px){.two{grid-template-columns:1fr;}}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px;}
+.chip{background:rgba(255,255,255,0.04);border:1px solid rgba(201,168,76,0.15);padding:8px 14px;border-radius:2px;cursor:pointer;font-size:12px;color:rgba(255,255,255,0.5);transition:all .2s;user-select:none;}
+.chip:hover{border-color:rgba(201,168,76,0.4);color:rgba(255,255,255,0.75);}
+.chip.sel{border-color:#c9a84c;background:rgba(201,168,76,0.1);color:#e2c97e;}
+.err-msg{font-size:11px;color:#f09595;margin-top:6px;display:none;}
+.btn-row{display:flex;gap:12px;margin-top:22px;}
+.btn-b{background:transparent;border:1px solid rgba(201,168,76,0.22);color:rgba(255,255,255,0.4);font-family:'Outfit',sans-serif;font-size:13px;padding:12px 18px;border-radius:3px;cursor:pointer;transition:all .2s;flex-shrink:0;}
+.btn-b:hover{border-color:rgba(201,168,76,0.5);color:rgba(255,255,255,0.65);}
+.btn-n{flex:1;background:#c9a84c;color:#0a2318;font-family:'Outfit',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:14px 20px;border:none;cursor:pointer;clip-path:polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);transition:background .2s;}
+.btn-n:hover{background:#e2c97e;}
+.ty-wrap{text-align:center;padding:16px 0 8px;}
+.ty-icon{width:60px;height:60px;border-radius:50%;background:rgba(201,168,76,0.12);border:2px solid #c9a84c;display:flex;align-items:center;justify-content:center;margin:0 auto 18px;}
+.ty-check{width:24px;height:24px;stroke:#c9a84c;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;}
+.ty-title{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:300;color:#f7f3eb;margin-bottom:6px;}
+.ty-title em{color:#e2c97e;font-style:italic;}
+.ty-msg{font-size:13px;color:rgba(255,255,255,0.42);line-height:1.7;font-weight:300;margin-bottom:24px;max-width:400px;margin-left:auto;margin-right:auto;}
+.ty-rule{width:100%;height:1px;background:rgba(201,168,76,0.12);margin-bottom:20px;}
+.ty-what{font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#a88a3b;margin-bottom:14px;}
+.ty-steps{display:flex;flex-direction:column;gap:10px;margin-bottom:24px;text-align:left;}
+.ty-step{display:flex;align-items:flex-start;gap:12px;}
+.ty-step-n{width:22px;height:22px;border-radius:50%;background:#c9a84c;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#0a2318;flex-shrink:0;margin-top:1px;}
+.ty-step-t{font-size:13px;color:rgba(255,255,255,0.55);font-weight:300;line-height:1.5;}
+.ty-step-t strong{color:#f7f3eb;font-weight:500;}
+.ty-stats{display:flex;justify-content:space-around;padding-top:16px;border-top:1px solid rgba(201,168,76,0.1);}
+.ty-stat-n{font-family:'Cormorant Garamond',serif;font-size:22px;color:#c9a84c;font-weight:300;display:block;}
+.ty-stat-l{font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.2);display:block;margin-top:2px;}
+.ty-url{font-size:11px;color:#a88a3b;margin-top:16px;}
+</style>
+</head>
+<body>
+<div class="bo-form">
+<div class="bo-shell">
+  <div class="bo-hdr">
+    <div class="bo-logo">
+      <div class="bo-dot"><div class="bo-dot-in"></div></div>
+      <div>
+        <div class="bo-brand">BlueOak Ventures</div>
+        <div class="bo-brand-sub">Shaping Fundable Startups</div>
+      </div>
+    </div>
+    <div class="bo-title">Free <em>Startup Health Check</em></div>
+    <div class="bo-subtitle">2 minutes · 100-point score · written report · zero cost</div>
+  </div>
+  <div class="bo-prog">
+    <div class="bo-prog-steps">
+      <span class="bps act" id="bps1">About You</span>
+      <span class="bps" id="bps2">Your Startup</span>
+      <span class="bps" id="bps3">Readiness</span>
+    </div>
+    <div class="bo-bar"><div class="bo-fill" id="bofill" style="width:33%"></div></div>
+  </div>
+  <div class="bo-card">
+    <div id="bs1">
+      <div class="s-eye">Step 1 of 3</div>
+      <div class="s-title">Tell us about you</div>
+      <div class="s-desc">Your details are confidential. No spam, no unsolicited calls.</div>
+      <div class="two">
+        <div class="f"><label>First name *</label><input id="fn" type="text" placeholder="Rahul"></div>
+        <div class="f"><label>Last name *</label><input id="ln" type="text" placeholder="Sharma"></div>
+      </div>
+      <div class="f"><label>Email address *</label><input id="em" type="email" placeholder="rahul@yourstartup.com"></div>
+      <div class="f"><label>WhatsApp number *</label><input id="ph" type="tel" placeholder="+91 98765 43210"></div>
+      <div class="f"><label>Your role</label>
+        <select id="rl">
+          <option value="">Select your role</option>
+          <option>Founder / Co-Founder</option><option>CEO</option><option>CTO</option><option>COO</option><option>Other</option>
+        </select>
+      </div>
+      <div id="e1" class="err-msg">Please fill in your name, email and WhatsApp number.</div>
+      <div class="btn-row"><button class="btn-n" onclick="nxt(2)">Next — Your Startup →</button></div>
+    </div>
+    <div id="bs2" style="display:none">
+      <div class="s-eye">Step 2 of 3</div>
+      <div class="s-title">About your startup</div>
+      <div class="s-desc">Help us understand where you are right now.</div>
+      <div class="f"><label>Startup name *</label><input id="sn" type="text" placeholder="Your Startup Pvt. Ltd."></div>
+      <div class="two">
+        <div class="f"><label>Sector *</label>
+          <select id="sc">
+            <option value="">Select sector</option>
+            <option>SaaS / Tech</option><option>D2C / Consumer</option><option>Fintech</option><option>Edtech</option><option>Healthtech</option><option>Agritech</option><option>Manufacturing</option><option>Deep Tech</option><option>Other</option>
+          </select>
+        </div>
+        <div class="f"><label>Current stage *</label>
+          <select id="st">
+            <option value="">Select stage</option>
+            <option>Idea Stage</option><option>MVP Ready</option><option>Early Revenue</option><option>Growing Revenue</option>
+          </select>
+        </div>
+      </div>
+      <div class="f"><label>Target raise amount *</label>
+        <select id="ra">
+          <option value="">Select amount</option>
+          <option>Under ₹50L</option><option>₹50L – ₹1Cr</option><option>₹1Cr – ₹3Cr</option><option>₹3Cr – ₹5Cr</option><option>Above ₹5Cr</option>
+        </select>
+      </div>
+      <div class="f"><label>Current monthly revenue (MRR)</label>
+        <select id="mr">
+          <option value="">Select range</option>
+          <option>Pre-revenue</option><option>Under ₹1L / month</option><option>₹1L – ₹5L / month</option><option>₹5L – ₹20L / month</option><option>Above ₹20L / month</option>
+        </select>
+      </div>
+      <div class="f"><label>City / State</label><input id="ct" type="text" placeholder="Ahmedabad, Gujarat"></div>
+      <div id="e2" class="err-msg">Please fill in startup name, sector, stage and raise amount.</div>
+      <div class="btn-row">
+        <button class="btn-b" onclick="nxt(1)">← Back</button>
+        <button class="btn-n" onclick="nxt(3)">Next — Readiness Check →</button>
+      </div>
+    </div>
+    <div id="bs3" style="display:none">
+      <div class="s-eye">Step 3 of 3</div>
+      <div class="s-title">Quick readiness check</div>
+      <div class="s-desc">Tap to select — honest answers give the best score.</div>
+      <div class="f"><label>Is your company legally registered?</label>
+        <div class="chips">
+          <div class="chip" onclick="pick(this,'reg')">Yes — Pvt Ltd / LLP</div>
+          <div class="chip" onclick="pick(this,'reg')">In process</div>
+          <div class="chip" onclick="pick(this,'reg')">Not yet</div>
+        </div>
+      </div>
+      <div class="f"><label>Do you have DPIIT / Startup India recognition?</label>
+        <div class="chips">
+          <div class="chip" onclick="pick(this,'dpiit')">Yes</div>
+          <div class="chip" onclick="pick(this,'dpiit')">Applied / In process</div>
+          <div class="chip" onclick="pick(this,'dpiit')">No</div>
+          <div class="chip" onclick="pick(this,'dpiit')">Not sure</div>
+        </div>
+      </div>
+      <div class="f"><label>Do you have a pitch deck ready?</label>
+        <div class="chips">
+          <div class="chip" onclick="pick(this,'deck')">Yes — investor-grade</div>
+          <div class="chip" onclick="pick(this,'deck')">Basic version only</div>
+          <div class="chip" onclick="pick(this,'deck')">Needs work</div>
+          <div class="chip" onclick="pick(this,'deck')">Not yet</div>
+        </div>
+      </div>
+      <div class="f"><label>Have you approached investors before?</label>
+        <div class="chips">
+          <div class="chip" onclick="pick(this,'inv')">Yes — got meetings</div>
+          <div class="chip" onclick="pick(this,'inv')">Yes — no response</div>
+          <div class="chip" onclick="pick(this,'inv')">Not yet</div>
+        </div>
+      </div>
+      <div class="f"><label>Do you have a financial model / projections?</label>
+        <div class="chips">
+          <div class="chip" onclick="pick(this,'fin')">Yes — detailed model</div>
+          <div class="chip" onclick="pick(this,'fin')">Basic projections</div>
+          <div class="chip" onclick="pick(this,'fin')">No</div>
+        </div>
+      </div>
+      <div class="f"><label>Anything specific you want us to look at? (optional)</label>
+        <textarea id="nt" placeholder="e.g. cap table, valuation clarity, investor network, pitch feedback..."></textarea>
+      </div>
+      <div id="e3" class="err-msg">Please answer at least the first 3 questions.</div>
+      <div class="btn-row">
+        <button class="btn-b" onclick="nxt(2)">← Back</button>
+        <button class="btn-n" onclick="submit()">Submit My Application →</button>
+      </div>
+    </div>
+    <div id="bs4" style="display:none">
+      <div class="ty-wrap">
+        <div class="ty-icon">
+          <svg class="ty-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div class="ty-title">You're in, <em id="ty-name">founder</em>.</div>
+        <div class="ty-msg">Your application has been received. A senior BlueOak advisor will personally review it and reach out within <strong style="color:#f7f3eb">24 hours</strong> on WhatsApp and email.</div>
+        <div class="ty-rule"></div>
+        <div class="ty-what">What happens next</div>
+        <div class="ty-steps">
+          <div class="ty-step"><div class="ty-step-n">1</div><div class="ty-step-t"><strong>Advisor review</strong> — we go through your application in detail before calling you</div></div>
+          <div class="ty-step"><div class="ty-step-n">2</div><div class="ty-step-t"><strong>Free 30-min call</strong> — you get your Funding Readiness Score + written report</div></div>
+          <div class="ty-step"><div class="ty-step-n">3</div><div class="ty-step-t"><strong>If eligible</strong> — you're personally invited to our 45-Day Fundraising Program</div></div>
+        </div>
+        <div class="ty-stats">
+          <div><span class="ty-stat-n">300+</span><span class="ty-stat-l">Investors</span></div>
+          <div><span class="ty-stat-n">15+</span><span class="ty-stat-l">Warm Intros</span></div>
+          <div><span class="ty-stat-n">45</span><span class="ty-stat-l">Day Guarantee</span></div>
+          <div><span class="ty-stat-n">Free</span><span class="ty-stat-l">If We Fall Short</span></div>
+        </div>
+        <div class="ty-url">blueoakventures.co.in</div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<script>
+var picks={};
+function pick(el,key){el.parentElement.querySelectorAll('.chip').forEach(function(c){c.classList.remove('sel');});el.classList.add('sel');picks[key]=el.textContent.trim();}
+function nxt(n){
+  if(n===2){var ok=document.getElementById('fn').value.trim()&&document.getElementById('ln').value.trim()&&document.getElementById('em').value.trim()&&document.getElementById('ph').value.trim();if(!ok){document.getElementById('e1').style.display='block';return;}document.getElementById('e1').style.display='none';}
+  if(n===3){var ok2=document.getElementById('sn').value.trim()&&document.getElementById('sc').value&&document.getElementById('st').value&&document.getElementById('ra').value;if(!ok2){document.getElementById('e2').style.display='block';return;}document.getElementById('e2').style.display='none';}
+  for(var i=1;i<=4;i++){var s=document.getElementById('bs'+i);if(s)s.style.display=(i===n?'block':'none');}
+  var w={1:33,2:66,3:100,4:100};document.getElementById('bofill').style.width=w[n]+'%';
+  ['bps1','bps2','bps3'].forEach(function(id,i){var el=document.getElementById(id);el.className='bps'+(i+1===n?' act':i+1<n?' dn':'');});
+  window.scrollTo&&window.scrollTo({top:0,behavior:'smooth'});
+}
+function submit(){
+  var answered=Object.keys(picks).filter(function(k){return['reg','dpiit','deck'].indexOf(k)>=0;}).length;
+  if(answered<3){document.getElementById('e3').style.display='block';return;}
+  document.getElementById('e3').style.display='none';
+  document.getElementById('ty-name').textContent=document.getElementById('fn').value.trim()||'founder';
+  nxt(4);
+}
+</script>
+</body>
+</html>
