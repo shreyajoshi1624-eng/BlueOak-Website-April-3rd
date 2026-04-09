@@ -4,7 +4,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BlueOak Capital Partners — From Idea to Real Funding</title>
-<link href="./BlueOak Capital Partners — From Idea to Real Funding_files/css2" rel="stylesheet">
+<link rel="icon" type="image/png" href="BlueOak_final_logo.png">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root {
   --green-deep:   #0e2a1a;
@@ -73,22 +74,23 @@ body:has(a:hover) .cursor, body:has(button:hover) .cursor { width: 20px; height:
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 500;
   display: flex; align-items: center; justify-content: space-between;
-  padding: 22px 60px;
+  padding: 12px 60px;
   transition: background 0.4s, padding 0.4s, border-color 0.4s;
   border-bottom: 1px solid transparent;
 }
 nav.scrolled {
   background: rgba(14,42,26,0.97);
   backdrop-filter: blur(20px);
-  padding: 14px 60px;
+  padding: 10px 60px;
   border-bottom-color: var(--border);
 }
 .nav-logo {
-  display: flex; align-items: center; gap: 14px;
-  text-decoration: none;
+  display: flex; align-items: center; gap: 12px;
+  text-decoration: none; flex-wrap: nowrap;
 }
 .nav-logo-mark {
-  width: 38px; height: 38px; position: relative; flex-shrink: 0;
+  width: auto; height: auto; position: relative; flex-shrink: 0;
+  background: transparent;
 }
 .nav-logo-mark svg { width: 100%; height: 100%; }
 .logo-wordmark {
@@ -96,11 +98,11 @@ nav.scrolled {
 }
 .logo-name {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.2rem; font-weight: 600; letter-spacing: 0.08em;
+  font-size: 1.5rem; font-weight: 600; letter-spacing: 0.08em;
   color: var(--gold);
 }
 .logo-sub {
-  font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
+  font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
   color: rgba(255,255,255,0.4); margin-top: 2px;
 }
 .nav-links {
@@ -260,10 +262,10 @@ nav.scrolled {
   color: rgba(255,255,255,0.35); margin-top: 6px; display: block;
 }
 
-/* Hero oak silhouette */
+/* Hero decorative graphic */
 .hero-oak {
-  position: absolute; right: -40px; bottom: 0;
-  width: 55%; max-width: 700px; opacity: 0.06;
+  position: absolute; right: 0; top: 0; bottom: 0;
+  width: 52%; max-width: 680px; opacity: 1;
   pointer-events: none;
 }
 
@@ -717,51 +719,178 @@ footer {
 .footer-krishna { font-size: 0.72rem; color: rgba(255,255,255,0.18); font-style: italic; }
 
 /* ═══════════════════════════════
-   RESPONSIVE
+   RESPONSIVE — 6 BREAKPOINTS
 ═══════════════════════════════ */
-@media (max-width: 1024px) {
-  .branch-cards { grid-template-columns: 1fr 1fr; }
-  .proof-inner { grid-template-columns: 1fr 1fr; }
-  .footer-inner { grid-template-columns: 1fr 1fr; }
+
+/* ── 6. Large Desktop 1440px+ ── */
+@media (min-width: 1440px) {
+  nav { padding: 18px 80px; }
+  nav.scrolled { padding: 12px 80px; }
+  .hero { padding: 160px 80px 100px; }
+  .hero h1 { font-size: 6.5rem; }
+  .sec, .cta-sec, .guarantee-sec, .proof-sec, .health-sec { padding: 130px 80px; }
+  .oak-sec { padding: 140px 80px; }
+  .branch-cards { grid-template-columns: repeat(4, 1fr); gap: 28px; }
+  .footer-inner { padding: 0 80px; }
+  footer { padding: 60px 80px; }
 }
 
-@media (max-width: 768px) {
-  nav { padding: 16px 24px; }
-  nav.scrolled { padding: 12px 24px; }
+/* ── 5. Desktop 1200px–1439px ── */
+@media (min-width: 1200px) and (max-width: 1439px) {
+  .branch-cards { grid-template-columns: repeat(4, 1fr); gap: 22px; }
+  .hero h1 { font-size: 5.5rem; }
+}
+
+/* ── 4. Small Laptop 992px–1199px ── */
+@media (min-width: 992px) and (max-width: 1199px) {
+  nav { padding: 16px 40px; }
+  nav.scrolled { padding: 12px 40px; }
+  .hero { padding: 130px 40px 80px; }
+  .hero h1 { font-size: 4.2rem; }
+  .sec, .cta-sec, .guarantee-sec, .proof-sec, .health-sec { padding: 90px 40px; }
+  .oak-sec { padding: 100px 40px; }
+  .branch-cards { grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .branch-card { padding: 26px 20px; }
+  .bc-title { font-size: 1.3rem; }
+  .bc-desc { font-size: 0.82rem; }
+  .problem-grid { gap: 50px; }
+  .health-inner { gap: 50px; }
+  .network-inner { gap: 50px; }
+  .footer-inner { grid-template-columns: 1.5fr 1fr 1fr; gap: 40px; }
+  footer { padding: 44px 40px; }
+}
+
+/* ── 3. Tablet 768px–991px ── */
+@media (min-width: 768px) and (max-width: 991px) {
+  nav { padding: 14px 32px; }
+  nav.scrolled { padding: 10px 32px; }
+  .nav-links { gap: 24px; }
+  .nav-links a { font-size: 0.72rem; }
+  .nav-cta { padding: 9px 18px; font-size: 0.72rem; }
+
+  .hero { padding: 120px 32px 70px; }
+  .hero h1 { font-size: 3.4rem; }
+  .hero-sub { font-size: 0.95rem; max-width: 100%; }
+  .hero-oak { width: 45%; opacity: 0.7; }
+  .hero-stats { flex-wrap: wrap; }
+  .h-stat { flex: 1 1 45%; padding: 20px 12px 0; }
+  .h-stat-num { font-size: 2.4rem; }
+
+  .sec, .cta-sec, .guarantee-sec, .proof-sec, .health-sec { padding: 80px 32px; }
+  .oak-sec { padding: 90px 32px; }
+
+  .problem-grid { grid-template-columns: 1fr; gap: 40px; }
+  .health-inner { grid-template-columns: 1fr; gap: 40px; }
+  .network-inner { grid-template-columns: 1fr; gap: 40px; }
+  .network-visual { max-width: 360px; margin: 0 auto; }
+
+  .branch-cards { grid-template-columns: 1fr 1fr; gap: 16px; }
+  #our-services { grid-template-columns: 1fr 1fr !important; }
+
+  .why-grid { grid-template-columns: 1fr 1fr; }
+  .proof-inner { grid-template-columns: 1fr 1fr; }
+  .g-cards { flex-wrap: wrap; }
+  .g-card { flex: 1 1 140px; }
+
+  .footer-inner { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .footer-bottom { flex-direction: column; text-align: center; gap: 8px; }
+  footer { padding: 40px 32px; }
+
+  .cta-actions { flex-direction: column; align-items: center; }
+  .btn-outline-light { justify-content: center; }
+}
+
+/* ── 2. Large Mobile 480px–767px ── */
+@media (min-width: 480px) and (max-width: 767px) {
+  nav { padding: 14px 20px; }
+  nav.scrolled { padding: 10px 20px; }
   .nav-links, .nav-cta { display: none; }
   .hamburger { display: flex; }
 
-  .sec, .hero, .cta-sec, .guarantee-sec, .proof-sec, .health-sec { padding: 70px 24px; }
-  .oak-sec { padding: 80px 24px; }
-
+  .hero { padding: 110px 20px 60px; }
   .hero h1 { font-size: 2.8rem; }
-  .hero-stats { gap: 0; }
-  .h-stat { padding: 24px 16px 0; }
-  .h-stat-num { font-size: 2.2rem; }
+  .hero-sub { font-size: 0.95rem; }
+  .hero-oak { display: none; }
+  .hero-stats { flex-wrap: wrap; border-top: 1px solid rgba(201,168,76,0.12); }
+  .h-stat { flex: 1 1 45%; padding: 20px 10px 0; border-right: none; border-bottom: 1px solid rgba(201,168,76,0.08); }
+  .h-stat-num { font-size: 2rem; }
 
-  .problem-grid,
-  .health-inner,
-  .network-inner { grid-template-columns: 1fr; gap: 48px; }
+  .sec, .cta-sec, .guarantee-sec, .proof-sec, .health-sec { padding: 70px 20px; }
+  .oak-sec { padding: 80px 20px; }
 
-  .branch-cards { grid-template-columns: 1fr; }
+  .problem-grid, .health-inner, .network-inner { grid-template-columns: 1fr; gap: 36px; }
+
+  .branch-cards { grid-template-columns: 1fr 1fr; gap: 12px; }
+  #our-services { grid-template-columns: 1fr 1fr !important; }
+
   .why-grid { grid-template-columns: 1fr; }
   .proof-inner { grid-template-columns: 1fr; }
   .g-cards { flex-direction: column; }
   .g-card { min-width: unset; }
 
-  .footer-inner { grid-template-columns: 1fr; gap: 36px; }
+  .footer-inner { grid-template-columns: 1fr; gap: 28px; }
   .footer-bottom { flex-direction: column; text-align: center; }
+  footer { padding: 36px 20px; }
 
-  .phase-timeline-badge { position: static; margin-top: 16px; }
   .cta-actions { flex-direction: column; align-items: stretch; text-align: center; }
   .btn-outline-light { justify-content: center; }
+  .sec-title { font-size: 2rem; }
+  .quote-card blockquote { font-size: 1.4rem; }
 }
 
-@media (max-width: 480px) {
-  .hero { padding: 110px 20px 60px; }
-  .hero h1 { font-size: 2.2rem; }
-  .hero-sub { font-size: 0.95rem; }
-  .h-stat-num { font-size: 1.8rem; }
+/* ── 1. Small Mobile 0px–479px ── */
+@media (max-width: 479px) {
+  nav { padding: 12px 16px; }
+  nav.scrolled { padding: 10px 16px; }
+  .nav-links, .nav-cta { display: none; }
+  .hamburger { display: flex; }
+
+  .hero { padding: 100px 16px 50px; }
+  .hero h1 { font-size: 2rem; line-height: 1.1; }
+  .hero-sub { font-size: 0.88rem; margin-bottom: 36px; }
+  .hero-eyebrow { font-size: 0.65rem; }
+  .hero-oak { display: none; }
+  .hero-actions { flex-direction: column; align-items: stretch; gap: 14px; }
+  .btn-primary { text-align: center; padding: 14px 20px; }
+  .hero-stats { flex-wrap: wrap; }
+  .h-stat { flex: 1 1 45%; padding: 16px 8px 0; border-right: none; }
+  .h-stat-num { font-size: 1.7rem; }
+  .h-stat-lbl { font-size: 0.62rem; }
+
+  .sec, .cta-sec, .guarantee-sec, .proof-sec, .health-sec { padding: 60px 16px; }
+  .oak-sec { padding: 70px 16px; }
+  .sec-title { font-size: 1.8rem; }
+
+  .problem-grid, .health-inner, .network-inner { grid-template-columns: 1fr; gap: 28px; }
+  .prob-text { font-size: 0.9rem; }
+  .quote-card { padding: 32px 24px; }
+  .quote-card blockquote { font-size: 1.25rem; }
+
+  .branch-cards { grid-template-columns: 1fr; gap: 12px; }
+  #our-services { grid-template-columns: 1fr !important; }
+  .branch-card { padding: 24px 20px; }
+  .bc-title { font-size: 1.4rem; }
+
+  .why-grid { grid-template-columns: 1fr; gap: 2px; }
+  .proof-inner { grid-template-columns: 1fr; }
+  .g-cards { flex-direction: column; }
+  .g-card { min-width: unset; padding: 22px 20px; }
+  .g-card-num { font-size: 2rem; }
+
+  .score-widget { padding: 28px 20px; }
+  .network-visual { max-width: 280px; margin: 0 auto; }
+
+  .cta-title { font-size: 2rem; }
+  .cta-actions { flex-direction: column; align-items: stretch; text-align: center; }
+  .btn-outline-light { justify-content: center; }
+
+  .footer-inner { grid-template-columns: 1fr; gap: 24px; }
+  .footer-bottom { flex-direction: column; text-align: center; gap: 8px; }
+  footer { padding: 32px 16px; }
+  .footer-brand-name { font-size: 1.2rem; }
+
+  .mobile-menu a { font-size: 1.9rem; }
+  .g-title { font-size: 1.9rem; }
 }
 
 /* ═══════════════════════════════
@@ -795,37 +924,18 @@ footer {
 
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
-  <a href="file:///C:/Users/Soham/Downloads/blueoak_v2%20(1).html#about" onclick="closeMobile()">About</a>
-  <a href="file:///C:/Users/Soham/Downloads/blueoak_v2%20(1).html#services" onclick="closeMobile()">Services</a>
-  <a href="file:///C:/Users/Soham/Downloads/blueoak_v2%20(1).html#health" onclick="closeMobile()">Health Check</a>
-  <a href="file:///C:/Users/Soham/Downloads/blueoak_v2%20(1).html#network" onclick="closeMobile()">Our Network</a>
-  <a href="file:///C:/Users/Soham/Downloads/blueoak_v2%20(1).html#contact" onclick="closeMobile()">Contact</a>
-  <a href="file:///C:/Users/Soham/Downloads/blueoak_v2%20(1).html#contact" class="m-cta" onclick="closeMobile()">Book Free Startup Health Check</a>
+  <a href="#home" onclick="closeMobile()">About</a>
+  <a href="#services" onclick="closeMobile()">Services</a>
+  <a href="lead_form.html" onclick="closeMobile()">Health Check</a>
+  <a href="#network" onclick="closeMobile()">Our Network</a>
+  <a href="lead_form.html" class="m-cta" onclick="closeMobile()">Book Free Startup Health Check</a>
 </div>
 
 <!-- NAV -->
 <nav id="mainNav" class="scrolled">
-  <a href="file:///C:/Users/Soham/Downloads/blueoak_v2%20(1).html#" class="nav-logo">
+  <a href="#home" class="nav-logo">
     <div class="nav-logo-mark">
-      <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="20" cy="20" r="19" stroke="#c9a84c" stroke-width="0.8" opacity="0.4"></circle>
-        <!-- Oak trunk -->
-        <rect x="18.5" y="22" width="3" height="14" fill="#c9a84c" opacity="0.9" rx="1"></rect>
-        <!-- Roots -->
-        <path d="M18.5 34 C16 36 13 36 12 35" stroke="#c9a84c" stroke-width="1" opacity="0.5" fill="none"></path>
-        <path d="M21.5 34 C24 36 27 36 28 35" stroke="#c9a84c" stroke-width="1" opacity="0.5" fill="none"></path>
-        <!-- Main canopy -->
-        <ellipse cx="20" cy="16" rx="10" ry="9" fill="#2a6644" opacity="0.85"></ellipse>
-        <!-- Left branch leaf -->
-        <ellipse cx="11" cy="14" rx="6" ry="5" fill="#3d8a5c" opacity="0.75" transform="rotate(-15 11 14)"></ellipse>
-        <!-- Right branch leaf -->
-        <ellipse cx="29" cy="14" rx="6" ry="5" fill="#3d8a5c" opacity="0.75" transform="rotate(15 29 14)"></ellipse>
-        <!-- Top leaf -->
-        <ellipse cx="20" cy="8" rx="5" ry="6" fill="#2a6644" opacity="0.9"></ellipse>
-        <!-- Krishna blue accent dot -->
-        <circle cx="20" cy="14" r="2.5" fill="#6fb3ff" opacity="0.7"></circle>
-        <circle cx="20" cy="14" r="1.2" fill="#ffffff" opacity="0.5"></circle>
-      </svg>
+      <img src="BlueOak_final_logo.png" alt="BlueOak Logo" style="height:52px;width:auto;display:block;background:transparent;">
     </div>
     <div class="logo-wordmark">
       <span class="logo-name">BlueOak Ventures</span>
@@ -833,12 +943,12 @@ footer {
     </div>
   </a>
   <ul class="nav-links">
-    <li><a href="file:///C:/Users/Soham/Downloads/blueoak_v2%20(1).html#about">About</a></li>
-    <li><a href="file:///C:/Users/Soham/Downloads/blueoak_v2%20(1).html#services">Services</a></li>
-    <li><a href="file:///C:/Users/Soham/Downloads/blueoak_v2%20(1).html#health">Health Check</a></li>
-    <li><a href="file:///C:/Users/Soham/Downloads/blueoak_v2%20(1).html#network">Our Network</a></li>
+    <li><a href="#home">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="lead_form.html">Health Check</a></li>
+    <li><a href="#network">Our Network</a></li>
   </ul>
-  <a href="file:///C:/Users/Soham/Downloads/blueoak_v2%20(1).html#contact" class="nav-cta">Free Startup Health Check</a>
+  <a href="lead_form.html" class="nav-cta">Free Startup Health Check</a>
   <div class="hamburger" id="hamburger" onclick="toggleMobile()">
     <span></span><span></span><span></span>
   </div>
@@ -849,15 +959,98 @@ footer {
   <div class="hero-bg-glow"></div>
   <div class="particles" id="particles"><div class="particle" style="width: 2.5501px; height: 2.5501px; left: 37.7638%; bottom: 12.9713%; animation-duration: 8.69537s; animation-delay: 3.76955s;"></div><div class="particle" style="width: 3.05277px; height: 3.05277px; left: 3.97202%; bottom: 3.81221%; animation-duration: 9.3774s; animation-delay: 1.14483s;"></div><div class="particle" style="width: 4.54942px; height: 4.54942px; left: 18.8672%; bottom: 17.1378%; animation-duration: 12.3698s; animation-delay: 5.62809s;"></div><div class="particle" style="width: 3.19364px; height: 3.19364px; left: 11.6747%; bottom: 17.6317%; animation-duration: 12.3032s; animation-delay: 7.10088s;"></div><div class="particle" style="width: 2.97772px; height: 2.97772px; left: 70.8392%; bottom: 5.34322%; animation-duration: 17.5168s; animation-delay: 5.71146s;"></div><div class="particle" style="width: 4.0494px; height: 4.0494px; left: 31.2097%; bottom: 0.322638%; animation-duration: 15.1067s; animation-delay: 5.05692s;"></div><div class="particle" style="width: 4.81393px; height: 4.81393px; left: 86.1814%; bottom: 21.0962%; animation-duration: 13.8804s; animation-delay: 0.585244s;"></div><div class="particle" style="width: 5.51154px; height: 5.51154px; left: 73.9761%; bottom: 26.2546%; animation-duration: 16.7289s; animation-delay: 2.67091s;"></div><div class="particle" style="width: 2.26978px; height: 2.26978px; left: 43.1627%; bottom: 22.1471%; animation-duration: 16.8633s; animation-delay: 4.55566s;"></div><div class="particle" style="width: 5.68682px; height: 5.68682px; left: 61.0237%; bottom: 4.53837%; animation-duration: 17.2367s; animation-delay: 1.4287s;"></div><div class="particle" style="width: 4.41906px; height: 4.41906px; left: 37.2506%; bottom: 24.9438%; animation-duration: 17.7584s; animation-delay: 4.83927s;"></div><div class="particle" style="width: 4.73584px; height: 4.73584px; left: 69.5662%; bottom: 0.0516772%; animation-duration: 14.6531s; animation-delay: 5.65372s;"></div><div class="particle" style="width: 3.07929px; height: 3.07929px; left: 22.9095%; bottom: 27.4464%; animation-duration: 15.9477s; animation-delay: 3.06333s;"></div><div class="particle" style="width: 3.81683px; height: 3.81683px; left: 61.8688%; bottom: 3.79613%; animation-duration: 10.5488s; animation-delay: 1.06412s;"></div><div class="particle" style="width: 2.59803px; height: 2.59803px; left: 44.2597%; bottom: 8.04942%; animation-duration: 8.84565s; animation-delay: 1.32661s;"></div><div class="particle" style="width: 3.69945px; height: 3.69945px; left: 26.6321%; bottom: 4.90957%; animation-duration: 14.2804s; animation-delay: 4.44083s;"></div><div class="particle" style="width: 5.40449px; height: 5.40449px; left: 34.5469%; bottom: 4.44177%; animation-duration: 12.5641s; animation-delay: 7.49126s;"></div><div class="particle" style="width: 5.11582px; height: 5.11582px; left: 93.3065%; bottom: 3.81784%; animation-duration: 15.4458s; animation-delay: 1.98674s;"></div><div class="particle" style="width: 4.32109px; height: 4.32109px; left: 75.7175%; bottom: 11.3016%; animation-duration: 11.3276s; animation-delay: 5.58081s;"></div><div class="particle" style="width: 4.54031px; height: 4.54031px; left: 20.2481%; bottom: 19.7962%; animation-duration: 10.2292s; animation-delay: 6.43661s;"></div></div>
 
-  <!-- Oak silhouette bg -->
-  <svg class="hero-oak" viewBox="0 0 600 700" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect x="270" y="400" width="60" height="300" fill="white" rx="8"></rect>
-    <ellipse cx="300" cy="280" rx="220" ry="200" fill="white"></ellipse>
-    <ellipse cx="160" cy="300" rx="140" ry="120" fill="white"></ellipse>
-    <ellipse cx="440" cy="300" rx="140" ry="120" fill="white"></ellipse>
-    <ellipse cx="300" cy="140" rx="120" ry="130" fill="white"></ellipse>
-    <path d="M240 680 C200 700 150 695 130 685" stroke="white" stroke-width="20" fill="none" stroke-linecap="round"></path>
-    <path d="M360 680 C400 700 450 695 470 685" stroke="white" stroke-width="20" fill="none" stroke-linecap="round"></path>
+  <!-- Hero decorative graphic — abstract investor network -->
+  <svg class="hero-oak" viewBox="0 0 680 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <radialGradient id="glowCenter" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#c9a84c" stop-opacity="0.18"/>
+        <stop offset="100%" stop-color="#c9a84c" stop-opacity="0"/>
+      </radialGradient>
+      <radialGradient id="glowBlue" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#6fb3ff" stop-opacity="0.12"/>
+        <stop offset="100%" stop-color="#6fb3ff" stop-opacity="0"/>
+      </radialGradient>
+      <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#c9a84c" stop-opacity="0.5"/>
+        <stop offset="100%" stop-color="#2a6644" stop-opacity="0.1"/>
+      </linearGradient>
+    </defs>
+
+    <!-- Background glow blobs -->
+    <ellipse cx="340" cy="400" rx="280" ry="320" fill="url(#glowCenter)"/>
+    <ellipse cx="480" cy="200" rx="160" ry="160" fill="url(#glowBlue)"/>
+
+    <!-- Outer ring -->
+    <circle cx="340" cy="400" r="260" stroke="#c9a84c" stroke-width="0.6" stroke-opacity="0.12" stroke-dasharray="6 10"/>
+    <circle cx="340" cy="400" r="200" stroke="#c9a84c" stroke-width="0.5" stroke-opacity="0.1" stroke-dasharray="4 14"/>
+    <circle cx="340" cy="400" r="130" stroke="#2a6644" stroke-width="0.8" stroke-opacity="0.25"/>
+
+    <!-- Network connection lines -->
+    <line x1="340" y1="400" x2="120" y2="180" stroke="url(#lineGrad)" stroke-width="0.8" stroke-opacity="0.4"/>
+    <line x1="340" y1="400" x2="560" y2="160" stroke="url(#lineGrad)" stroke-width="0.8" stroke-opacity="0.4"/>
+    <line x1="340" y1="400" x2="600" y2="420" stroke="url(#lineGrad)" stroke-width="0.8" stroke-opacity="0.3"/>
+    <line x1="340" y1="400" x2="500" y2="640" stroke="url(#lineGrad)" stroke-width="0.8" stroke-opacity="0.3"/>
+    <line x1="340" y1="400" x2="160" y2="600" stroke="url(#lineGrad)" stroke-width="0.8" stroke-opacity="0.3"/>
+    <line x1="340" y1="400" x2="80" y2="420" stroke="url(#lineGrad)" stroke-width="0.8" stroke-opacity="0.25"/>
+    <line x1="340" y1="400" x2="220" y2="100" stroke="url(#lineGrad)" stroke-width="0.6" stroke-opacity="0.2"/>
+    <line x1="340" y1="400" x2="460" y2="80" stroke="url(#lineGrad)" stroke-width="0.6" stroke-opacity="0.2"/>
+
+    <!-- Secondary connections between nodes -->
+    <line x1="120" y1="180" x2="560" y2="160" stroke="#c9a84c" stroke-width="0.5" stroke-opacity="0.12"/>
+    <line x1="560" y1="160" x2="600" y2="420" stroke="#c9a84c" stroke-width="0.5" stroke-opacity="0.12"/>
+    <line x1="600" y1="420" x2="500" y2="640" stroke="#c9a84c" stroke-width="0.5" stroke-opacity="0.1"/>
+    <line x1="120" y1="180" x2="80" y2="420" stroke="#c9a84c" stroke-width="0.5" stroke-opacity="0.1"/>
+    <line x1="80" y1="420" x2="160" y2="600" stroke="#c9a84c" stroke-width="0.5" stroke-opacity="0.1"/>
+
+    <!-- Center node — main hub -->
+    <circle cx="340" cy="400" r="22" fill="#0e2a1a" stroke="#c9a84c" stroke-width="1.5" stroke-opacity="0.7"/>
+    <circle cx="340" cy="400" r="14" fill="#c9a84c" fill-opacity="0.15"/>
+    <circle cx="340" cy="400" r="6" fill="#c9a84c" fill-opacity="0.9"/>
+
+    <!-- Outer nodes -->
+    <circle cx="120" cy="180" r="10" fill="#0e2a1a" stroke="#c9a84c" stroke-width="1" stroke-opacity="0.6"/>
+    <circle cx="120" cy="180" r="4" fill="#c9a84c" fill-opacity="0.8"/>
+
+    <circle cx="560" cy="160" r="14" fill="#0e2a1a" stroke="#c9a84c" stroke-width="1.2" stroke-opacity="0.6"/>
+    <circle cx="560" cy="160" r="5" fill="#c9a84c" fill-opacity="0.9"/>
+
+    <circle cx="600" cy="420" r="10" fill="#0e2a1a" stroke="#2a6644" stroke-width="1" stroke-opacity="0.5"/>
+    <circle cx="600" cy="420" r="4" fill="#3d8a5c" fill-opacity="0.8"/>
+
+    <circle cx="500" cy="640" r="8" fill="#0e2a1a" stroke="#c9a84c" stroke-width="1" stroke-opacity="0.4"/>
+    <circle cx="500" cy="640" r="3" fill="#c9a84c" fill-opacity="0.6"/>
+
+    <circle cx="160" cy="600" r="10" fill="#0e2a1a" stroke="#2a6644" stroke-width="1" stroke-opacity="0.5"/>
+    <circle cx="160" cy="600" r="4" fill="#3d8a5c" fill-opacity="0.7"/>
+
+    <circle cx="80" cy="420" r="8" fill="#0e2a1a" stroke="#c9a84c" stroke-width="0.8" stroke-opacity="0.4"/>
+    <circle cx="80" cy="420" r="3" fill="#c9a84c" fill-opacity="0.5"/>
+
+    <circle cx="220" cy="100" r="6" fill="#0e2a1a" stroke="#c9a84c" stroke-width="0.8" stroke-opacity="0.35"/>
+    <circle cx="220" cy="100" r="2.5" fill="#c9a84c" fill-opacity="0.5"/>
+
+    <circle cx="460" cy="80" r="7" fill="#0e2a1a" stroke="#6fb3ff" stroke-width="0.8" stroke-opacity="0.4"/>
+    <circle cx="460" cy="80" r="3" fill="#6fb3ff" fill-opacity="0.6"/>
+
+    <!-- Krishna blue accent node -->
+    <circle cx="340" cy="400" r="40" stroke="#6fb3ff" stroke-width="0.5" stroke-opacity="0.15" stroke-dasharray="3 8"/>
+
+    <!-- Floating small dots -->
+    <circle cx="260" cy="280" r="2.5" fill="#c9a84c" fill-opacity="0.35"/>
+    <circle cx="430" cy="260" r="2" fill="#c9a84c" fill-opacity="0.3"/>
+    <circle cx="480" cy="500" r="2.5" fill="#3d8a5c" fill-opacity="0.4"/>
+    <circle cx="200" cy="480" r="2" fill="#c9a84c" fill-opacity="0.3"/>
+    <circle cx="380" cy="560" r="2" fill="#c9a84c" fill-opacity="0.25"/>
+    <circle cx="300" cy="200" r="2" fill="#6fb3ff" fill-opacity="0.3"/>
+    <circle cx="520" cy="320" r="2.5" fill="#c9a84c" fill-opacity="0.3"/>
+
+    <!-- Subtle grid lines in background -->
+    <line x1="0" y1="200" x2="680" y2="200" stroke="#2a6644" stroke-width="0.4" stroke-opacity="0.08"/>
+    <line x1="0" y1="400" x2="680" y2="400" stroke="#2a6644" stroke-width="0.4" stroke-opacity="0.08"/>
+    <line x1="0" y1="600" x2="680" y2="600" stroke="#2a6644" stroke-width="0.4" stroke-opacity="0.08"/>
+    <line x1="200" y1="0" x2="200" y2="800" stroke="#2a6644" stroke-width="0.4" stroke-opacity="0.08"/>
+    <line x1="400" y1="0" x2="400" y2="800" stroke="#2a6644" stroke-width="0.4" stroke-opacity="0.08"/>
+    <line x1="600" y1="0" x2="600" y2="800" stroke="#2a6644" stroke-width="0.4" stroke-opacity="0.08"/>
   </svg>
 
   <div class="hero-content">
@@ -874,8 +1067,8 @@ footer {
       BlueOak Capital Partners guides serious Indian founders from idea to funded — with investor-grade preparation, 300+ warm investor connections, and a partnership built on trust and results.
     </p>
     <div class="hero-actions">
-      <a href="file:///C:/Users/Soham/Downloads/blueoak_v2%20(1).html#contact" class="btn-primary"><span>Book Your Free Startup Health Check</span></a>
-      <a href="file:///C:/Users/Soham/Downloads/blueoak_v2%20(1).html#services" class="btn-outline">Explore Our Services <span class="arrow-icon">→</span></a>
+      <a href="lead_form.html" class="btn-primary"><span>Book Your Free Startup Health Check</span></a>
+      <a href="#services" class="btn-outline">Explore Our Services <span class="arrow-icon">→</span></a>
     </div>
     <div class="hero-stats">
       <div class="h-stat">
@@ -974,76 +1167,87 @@ footer {
     </p>
   </div>
 
-  <!-- Tree SVG Visual -->
+  <!-- Tree Visual -->
   <div class="tree-canvas-wrap reveal visible">
-    <svg class="tree-canvas" viewBox="0 0 1000 320" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <!-- Trunk -->
-      <rect x="492" y="180" width="16" height="130" fill="url(#trunkGrad)" rx="4"></rect>
-      <!-- Root spread -->
-      <path d="M500 305 C460 315 420 312 400 308" stroke="#2a6644" stroke-width="3" opacity="0.5" fill="none" stroke-linecap="round"></path>
-      <path d="M500 305 C540 315 580 312 600 308" stroke="#2a6644" stroke-width="3" opacity="0.5" fill="none" stroke-linecap="round"></path>
-      <path d="M500 310 C490 318 475 316 465 314" stroke="#2a6644" stroke-width="2" opacity="0.35" fill="none" stroke-linecap="round"></path>
-      <path d="M500 310 C510 318 525 316 535 314" stroke="#2a6644" stroke-width="2" opacity="0.35" fill="none" stroke-linecap="round"></path>
-      <!-- Left branch -->
-      <path d="M500 200 C480 180 400 160 280 140" stroke="url(#branchGrad)" stroke-width="6" fill="none" stroke-linecap="round"></path>
-      <path d="M390 155 C370 140 340 120 300 105" stroke="#2a6644" stroke-width="3" opacity="0.6" fill="none" stroke-linecap="round"></path>
-      <!-- Center branch -->
-      <path d="M500 190 C500 155 500 120 500 80" stroke="url(#branchGrad)" stroke-width="6" fill="none" stroke-linecap="round"></path>
-      <path d="M500 120 C490 100 480 80 470 65" stroke="#2a6644" stroke-width="3" opacity="0.6" fill="none" stroke-linecap="round"></path>
-      <path d="M500 120 C510 100 520 80 530 65" stroke="#2a6644" stroke-width="3" opacity="0.6" fill="none" stroke-linecap="round"></path>
-      <!-- Right branch -->
-      <path d="M500 200 C520 180 600 160 720 140" stroke="url(#branchGrad)" stroke-width="6" fill="none" stroke-linecap="round"></path>
-      <path d="M610 155 C630 140 660 120 700 105" stroke="#2a6644" stroke-width="3" opacity="0.6" fill="none" stroke-linecap="round"></path>
-      <!-- Leaf clusters left -->
-      <ellipse cx="240" cy="130" rx="55" ry="42" fill="#1a4a2e" opacity="0.85"></ellipse>
-      <ellipse cx="210" cy="110" rx="38" ry="30" fill="#2a6644" opacity="0.8"></ellipse>
-      <ellipse cx="270" cy="105" rx="35" ry="28" fill="#2a6644" opacity="0.7"></ellipse>
-      <!-- Leaf clusters center -->
-      <ellipse cx="500" cy="50" rx="55" ry="50" fill="#1a4a2e" opacity="0.9"></ellipse>
-      <ellipse cx="468" cy="35" rx="38" ry="32" fill="#2a6644" opacity="0.75"></ellipse>
-      <ellipse cx="532" cy="35" rx="38" ry="32" fill="#2a6644" opacity="0.75"></ellipse>
-      <!-- Leaf clusters right -->
-      <ellipse cx="760" cy="130" rx="55" ry="42" fill="#1a4a2e" opacity="0.85"></ellipse>
-      <ellipse cx="730" cy="110" rx="38" ry="30" fill="#2a6644" opacity="0.8"></ellipse>
-      <ellipse cx="790" cy="105" rx="35" ry="28" fill="#2a6644" opacity="0.7"></ellipse>
-      <!-- Golden dots (fruit / opportunities) -->
-      <circle cx="220" cy="115" r="5" fill="#c9a84c" opacity="0.9"></circle>
-      <circle cx="260" cy="100" r="4" fill="#c9a84c" opacity="0.7"></circle>
-      <circle cx="240" cy="148" r="3" fill="#c9a84c" opacity="0.5"></circle>
-      <circle cx="500" cy="30" r="6" fill="#c9a84c" opacity="0.9"></circle>
-      <circle cx="475" cy="52" r="3.5" fill="#c9a84c" opacity="0.6"></circle>
-      <circle cx="525" cy="52" r="3.5" fill="#c9a84c" opacity="0.6"></circle>
-      <circle cx="740" cy="115" r="5" fill="#c9a84c" opacity="0.9"></circle>
-      <circle cx="780" cy="100" r="4" fill="#c9a84c" opacity="0.7"></circle>
-      <circle cx="760" cy="148" r="3" fill="#c9a84c" opacity="0.5"></circle>
-      <!-- Krishna blue center glow -->
-      <circle cx="500" cy="50" r="8" fill="#6fb3ff" opacity="0.35"></circle>
-      <circle cx="500" cy="50" r="4" fill="#6fb3ff" opacity="0.6"></circle>
-      <!-- Label lines -->
-      <line x1="240" y1="175" x2="240" y2="188" stroke="#c9a84c" stroke-width="1" opacity="0.4" stroke-dasharray="4,4"></line>
-      <line x1="500" y1="100" x2="500" y2="185" stroke="#c9a84c" stroke-width="1" opacity="0.4" stroke-dasharray="4,4"></line>
-      <line x1="760" y1="175" x2="760" y2="188" stroke="#c9a84c" stroke-width="1" opacity="0.4" stroke-dasharray="4,4"></line>
-      <!-- Phase label points -->
-      <circle cx="240" cy="175" r="5" fill="#c9a84c" opacity="0.8"></circle>
-      <circle cx="500" cy="185" r="5" fill="#c9a84c" opacity="0.8"></circle>
-      <circle cx="760" cy="175" r="5" fill="#c9a84c" opacity="0.8"></circle>
-      <!-- FIRM center label -->
-      <text x="500" y="230" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="13" fill="#c9a84c" opacity="0.6" letter-spacing="4">BLUEOAK</text>
-      <defs>
-        <lineargradient id="trunkGrad" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#3d8a5c"></stop>
-          <stop offset="100%" stop-color="#1a3a2a"></stop>
-        </lineargradient>
-        <lineargradient id="branchGrad" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%" stop-color="#2a6644"></stop>
-          <stop offset="100%" stop-color="#3d8a5c"></stop>
-        </lineargradient>
-      </defs>
-    </svg>
+    <img src="Venturesleaf(1080 x 1080 px).png" alt="BlueOak Tree" style="width:100%;max-width:600px;display:block;margin:0 auto;opacity:0.92;">
+  <!-- Three Branch Cards -->
+  <div class="branch-cards" id="our-services" style="grid-template-columns: repeat(4, 1fr);">
+    <!-- Service 1: Oak1 -->
+    <div class="branch-card reveal reveal-d1 visible" id="oak1-card" onclick="togglePhases(this)" style="cursor:pointer;">
+      <div class="bc-num">01</div>
+      <div class="bc-phase">Service One</div>
+      <div class="bc-icon">�</div>
+      <div class="bc-title">Oak1</div>
+      <div class="bc-hindi">Foundation for First-Time Founders</div>
+      <p class="bc-desc">
+        Everything a first-time founder needs to get started right — legal structure, compliance, and investor-readiness from day one.
+      </p>
+      <div class="bc-items">
+        <div class="bc-item">Company Registration &amp; Legal Setup</div>
+        <div class="bc-item">DPIIT Startup India Recognition</div>
+        <div class="bc-item">MSME &amp; GST Registration</div>
+        <div class="bc-item">Founder Strategy Session</div>
+      </div>
+      <div class="bc-timeline" style="color:var(--gold);margin-top:16px;">Click to explore our journey &rarr;</div>
+    </div>
+
+    <!-- Service 2: AIF Advisory -->
+    <div class="branch-card reveal reveal-d2 visible">
+      <div class="bc-num">02</div>
+      <div class="bc-phase">Service Two</div>
+      <div class="bc-icon">📈</div>
+      <div class="bc-title">AIF Advisory</div>
+      <div class="bc-hindi">Alternative Investment Fund Guidance</div>
+      <p class="bc-desc">
+        Expert advisory for founders seeking AIF-backed capital — navigating fund structures, eligibility, and investor alignment.
+      </p>
+      <div class="bc-items">
+        <div class="bc-item">AIF Fund Eligibility Assessment</div>
+        <div class="bc-item">Investor-Grade Pitch Deck</div>
+        <div class="bc-item">Financial Model &amp; Projections</div>
+        <div class="bc-item">Warm AIF Investor Introductions</div>
+      </div>
+    </div>
+
+    <!-- Service 3: Women Entrepreneurs -->
+    <div class="branch-card reveal reveal-d3 visible">
+      <div class="bc-num">03</div>
+      <div class="bc-phase">Service Three</div>
+      <div class="bc-icon">💼</div>
+      <div class="bc-title">Women Entrepreneurs</div>
+      <div class="bc-hindi">Empowering Women-Led Startups</div>
+      <p class="bc-desc">
+        Dedicated support for women founders — from government schemes and grants to investor introductions and pitch coaching.
+      </p>
+      <div class="bc-items">
+        <div class="bc-item">Women-Focused Grant &amp; Scheme Access</div>
+        <div class="bc-item">Pitch Deck &amp; Brand Foundation</div>
+        <div class="bc-item">Mentorship &amp; Coaching Sessions</div>
+        <div class="bc-item">Curated Investor Network Access</div>
+      </div>
+    </div>
+
+    <!-- Service 4: Personal Business Development -->
+    <div class="branch-card reveal reveal-d4 visible">
+      <div class="bc-num">04</div>
+      <div class="bc-phase">Service Four</div>
+      <div class="bc-icon">🚀</div>
+      <div class="bc-title">Personal Business Development</div>
+      <div class="bc-hindi">Your Growth, Personalised</div>
+      <p class="bc-desc">
+        One-on-one advisory tailored to your unique business goals — strategy, positioning, and execution support at every stage.
+      </p>
+      <div class="bc-items">
+        <div class="bc-item">1:1 Business Strategy Sessions</div>
+        <div class="bc-item">Market Positioning &amp; GTM Planning</div>
+        <div class="bc-item">Revenue Model Optimisation</div>
+        <div class="bc-item">Ongoing Advisory &amp; Accountability</div>
+      </div>
+    </div>
   </div>
 
-  <!-- Three Branch Cards -->
-  <div class="branch-cards">
+  <!-- Phases: Shuruaat, Taiyaari, Asli Game -->
+  <div class="branch-cards" id="phases-section" style="margin-top: 60px; display: none;">
     <!-- Phase 1 -->
     <div class="branch-card reveal reveal-d1 visible">
       <div class="bc-num">01</div>
@@ -1119,7 +1323,7 @@ footer {
         <br><br>
         No sales pitch. No obligation. Just a senior advisor's honest view of your funding readiness.
       </p>
-      <a href="file:///C:/Users/Soham/Downloads/blueoak_v2%20(1).html#contact" class="btn-primary"><span>Book Your Free Startup Health Check</span></a>
+      <a href="lead_form.html" class="btn-primary"><span>Book Your Free Startup Health Check</span></a>
     </div>
     <div class="score-widget reveal reveal-d2 visible">
       <div class="sw-title">Funding Readiness Score</div>
@@ -1225,7 +1429,7 @@ footer {
       <div class="g-card-lbl">Next Month if We Fall Short</div>
     </div>
   </div>
-  <a href="file:///C:/Users/Soham/Downloads/blueoak_v2%20(1).html#contact" class="btn-primary reveal visible"><span>Book Your Free Startup Health Check</span></a>
+  <a href="lead_form.html" class="btn-primary reveal visible"><span>Book Your Free Startup Health Check</span></a>
 </section>
 
 <!-- WHY BLUEOAK -->
@@ -1301,8 +1505,8 @@ footer {
     Book your free 30-minute Startup Health Check. Walk away with a clear Funding Readiness Score, honest insights on your gaps, and a path forward — at zero cost.
   </p>
   <div class="cta-actions reveal visible">
-    <a href="mailto:hello@blueoakcapital.in" class="btn-primary"><span>Book Your Free Startup Health Check</span></a>
-    <a href="https://wa.me/91XXXXXXXXXX" class="btn-outline-light">💬 Message on WhatsApp</a>
+    <a href="lead_form.html" class="btn-primary"><span>Book Your Free Startup Health Check</span></a>
+    <a href="https://wa.me/917744841015" class="btn-outline-light">💬 Message on WhatsApp</a>
   </div>
 </section>
 
@@ -1317,24 +1521,24 @@ footer {
     <div class="footer-col">
       <h5>Our Services</h5>
       <ul>
-        <li><a href="file:///C:/Users/Soham/Downloads/blueoak_v2%20(1).html#services">Foundation Phase (Shuruaat)</a></li>
-        <li><a href="file:///C:/Users/Soham/Downloads/blueoak_v2%20(1).html#services">Preparation Phase (Taiyaari)</a></li>
-        <li><a href="file:///C:/Users/Soham/Downloads/blueoak_v2%20(1).html#services">Fundraising Phase (Asli Game)</a></li>
-        <li><a href="file:///C:/Users/Soham/Downloads/blueoak_v2%20(1).html#health">Free Startup Health Check</a></li>
+        <li><a href="#services">Oak1</a></li>
+        <li><a href="#services">AIF Advisory</a></li>
+        <li><a href="#services">Women Entrepreneurship</a></li>
+        <li><a href="lead_form.html">Free Startup Health Check</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h5>Connect</h5>
       <ul>
-        <li><a href="mailto:hello@blueoakcapital.in">official@blueoakventures.co.in</a></li>
-        <li><a href="file:///C:/Users/Soham/Downloads/blueoak_v2%20(1).html#">LinkedIn</a></li>
-        <li><a href="file:///C:/Users/Soham/Downloads/blueoak_v2%20(1).html#">WhatsApp</a></li>
-        <li><a href="file:///C:/Users/Soham/Downloads/blueoak_v2%20(1).html#contact">Book a Call</a></li>
+        <li><a href="mailto:official@blueoakventures.co.in">official@blueoakventures.co.in</a></li>
+        <li><a href="https://www.linkedin.com/in/soham-upadhyay-headofoperations/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://wa.me/917744841015" target="_blank" rel="noopener">WhatsApp</a></li>
+        <li><a href="lead_form.html">Book a Call</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
-    <div class="footer-copy">© 2025 BlueOak Capital Partners. All rights reserved.</div>
+    <div class="footer-copy">© 2026 BlueOak Capital Partners. All rights reserved.</div>
     <div class="footer-krishna">Named after the wisdom of the oak and the grace of the divine blue — BlueOak.</div>
   </div>
 </footer>
@@ -1433,6 +1637,17 @@ document.querySelectorAll('.branch-card').forEach(card => {
     card.classList.add('active');
   });
 });
+
+/* ── OAK1 TOGGLE PHASES ── */
+function togglePhases(card) {
+  const phases = document.getElementById('phases-section');
+  const isOpen = phases.style.display !== 'none';
+  phases.style.display = isOpen ? 'none' : 'grid';
+  card.classList.toggle('active', !isOpen);
+  const hint = card.querySelector('.bc-timeline');
+  if (hint) hint.innerHTML = isOpen ? 'Click to explore our journey &rarr;' : 'Click to hide &uarr;';
+  if (!isOpen) phases.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
 </script>
 
 
