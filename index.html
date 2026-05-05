@@ -1,1654 +1,1126 @@
 <!DOCTYPE html>
-<!-- saved from url=(0054)file:///C:/Users/Soham/Downloads/blueoak_v2%20(1).html -->
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BlueOak Capital Partners — From Idea to Real Funding</title>
-<link rel="icon" type="image/png" href="BlueOak_final_logo.png">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>BlueOak Ventures — Fundable First. Funded Next.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet"/>
 <style>
-:root {
-  --green-deep:   #0e2a1a;
-  --green-mid:    #1a4a2e;
-  --green-rich:   #2a6644;
-  --green-light:  #3d8a5c;
-  --gold:         #c9a84c;
-  --gold-light:   #e2c97e;
-  --gold-muted:   #a88a3b;
-  --gold-pale:    #f5edd8;
-  --krishna:      #1a3d7c;
-  --krishna-mid:  #2952a3;
-  --krishna-glow: rgba(26,61,124,0.15);
-  --cream:        #f7f3eb;
-  --cream-dark:   #ece7dc;
-  --white:        #ffffff;
-  --ink:          #0d1a0f;
-  --text-mid:     #3a4a3d;
-  --text-muted:   #7a8a7c;
-  --border:       rgba(201,168,76,0.18);
-}
-
+/* ── RESET & BASE ─────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; font-size: 16px; }
 body {
-  font-family: 'Outfit', sans-serif;
-  background: var(--ink);
-  color: var(--cream);
-  overflow-x: hidden;
+  font-family: 'DM Sans', sans-serif;
+  background: #fff;
+  color: #1a1a1a;
   cursor: none;
+  overflow-x: hidden;
 }
 
-/* ═══════════════════════════════
-   CUSTOM CURSOR
-═══════════════════════════════ */
+/* ── CUSTOM CURSOR ────────────────────────────────────── */
 .cursor {
-  position: fixed; width: 12px; height: 12px;
-  background: var(--gold); border-radius: 50%;
+  width: 10px; height: 10px;
+  background: #C9A84C;
+  border-radius: 50%;
+  position: fixed; top: 0; left: 0;
   pointer-events: none; z-index: 9999;
-  transform: translate(-50%,-50%);
-  transition: transform 0.1s, width 0.3s, height 0.3s, background 0.3s;
-  mix-blend-mode: difference;
+  transition: transform 0.15s ease, opacity 0.2s;
+  transform: translate(-50%, -50%);
 }
 .cursor-ring {
-  position: fixed; width: 40px; height: 40px;
-  border: 1px solid rgba(201,168,76,0.5); border-radius: 50%;
+  width: 36px; height: 36px;
+  border: 1px solid rgba(201,168,76,0.5);
+  border-radius: 50%;
+  position: fixed; top: 0; left: 0;
   pointer-events: none; z-index: 9998;
-  transform: translate(-50%,-50%);
-  transition: transform 0.12s ease-out, width 0.3s, height 0.3s;
+  transition: transform 0.4s cubic-bezier(0.23,1,0.32,1), opacity 0.2s;
+  transform: translate(-50%, -50%);
 }
-body:has(a:hover) .cursor, body:has(button:hover) .cursor { width: 20px; height: 20px; }
+a:hover ~ .cursor, button:hover ~ .cursor { transform: translate(-50%,-50%) scale(2.5); }
 
-/* ═══════════════════════════════
-   GRAIN OVERLAY
-═══════════════════════════════ */
-.grain {
-  position: fixed; inset: 0; pointer-events: none; z-index: 9000;
-  opacity: 0.035;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-  background-size: 180px 180px;
+/* ── CSS VARIABLES ────────────────────────────────────── */
+:root {
+  --navy: #0F2540;
+  --navy-mid: #1B3A5C;
+  --navy-light: #243F63;
+  --gold: #C9A84C;
+  --gold-light: #E8C46A;
+  --gold-pale: #FDF6E3;
+  --blue-mid: #4A8AB5;
+  --blue-light: #D6E4F0;
+  --blue-pale: #EBF4FA;
+  --white: #ffffff;
+  --off-white: #F8F7F4;
+  --gray-dark: #2C2C2C;
+  --gray-mid: #666;
+  --gray-light: #F0EFEC;
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'DM Sans', sans-serif;
+  --font-mono: 'DM Mono', monospace;
 }
 
-/* ═══════════════════════════════
-   NAV
-═══════════════════════════════ */
+/* ── NAVBAR ───────────────────────────────────────────── */
 nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+  position: fixed; top: 0; left: 0; width: 100%; z-index: 100;
   display: flex; align-items: center; justify-content: space-between;
-  padding: 12px 60px;
-  transition: background 0.4s, padding 0.4s, border-color 0.4s;
-  border-bottom: 1px solid transparent;
+  padding: 0 56px;
+  height: 72px;
+  background: transparent;
+  transition: background 0.4s, box-shadow 0.4s;
 }
 nav.scrolled {
-  background: rgba(14,42,26,0.97);
-  backdrop-filter: blur(20px);
-  padding: 10px 60px;
-  border-bottom-color: var(--border);
+  background: rgba(10, 22, 40, 0.96);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 1px 0 rgba(201,168,76,0.3);
 }
 .nav-logo {
   display: flex; align-items: center; gap: 12px;
-  text-decoration: none; flex-wrap: nowrap;
+  text-decoration: none;
 }
 .nav-logo-mark {
-  width: auto; height: auto; position: relative; flex-shrink: 0;
-  background: transparent;
+  width: 36px; height: 36px;
+  background: var(--gold);
+  border-radius: 4px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 700; font-size: 16px;
+  color: var(--navy);
+  letter-spacing: 1px;
+  flex-shrink: 0;
 }
-.nav-logo-mark svg { width: 100%; height: 100%; }
-.logo-wordmark {
-  display: flex; flex-direction: column; line-height: 1;
-}
-.logo-name {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.5rem; font-weight: 600; letter-spacing: 0.08em;
-  color: var(--gold);
-}
-.logo-sub {
-  font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
-  color: rgba(255,255,255,0.4); margin-top: 2px;
+.nav-brand {
+  font-family: var(--font-body);
+  font-weight: 600; font-size: 13px;
+  color: var(--white);
+  letter-spacing: 2px;
+  text-transform: uppercase;
 }
 .nav-links {
-  display: flex; gap: 40px; list-style: none;
+  display: flex; align-items: center; gap: 40px;
+  list-style: none;
 }
 .nav-links a {
-  font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase;
-  color: rgba(255,255,255,0.55); text-decoration: none;
-  transition: color 0.2s; position: relative; padding-bottom: 2px;
+  font-size: 11px; font-weight: 500;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+  text-decoration: none;
+  transition: color 0.2s;
+  position: relative;
 }
 .nav-links a::after {
-  content: ''; position: absolute; bottom: 0; left: 0;
+  content: ''; position: absolute; bottom: -4px; left: 0;
   width: 0; height: 1px; background: var(--gold);
   transition: width 0.3s;
 }
-.nav-links a:hover { color: var(--gold-light); }
+.nav-links a:hover { color: var(--gold); }
 .nav-links a:hover::after { width: 100%; }
 .nav-cta {
-  background: var(--gold); color: var(--green-deep);
-  padding: 11px 26px; font-size: 0.78rem; font-weight: 600;
-  letter-spacing: 0.08em; text-transform: uppercase;
-  text-decoration: none; transition: all 0.25s;
-  clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+  padding: 10px 24px;
+  border: 1px solid var(--gold);
+  color: var(--gold) !important;
+  border-radius: 2px;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s !important;
 }
-.nav-cta:hover { background: var(--gold-light); transform: translateY(-1px); }
+.nav-cta:hover { background: var(--gold) !important; color: var(--navy) !important; }
+.nav-cta::after { display: none !important; }
 
-/* Mobile hamburger */
-.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
-.hamburger span { width: 24px; height: 1.5px; background: var(--gold); transition: all 0.3s; display: block; }
-.hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(4.5px, 4.5px); }
-.hamburger.open span:nth-child(2) { opacity: 0; }
-.hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(4.5px,-4.5px); }
-
-.mobile-menu {
-  position: fixed; inset: 0; background: var(--green-deep); z-index: 450;
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  gap: 36px; opacity: 0; pointer-events: none; transition: opacity 0.4s;
-}
-.mobile-menu.open { opacity: 1; pointer-events: all; }
-.mobile-menu a {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 2.4rem; color: var(--cream); text-decoration: none;
-  font-weight: 300; transition: color 0.2s;
-}
-.mobile-menu a:hover { color: var(--gold); }
-.mobile-menu .m-cta {
-  font-family: 'Outfit', sans-serif;
-  font-size: 0.9rem; font-weight: 600; letter-spacing: 0.1em;
-  text-transform: uppercase; color: var(--green-deep);
-  background: var(--gold); padding: 14px 36px;
-}
-
-/* ═══════════════════════════════
-   HERO
-═══════════════════════════════ */
-.hero {
+/* ── HERO ─────────────────────────────────────────────── */
+#hero {
   min-height: 100vh;
-  background: var(--green-deep);
-  display: flex; flex-direction: column; justify-content: center;
-  padding: 140px 60px 80px;
-  position: relative; overflow: hidden;
-}
-.hero-bg-glow {
-  position: absolute; inset: 0; pointer-events: none;
-  background:
-    radial-gradient(ellipse 70% 60% at 75% 40%, rgba(201,168,76,0.07) 0%, transparent 65%),
-    radial-gradient(ellipse 50% 70% at 15% 80%, rgba(26,61,124,0.12) 0%, transparent 55%),
-    radial-gradient(ellipse 40% 40% at 50% 50%, rgba(42,102,68,0.3) 0%, transparent 70%);
+  background: var(--navy);
+  position: relative;
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: flex-start;
+  padding: 0 10vw;
+  overflow: hidden;
 }
 
-/* Animated floating particles */
-.particles { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
-.particle {
-  position: absolute; border-radius: 50%;
-  background: var(--gold); opacity: 0;
-  animation: floatUp linear infinite;
-}
-@keyframes floatUp {
-  0%   { opacity: 0; transform: translateY(0) scale(0); }
-  10%  { opacity: 0.6; }
-  90%  { opacity: 0.2; }
-  100% { opacity: 0; transform: translateY(-100vh) scale(1.5); }
-}
-
-.hero-content { position: relative; z-index: 2; }
-.hero-eyebrow {
-  font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase;
-  color: var(--gold); margin-bottom: 30px;
-  display: flex; align-items: center; gap: 14px;
-  opacity: 0; animation: revealUp 0.8s 0.1s forwards;
-}
-.hero-eyebrow-line { width: 44px; height: 1px; background: linear-gradient(90deg, var(--gold), transparent); }
-
-.hero h1 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(3.2rem, 6.5vw, 6rem);
-  font-weight: 300; line-height: 1.05; color: var(--cream);
-  max-width: 900px; margin-bottom: 34px;
-  opacity: 0; animation: revealUp 1s 0.3s forwards;
-}
-.hero h1 .accent { color: var(--gold-light); font-style: italic; }
-.hero h1 .krishna-word { color: #6fb3ff; position: relative; }
-
-.hero-sub {
-  font-size: 1.05rem; line-height: 1.8; font-weight: 300;
-  color: rgba(255,255,255,0.58); max-width: 540px; margin-bottom: 52px;
-  opacity: 0; animation: revealUp 0.9s 0.5s forwards;
-}
-.hero-actions {
-  display: flex; gap: 20px; align-items: center; flex-wrap: wrap;
-  opacity: 0; animation: revealUp 0.8s 0.7s forwards;
-}
-.btn-primary {
-  background: var(--gold); color: var(--green-deep);
-  padding: 16px 36px; font-weight: 600; font-size: 0.85rem;
-  letter-spacing: 0.08em; text-transform: uppercase;
-  text-decoration: none; transition: all 0.3s; display: inline-block;
-  clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
-  position: relative; overflow: hidden;
-}
-.btn-primary::before {
-  content: ''; position: absolute; inset: 0;
-  background: var(--gold-light); transform: translateX(-100%);
-  transition: transform 0.3s;
-}
-.btn-primary:hover::before { transform: translateX(0); }
-.btn-primary span { position: relative; z-index: 1; }
-.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(201,168,76,0.3); }
-
-.btn-outline {
-  color: rgba(255,255,255,0.6); font-size: 0.85rem;
-  text-decoration: none; display: flex; align-items: center; gap: 10px;
-  transition: color 0.2s; letter-spacing: 0.04em;
-  padding: 16px 0;
-}
-.btn-outline:hover { color: var(--gold-light); }
-.arrow-icon { font-size: 1.1rem; transition: transform 0.2s; }
-.btn-outline:hover .arrow-icon { transform: translateX(6px); }
-
-/* Hero stats */
-.hero-stats {
-  display: flex; gap: 0; margin-top: 80px;
-  border-top: 1px solid rgba(201,168,76,0.12);
-  opacity: 0; animation: revealUp 0.8s 0.9s forwards;
-}
-.h-stat {
-  flex: 1; padding: 32px 0 0; border-right: 1px solid rgba(201,168,76,0.12);
-}
-.h-stat:last-child { border-right: none; }
-.h-stat-num {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 3rem; font-weight: 300; color: var(--gold);
-  line-height: 1; display: block;
-}
-.h-stat-lbl {
-  font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
-  color: rgba(255,255,255,0.35); margin-top: 6px; display: block;
-}
-
-/* Hero decorative graphic */
-.hero-oak {
-  position: absolute; right: 0; top: 0; bottom: 0;
-  width: 52%; max-width: 680px; opacity: 1;
-  pointer-events: none;
-}
-
-/* ═══════════════════════════════
-   SCROLL REVEAL
-═══════════════════════════════ */
-@keyframes revealUp {
-  from { opacity: 0; transform: translateY(28px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-.reveal {
-  opacity: 0; transform: translateY(36px);
-  transition: opacity 0.75s ease, transform 0.75s ease;
-}
-.reveal.visible { opacity: 1; transform: translateY(0); }
-.reveal-d1 { transition-delay: 0.1s; }
-.reveal-d2 { transition-delay: 0.2s; }
-.reveal-d3 { transition-delay: 0.3s; }
-.reveal-d4 { transition-delay: 0.4s; }
-
-/* ═══════════════════════════════
-   MARQUEE TICKER
-═══════════════════════════════ */
-.ticker {
-  background: var(--gold); overflow: hidden; padding: 14px 0;
-  white-space: nowrap;
-}
-.ticker-inner {
-  display: inline-flex; gap: 60px;
-  animation: ticker 25s linear infinite;
-}
-.ticker-inner:hover { animation-play-state: paused; }
-@keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-.ticker-item {
-  font-size: 0.75rem; letter-spacing: 0.16em; text-transform: uppercase;
-  color: var(--green-deep); font-weight: 600; display: flex; align-items: center; gap: 20px;
-}
-.ticker-dot { width: 4px; height: 4px; background: var(--green-deep); border-radius: 50%; opacity: 0.5; flex-shrink: 0; }
-
-/* ═══════════════════════════════
-   SECTION COMMONS
-═══════════════════════════════ */
-.sec { padding: 110px 60px; }
-.sec-eyebrow {
-  font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase;
-  color: var(--gold-muted); margin-bottom: 18px;
-  display: flex; align-items: center; gap: 12px;
-}
-.sec-eyebrow-line { width: 28px; height: 1px; background: var(--gold-muted); flex-shrink: 0; }
-.sec-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(2.4rem, 4vw, 3.8rem);
-  font-weight: 300; line-height: 1.1; color: var(--cream);
-  margin-bottom: 24px;
-}
-.sec-title em { font-style: italic; color: var(--gold-light); }
-.sec-title.dark { color: var(--green-deep); }
-.sec-title.dark em { color: var(--gold-muted); }
-
-/* ═══════════════════════════════
-   PROBLEM SECTION
-═══════════════════════════════ */
-.problem-sec { background: var(--cream); }
-.problem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; margin-top: 60px; }
-.problem-left { }
-.prob-text { font-size: 1rem; line-height: 1.8; color: var(--text-mid); font-weight: 300; margin-bottom: 32px; }
-.prob-points { display: flex; flex-direction: column; gap: 16px; }
-.prob-point {
-  display: flex; gap: 16px; align-items: flex-start;
-  padding: 18px 20px; background: var(--cream-dark);
-  border-left: 3px solid var(--gold-muted);
-  transition: border-color 0.2s, transform 0.2s;
-}
-.prob-point:hover { border-color: var(--gold); transform: translateX(4px); }
-.prob-point-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 1px; }
-.prob-point p { font-size: 0.9rem; color: var(--text-mid); line-height: 1.6; font-weight: 300; }
-
-.quote-card {
-  background: var(--green-deep);
-  padding: 52px 44px; position: relative; overflow: hidden;
-}
-.quote-card::before {
-  content: ''; position: absolute; top: 0; right: 0;
-  width: 200px; height: 200px;
-  background: radial-gradient(circle, rgba(201,168,76,0.08), transparent);
-  border-radius: 0 0 0 100%;
-}
-.quote-card blockquote {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.7rem; font-weight: 300; font-style: italic;
-  line-height: 1.45; color: var(--cream); margin-bottom: 24px;
-  position: relative; z-index: 1;
-}
-.quote-card blockquote::before {
-  content: '\201C';
-  font-size: 5rem; color: var(--gold); line-height: 0;
-  vertical-align: -1.8rem; margin-right: 4px; opacity: 0.5;
-}
-.quote-author {
-  font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase;
-  color: var(--gold); position: relative; z-index: 1;
-}
-
-/* ═══════════════════════════════
-   OAK TREE SECTION (Services/Phases)
-═══════════════════════════════ */
-.oak-sec {
-  background: var(--ink);
-  position: relative; overflow: hidden; padding: 120px 60px;
-}
-.oak-sec-bg {
-  position: absolute; inset: 0; pointer-events: none;
-  background:
-    radial-gradient(ellipse 80% 60% at 50% 100%, rgba(26,74,46,0.4) 0%, transparent 65%),
-    radial-gradient(ellipse 40% 30% at 20% 20%, var(--krishna-glow) 0%, transparent 60%);
-}
-.oak-header { text-align: center; margin-bottom: 80px; position: relative; z-index: 2; }
-.oak-header .sec-eyebrow { justify-content: center; }
-.oak-header .sec-eyebrow-line { display: none; }
-
-/* SVG Tree Canvas */
-.tree-canvas-wrap {
-  position: relative; width: 100%; max-width: 1100px;
-  margin: 0 auto 80px; z-index: 2;
-}
-.tree-canvas {
-  width: 100%; height: auto;
-  filter: drop-shadow(0 0 40px rgba(42,102,68,0.2));
-}
-
-/* Branch service cards — positioned absolutely over SVG */
-.branch-cards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  position: relative; z-index: 2;
-  max-width: 1100px; margin: 0 auto;
-}
-.branch-card {
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(201,168,76,0.15);
-  padding: 36px 30px;
-  position: relative; overflow: hidden;
-  transition: all 0.4s;
-  cursor: pointer;
-}
-.branch-card::before {
-  content: ''; position: absolute; inset: 0;
-  background: linear-gradient(135deg, rgba(42,102,68,0.15) 0%, transparent 60%);
-  opacity: 0; transition: opacity 0.4s;
-}
-.branch-card:hover { border-color: var(--gold); transform: translateY(-6px); }
-.branch-card:hover::before { opacity: 1; }
-.branch-card.active { border-color: var(--gold); background: rgba(201,168,76,0.06); }
-
-.bc-phase {
-  font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
-  color: var(--gold-muted); margin-bottom: 12px;
-  display: flex; align-items: center; gap: 8px;
-}
-.bc-phase::before { content: ''; width: 18px; height: 1px; background: var(--gold-muted); flex-shrink: 0; }
-.bc-num {
-  position: absolute; top: 24px; right: 24px;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 4rem; font-weight: 300; color: rgba(201,168,76,0.08);
-  line-height: 1;
-}
-.bc-icon { font-size: 2rem; margin-bottom: 16px; }
-.bc-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.6rem; font-weight: 400; color: var(--cream);
-  margin-bottom: 6px;
-}
-.bc-hindi {
-  font-size: 0.78rem; color: var(--gold-muted); font-style: italic; margin-bottom: 14px;
-}
-.bc-desc { font-size: 0.88rem; line-height: 1.7; color: rgba(255,255,255,0.55); font-weight: 300; margin-bottom: 22px; }
-.bc-items { display: flex; flex-direction: column; gap: 8px; }
-.bc-item {
-  display: flex; align-items: flex-start; gap: 10px;
-  font-size: 0.82rem; color: rgba(255,255,255,0.5); line-height: 1.5;
-}
-.bc-item::before { content: '⬡'; color: var(--gold); font-size: 0.6rem; margin-top: 3px; flex-shrink: 0; }
-.bc-timeline {
-  margin-top: 20px; padding-top: 18px;
-  border-top: 1px solid rgba(201,168,76,0.1);
-  font-size: 0.75rem; color: var(--gold-muted);
-  display: flex; align-items: center; gap: 6px;
-  letter-spacing: 0.06em;
-}
-
-/* ═══════════════════════════════
-   HEALTH CHECK
-═══════════════════════════════ */
-.health-sec { background: var(--green-deep); }
-.health-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-.health-desc { font-size: 1rem; line-height: 1.8; color: rgba(255,255,255,0.55); font-weight: 300; margin: 18px 0 36px; }
-
-.score-widget {
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(201,168,76,0.2); padding: 40px;
-}
-.sw-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.3rem; color: var(--gold-light); font-weight: 400;
-  margin-bottom: 8px;
-}
-.sw-sub { font-size: 0.78rem; color: rgba(255,255,255,0.3); margin-bottom: 32px; letter-spacing: 0.04em; }
-.score-rows { display: flex; flex-direction: column; gap: 18px; }
-.sr {
-  display: flex; flex-direction: column; gap: 8px;
-}
-.sr-header { display: flex; justify-content: space-between; align-items: center; }
-.sr-label { font-size: 0.84rem; color: rgba(255,255,255,0.6); }
-.sr-pts { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--gold); }
-.sr-bar { height: 3px; background: rgba(255,255,255,0.06); border-radius: 2px; overflow: hidden; }
-.sr-fill {
-  height: 100%; border-radius: 2px;
-  background: linear-gradient(90deg, var(--green-rich), var(--gold));
-  transform: scaleX(0); transform-origin: left;
-  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.sr-fill.animated { transform: scaleX(1); }
-
-/* ═══════════════════════════════
-   INVESTOR NETWORK
-═══════════════════════════════ */
-.network-sec { background: var(--cream); }
-.network-inner { display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: center; }
-.network-visual {
-  position: relative; aspect-ratio: 1;
-  display: flex; align-items: center; justify-content: center;
-}
-.net-circle {
-  position: absolute; border-radius: 50%;
-  border: 1px solid; opacity: 0.4;
-  animation: pulseRing 3s ease-in-out infinite;
-}
-.net-circle:nth-child(1) { width: 90%; height: 90%; border-color: var(--gold-muted); animation-delay: 0s; }
-.net-circle:nth-child(2) { width: 65%; height: 65%; border-color: var(--green-rich); animation-delay: 0.5s; }
-.net-circle:nth-child(3) { width: 40%; height: 40%; border-color: var(--krishna); animation-delay: 1s; }
-@keyframes pulseRing {
-  0%, 100% { transform: scale(1); opacity: 0.4; }
-  50% { transform: scale(1.04); opacity: 0.7; }
-}
-.net-center {
-  position: relative; z-index: 2; text-align: center;
-  background: var(--green-deep); width: 130px; height: 130px;
-  border-radius: 50%; display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  border: 2px solid var(--gold);
-}
-.net-center-num {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 2.8rem; color: var(--gold); font-weight: 300; line-height: 1;
-}
-.net-center-lbl { font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-top: 4px; }
-
-.net-dots { position: absolute; inset: 0; }
-.net-dot {
-  position: absolute; width: 10px; height: 10px; border-radius: 50%;
-  background: var(--gold); opacity: 0.7;
-  animation: dotPulse 2s ease-in-out infinite;
-}
-@keyframes dotPulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.5); }
-}
-
-.network-content { }
-.network-content .sec-title.dark { color: var(--green-deep); }
-.net-desc { font-size: 1rem; line-height: 1.8; color: var(--text-mid); font-weight: 300; margin: 18px 0 32px; }
-.net-points { display: flex; flex-direction: column; gap: 20px; }
-.net-point {
-  display: flex; gap: 18px; align-items: flex-start;
-  padding-bottom: 20px; border-bottom: 1px solid rgba(0,0,0,0.06);
-}
-.net-point:last-child { border-bottom: none; padding-bottom: 0; }
-.net-point-icon {
-  width: 44px; height: 44px; flex-shrink: 0;
-  background: var(--green-deep); border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1.1rem;
-}
-.net-point h4 { font-size: 0.92rem; font-weight: 600; color: var(--green-deep); margin-bottom: 4px; }
-.net-point p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; font-weight: 300; }
-
-/* ═══════════════════════════════
-   GUARANTEE
-═══════════════════════════════ */
-.guarantee-sec {
-  background: var(--ink);
-  text-align: center; padding: 100px 60px;
-  position: relative; overflow: hidden;
-}
-.guarantee-sec::before {
+/* Blueprint grid */
+#hero::before {
   content: '';
   position: absolute; inset: 0;
-  background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(26,61,124,0.12) 0%, transparent 65%);
+  background-image:
+    linear-gradient(rgba(74,138,181,0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(74,138,181,0.08) 1px, transparent 1px);
+  background-size: 48px 48px;
   pointer-events: none;
 }
-.guarantee-badge {
-  display: inline-flex; align-items: center; gap: 10px;
-  border: 1px solid var(--gold); padding: 8px 20px;
+
+/* Radial glow */
+#hero::after {
+  content: '';
+  position: absolute;
+  width: 900px; height: 900px;
+  background: radial-gradient(circle, rgba(201,168,76,0.07) 0%, transparent 70%);
+  top: 50%; left: 50%; transform: translate(-40%, -50%);
+  pointer-events: none;
+}
+
+.hero-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px; font-weight: 400;
+  letter-spacing: 4px; text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 28px;
+  opacity: 0;
+  animation: fadeUp 0.8s 0.3s forwards;
+  display: flex; align-items: center; gap: 12px;
+}
+.hero-eyebrow::before {
+  content: ''; width: 32px; height: 1px; background: var(--gold); flex-shrink: 0;
+}
+
+.hero-headline {
+  font-family: var(--font-display);
+  font-size: clamp(54px, 7.5vw, 108px);
+  font-weight: 300; line-height: 1.0;
+  color: var(--white);
+  margin-bottom: 12px;
+  opacity: 0;
+  animation: fadeUp 0.9s 0.5s forwards;
+  max-width: 900px;
+}
+.hero-headline em {
+  font-style: italic; color: var(--gold);
+}
+
+.hero-sub {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 5vw, 72px);
+  font-weight: 300; font-style: italic;
+  color: rgba(255,255,255,0.4);
+  line-height: 1.1;
+  margin-bottom: 52px;
+  opacity: 0;
+  animation: fadeUp 0.9s 0.7s forwards;
+}
+
+.hero-slogan {
+  font-family: var(--font-body);
+  font-size: 13px; font-weight: 500;
+  letter-spacing: 4px; text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 52px;
+  opacity: 0;
+  animation: fadeUp 0.8s 0.9s forwards;
+  display: flex; align-items: center; gap: 16px;
+}
+.hero-slogan span {
+  width: 48px; height: 1px; background: var(--gold); opacity: 0.5;
+}
+
+.hero-actions {
+  display: flex; align-items: center; gap: 24px;
+  opacity: 0;
+  animation: fadeUp 0.8s 1.1s forwards;
+}
+.btn-primary {
+  padding: 16px 40px;
+  background: var(--gold);
+  color: var(--navy);
+  font-family: var(--font-body);
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 3px; text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 2px;
+  transition: background 0.2s, transform 0.2s;
+  display: inline-block;
+}
+.btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+.btn-ghost {
+  font-family: var(--font-body);
+  font-size: 11px; font-weight: 500;
+  letter-spacing: 3px; text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+  text-decoration: none;
+  display: flex; align-items: center; gap: 8px;
+  transition: color 0.2s;
+}
+.btn-ghost:hover { color: var(--gold); }
+.btn-ghost svg { transition: transform 0.2s; }
+.btn-ghost:hover svg { transform: translateX(4px); }
+
+/* Arc symbol in hero */
+.hero-arc {
+  position: absolute; right: 8vw; top: 50%;
+  transform: translateY(-50%);
+  opacity: 0;
+  animation: fadeIn 1.2s 1.4s forwards;
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+}
+.arc-stages {
+  display: flex; align-items: center; gap: 20px;
+}
+.arc-stage { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.arc-icon {
+  display: flex; align-items: center; justify-content: center;
+  transition: transform 0.3s;
+}
+.arc-icon:hover { transform: scale(1.1); }
+.arc-label {
+  font-family: var(--font-mono);
+  font-size: 9px; letter-spacing: 3px;
+  color: var(--blue-mid); text-transform: uppercase;
+}
+.arc-arrow { color: var(--gold); opacity: 0.5; font-size: 20px; padding-bottom: 24px; }
+.arc-baseline {
+  width: 100%; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201,168,76,0.3), transparent);
+}
+
+.hero-scroll {
+  position: absolute; bottom: 40px; left: 50%;
+  transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  opacity: 0; animation: fadeIn 1s 1.8s forwards;
+}
+.hero-scroll-line {
+  width: 1px; height: 48px;
+  background: linear-gradient(to bottom, transparent, var(--gold));
+  animation: scrollPulse 2s infinite;
+}
+.hero-scroll span {
+  font-family: var(--font-mono); font-size: 9px;
+  letter-spacing: 3px; color: rgba(255,255,255,0.3);
+  text-transform: uppercase;
+}
+
+/* ── CONTENT SECTIONS ─────────────────────────────────── */
+section {
+  padding: 120px 10vw;
+}
+
+.section-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 10px; letter-spacing: 4px;
+  text-transform: uppercase; color: var(--gold);
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 24px;
+}
+.section-eyebrow::before {
+  content: ''; width: 24px; height: 1px; background: var(--gold);
+}
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 4.5vw, 64px);
+  font-weight: 300; line-height: 1.1;
+  color: var(--navy);
+  margin-bottom: 24px;
+}
+.section-title em { font-style: italic; color: var(--gold); }
+.section-title strong { font-weight: 600; }
+.section-body {
+  font-size: 17px; font-weight: 300; line-height: 1.75;
+  color: var(--gray-mid); max-width: 620px;
+}
+
+/* reveal animation */
+.reveal {
+  opacity: 0; transform: translateY(32px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+.reveal-delay-5 { transition-delay: 0.5s; }
+
+/* ── ABOUT / PROBLEM ──────────────────────────────────── */
+#about { background: var(--off-white); }
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px; align-items: start;
+  margin-top: 64px;
+}
+.about-left .big-quote {
+  font-family: var(--font-display);
+  font-size: clamp(22px, 2.5vw, 32px);
+  font-weight: 400; font-style: italic;
+  line-height: 1.5; color: var(--navy-mid);
+  padding-left: 24px;
+  border-left: 2px solid var(--gold);
   margin-bottom: 36px;
-  font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold);
 }
-.guarantee-badge span { font-size: 1rem; }
-.g-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(2.2rem, 4.5vw, 4rem);
-  font-weight: 300; color: var(--cream); margin-bottom: 20px;
-  max-width: 700px; margin-left: auto; margin-right: auto; line-height: 1.15;
+.about-right { padding-top: 8px; }
+.problem-stat {
+  display: flex; align-items: flex-start; gap: 20px;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--gray-light);
 }
-.g-title em { font-style: italic; color: var(--gold-light); }
-.g-desc {
-  font-size: 1rem; color: rgba(255,255,255,0.5); line-height: 1.8;
-  max-width: 560px; margin: 0 auto 52px; font-weight: 300;
+.problem-stat:last-child { border-bottom: none; }
+.problem-num {
+  font-family: var(--font-display);
+  font-size: 48px; font-weight: 300; color: var(--gold);
+  line-height: 1; flex-shrink: 0; width: 48px;
+  text-align: right;
 }
-.g-cards {
-  display: flex; justify-content: center; gap: 2px;
-  max-width: 700px; margin: 0 auto 52px; flex-wrap: wrap;
+.problem-text strong {
+  display: block; font-size: 14px; font-weight: 600;
+  color: var(--navy); margin-bottom: 4px; letter-spacing: 0.5px;
 }
-.g-card {
-  background: rgba(255,255,255,0.03); border: 1px solid rgba(201,168,76,0.12);
-  padding: 28px 32px; flex: 1; min-width: 180px; text-align: center;
-}
-.g-card-num {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 2.4rem; color: var(--gold); font-weight: 300; line-height: 1;
-}
-.g-card-lbl { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-top: 6px; }
+.problem-text span { font-size: 13px; color: var(--gray-mid); line-height: 1.6; }
 
-/* ═══════════════════════════════
-   WHY BLUEOAK
-═══════════════════════════════ */
-.why-sec { background: var(--cream-dark); }
-.why-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; margin-top: 56px; }
-.why-card {
-  background: var(--cream); padding: 44px 36px;
-  transition: background 0.3s, transform 0.3s;
+/* ── SERVICES ─────────────────────────────────────────── */
+#services { background: var(--white); }
+.services-intro {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 80px; margin-bottom: 80px; align-items: end;
+}
+.services-cards {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+}
+.service-card {
+  background: var(--navy);
+  padding: 44px 36px;
+  position: relative; overflow: hidden;
+  transition: transform 0.3s;
+  cursor: default;
+}
+.service-card:hover { transform: translateY(-4px); z-index: 1; }
+.service-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0;
+  width: 100%; height: 3px;
+  background: var(--gold);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.4s;
+}
+.service-card:hover::before { transform: scaleX(1); }
+.service-num {
+  font-family: var(--font-display);
+  font-size: 80px; font-weight: 300;
+  color: rgba(255,255,255,0.04);
+  position: absolute; top: 16px; right: 20px;
+  line-height: 1;
+}
+.service-tag {
+  font-family: var(--font-mono);
+  font-size: 9px; letter-spacing: 3px;
+  color: var(--gold); text-transform: uppercase;
+  margin-bottom: 20px; display: block;
+}
+.service-title {
+  font-family: var(--font-display);
+  font-size: 32px; font-weight: 300;
+  color: var(--white); line-height: 1.1;
+  margin-bottom: 20px;
+}
+.service-timing {
+  font-family: var(--font-mono); font-size: 10px;
+  color: var(--blue-mid); letter-spacing: 2px;
+  margin-bottom: 24px; display: block;
+}
+.service-items {
+  list-style: none; display: flex; flex-direction: column; gap: 10px;
+}
+.service-items li {
+  font-size: 13px; color: rgba(214,228,240,0.8);
+  display: flex; align-items: flex-start; gap: 10px; line-height: 1.5;
+}
+.service-items li::before {
+  content: '—'; color: var(--gold); flex-shrink: 0; opacity: 0.6;
+}
+.service-outcome {
+  margin-top: 28px; padding-top: 20px;
+  border-top: 1px solid rgba(201,168,76,0.2);
+  font-size: 12px; font-style: italic;
+  color: var(--gold); line-height: 1.5;
+}
+
+/* ── PROCESS ──────────────────────────────────────────── */
+#process { background: var(--off-white); }
+.process-intro {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 80px; margin-bottom: 80px; align-items: end;
+}
+.process-timeline {
+  display: flex; flex-direction: column; gap: 0;
+  position: relative; margin-top: 16px;
+}
+.process-timeline::before {
+  content: '';
+  position: absolute; left: 24px; top: 48px; bottom: 48px;
+  width: 1px; background: linear-gradient(to bottom, var(--gold), rgba(201,168,76,0.1));
+}
+.process-step {
+  display: flex; gap: 36px; align-items: flex-start;
+  padding: 36px 0;
+  border-bottom: 1px solid var(--gray-light);
+  position: relative;
+  transition: background 0.2s;
+}
+.process-step:last-child { border-bottom: none; }
+.process-step-num {
+  width: 48px; height: 48px; border-radius: 50%;
+  background: var(--white);
+  border: 1px solid var(--gold);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display);
+  font-size: 18px; font-weight: 600; color: var(--gold);
+  flex-shrink: 0; z-index: 1;
+  transition: background 0.3s, color 0.3s;
+}
+.process-step:hover .process-step-num {
+  background: var(--gold); color: var(--navy);
+}
+.process-step-content { padding-top: 8px; }
+.process-step-label {
+  font-family: var(--font-mono); font-size: 9px;
+  letter-spacing: 3px; color: var(--gold);
+  text-transform: uppercase; margin-bottom: 6px;
+}
+.process-step-title {
+  font-family: var(--font-display);
+  font-size: 26px; font-weight: 400;
+  color: var(--navy); margin-bottom: 10px; line-height: 1.2;
+}
+.process-step-desc {
+  font-size: 14px; color: var(--gray-mid);
+  line-height: 1.7; max-width: 480px;
+}
+
+/* ── STORY / ABOUT FOUNDER ────────────────────────────── */
+#founder {
+  background: var(--navy);
   position: relative; overflow: hidden;
 }
-.why-card::after {
-  content: ''; position: absolute; bottom: 0; left: 0;
-  width: 0; height: 3px; background: var(--gold);
-  transition: width 0.4s;
+#founder::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(74,138,181,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(74,138,181,0.05) 1px, transparent 1px);
+  background-size: 48px 48px;
 }
-.why-card:hover { background: var(--white); transform: translateY(-3px); }
-.why-card:hover::after { width: 100%; }
-.wc-num {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 4rem; color: rgba(201,168,76,0.15); font-weight: 300; line-height: 1; margin-bottom: 18px;
+.founder-inner {
+  position: relative; z-index: 1;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 100px; align-items: center;
 }
-.wc-icon { font-size: 1.6rem; margin-bottom: 14px; }
-.wc-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.3rem; color: var(--green-deep); font-weight: 400; margin-bottom: 12px;
+.founder-left .section-eyebrow { color: var(--gold); }
+.founder-left .section-title { color: var(--white); }
+.founder-quote {
+  font-family: var(--font-display);
+  font-size: clamp(20px, 2.2vw, 28px);
+  font-weight: 300; font-style: italic;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.6;
+  padding-left: 28px;
+  border-left: 2px solid var(--gold);
+  margin: 32px 0;
 }
-.wc-text { font-size: 0.88rem; line-height: 1.7; color: var(--text-mid); font-weight: 300; }
+.founder-truth {
+  font-family: var(--font-display);
+  font-size: 22px; font-weight: 600; font-style: italic;
+  color: var(--gold); margin-top: 28px;
+}
+.founder-right {
+  display: flex; flex-direction: column; gap: 24px;
+}
+.belief-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(201,168,76,0.15);
+  border-radius: 4px; padding: 28px 32px;
+  transition: border-color 0.3s, background 0.3s;
+}
+.belief-card:hover {
+  border-color: rgba(201,168,76,0.4);
+  background: rgba(255,255,255,0.07);
+}
+.belief-label {
+  font-family: var(--font-mono);
+  font-size: 9px; letter-spacing: 3px;
+  color: var(--blue-mid); text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.belief-text {
+  font-family: var(--font-display);
+  font-size: 20px; font-weight: 400;
+  color: var(--white); line-height: 1.4;
+}
+.belief-text em { color: var(--gold); font-style: italic; }
 
-/* ═══════════════════════════════
-   TESTIMONIAL / PROOF
-═══════════════════════════════ */
-.proof-sec { background: var(--green-deep); padding: 80px 60px; }
-.proof-inner { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2px; }
-.proof-card {
-  background: rgba(255,255,255,0.03); padding: 36px 30px;
-  border: 1px solid rgba(201,168,76,0.1);
-  transition: border-color 0.3s;
+/* ── CONTACT / CTA ────────────────────────────────────── */
+#contact {
+  background: var(--white);
+  text-align: center;
+  padding: 140px 10vw;
 }
-.proof-card:hover { border-color: rgba(201,168,76,0.3); }
-.proof-icon { font-size: 1.8rem; margin-bottom: 20px; opacity: 0.7; }
-.proof-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.2rem; color: var(--gold-light); font-weight: 400; margin-bottom: 12px;
+.contact-inner { max-width: 720px; margin: 0 auto; }
+.contact-eyebrow { justify-content: center; margin-bottom: 32px; }
+.contact-eyebrow::before { display: none; }
+.contact-eyebrow::after { content: ''; width: 24px; height: 1px; background: var(--gold); }
+.contact-title {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 5vw, 72px);
+  font-weight: 300; line-height: 1.05;
+  color: var(--navy); margin-bottom: 16px;
 }
-.proof-text { font-size: 0.86rem; line-height: 1.7; color: rgba(255,255,255,0.5); font-weight: 300; }
+.contact-title em { font-style: italic; color: var(--gold); }
+.contact-sub {
+  font-size: 17px; font-weight: 300;
+  color: var(--gray-mid); line-height: 1.7;
+  margin-bottom: 52px;
+}
+.contact-form {
+  display: flex; flex-direction: column; gap: 16px;
+  max-width: 520px; margin: 0 auto 40px;
+}
+.form-row { display: flex; gap: 16px; }
+.form-field {
+  flex: 1; display: flex; flex-direction: column; gap: 6px;
+}
+.form-field label {
+  font-family: var(--font-mono); font-size: 9px;
+  letter-spacing: 3px; text-transform: uppercase;
+  color: var(--gray-mid);
+}
+.form-field input, .form-field select, .form-field textarea {
+  font-family: var(--font-body); font-size: 14px;
+  padding: 14px 16px;
+  background: var(--off-white);
+  border: 1px solid transparent;
+  border-radius: 2px; outline: none;
+  color: var(--navy);
+  transition: border-color 0.2s, background 0.2s;
+  width: 100%;
+}
+.form-field input:focus, .form-field select:focus, .form-field textarea:focus {
+  border-color: var(--gold);
+  background: var(--gold-pale);
+}
+.form-field textarea { resize: vertical; min-height: 100px; }
+.form-submit {
+  width: 100%; padding: 18px;
+  background: var(--navy);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 3px; text-transform: uppercase;
+  border: none; border-radius: 2px; cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+.form-submit:hover { background: var(--gold); color: var(--navy); transform: translateY(-2px); }
+.contact-or {
+  font-family: var(--font-mono); font-size: 10px;
+  letter-spacing: 3px; color: var(--gray-mid);
+  margin: 16px 0; text-transform: uppercase;
+}
+.contact-direct {
+  font-size: 14px; color: var(--gray-mid);
+}
+.contact-direct a {
+  color: var(--navy); font-weight: 500;
+  text-decoration: none; border-bottom: 1px solid var(--gold);
+  transition: color 0.2s;
+}
+.contact-direct a:hover { color: var(--gold); }
 
-/* ═══════════════════════════════
-   CTA FINAL
-═══════════════════════════════ */
-.cta-sec {
-  background: var(--green-deep); padding: 130px 60px; text-align: center;
-  position: relative; overflow: hidden;
-}
-.cta-sec::before {
-  content: 'BLUEOAK';
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 18vw; font-weight: 700;
-  color: rgba(255,255,255,0.018);
-  position: absolute; top: 50%; left: 50%;
-  transform: translate(-50%,-50%);
-  white-space: nowrap; pointer-events: none; letter-spacing: 0.1em;
-}
-.cta-sec .sec-eyebrow { justify-content: center; }
-.cta-sec .sec-eyebrow-line { display: none; }
-.cta-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(2.6rem, 5.5vw, 4.5rem);
-  font-weight: 300; color: var(--cream); line-height: 1.1;
-  max-width: 750px; margin: 0 auto 24px;
-}
-.cta-title em { color: var(--gold-light); font-style: italic; }
-.cta-desc {
-  font-size: 1rem; color: rgba(255,255,255,0.5); max-width: 480px;
-  margin: 0 auto 52px; line-height: 1.8; font-weight: 300;
-}
-.cta-actions { display: flex; gap: 20px; justify-content: center; align-items: center; flex-wrap: wrap; }
-.btn-outline-light {
-  color: rgba(255,255,255,0.55); font-size: 0.85rem;
-  text-decoration: none; padding: 16px 28px;
-  border: 1px solid rgba(255,255,255,0.15);
-  transition: all 0.25s;
-  display: inline-flex; align-items: center; gap: 8px;
-}
-.btn-outline-light:hover { border-color: var(--gold); color: var(--gold-light); }
-
-/* ═══════════════════════════════
-   FOOTER
-═══════════════════════════════ */
+/* ── FOOTER ───────────────────────────────────────────── */
 footer {
-  background: var(--ink); padding: 52px 60px;
-  border-top: 1px solid rgba(201,168,76,0.1);
+  background: var(--navy-dark, #0A1E35);
+  padding: 52px 10vw 32px;
 }
-.footer-inner {
-  display: grid; grid-template-columns: 1.5fr 1fr 1fr;
-  gap: 60px; margin-bottom: 40px;
+.footer-top {
+  display: flex; justify-content: space-between; align-items: flex-start;
+  padding-bottom: 40px;
+  border-bottom: 1px solid rgba(201,168,76,0.2);
+  margin-bottom: 28px;
 }
-.footer-brand-name {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.5rem; color: var(--gold); letter-spacing: 0.06em; margin-bottom: 8px;
+.footer-brand { display: flex; flex-direction: column; gap: 10px; }
+.footer-name {
+  font-family: var(--font-body);
+  font-weight: 600; font-size: 16px;
+  color: var(--white); letter-spacing: 2px;
 }
-.footer-brand-sub { font-size: 0.75rem; color: rgba(255,255,255,0.3); letter-spacing: 0.08em; margin-bottom: 16px; }
-.footer-tagline { font-size: 0.85rem; color: rgba(255,255,255,0.35); font-style: italic; line-height: 1.6; }
-.footer-col h5 {
-  font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase;
-  color: var(--gold-muted); margin-bottom: 20px;
+.footer-slogan {
+  font-family: var(--font-display);
+  font-size: 15px; font-style: italic;
+  color: var(--gold);
 }
-.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
-.footer-col ul a {
-  font-size: 0.85rem; color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s;
+.footer-links {
+  display: flex; gap: 32px; list-style: none;
+  align-items: center;
 }
-.footer-col ul a:hover { color: var(--gold-light); }
+.footer-links a {
+  font-size: 11px; letter-spacing: 1.5px;
+  color: rgba(255,255,255,0.4);
+  text-decoration: none; text-transform: uppercase;
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--gold); }
 .footer-bottom {
-  padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.05);
   display: flex; justify-content: space-between; align-items: center;
-  flex-wrap: wrap; gap: 12px;
 }
-.footer-copy { font-size: 0.75rem; color: rgba(255,255,255,0.2); letter-spacing: 0.04em; }
-.footer-krishna { font-size: 0.72rem; color: rgba(255,255,255,0.18); font-style: italic; }
-
-/* ═══════════════════════════════
-   RESPONSIVE — 6 BREAKPOINTS
-═══════════════════════════════ */
-
-/* ── 6. Large Desktop 1440px+ ── */
-@media (min-width: 1440px) {
-  nav { padding: 18px 80px; }
-  nav.scrolled { padding: 12px 80px; }
-  .hero { padding: 160px 80px 100px; }
-  .hero h1 { font-size: 6.5rem; }
-  .sec, .cta-sec, .guarantee-sec, .proof-sec, .health-sec { padding: 130px 80px; }
-  .oak-sec { padding: 140px 80px; }
-  .branch-cards { grid-template-columns: repeat(4, 1fr); gap: 28px; }
-  .footer-inner { padding: 0 80px; }
-  footer { padding: 60px 80px; }
+.footer-copy {
+  font-family: var(--font-mono); font-size: 10px;
+  color: rgba(255,255,255,0.2); letter-spacing: 1px;
+}
+.footer-tagline {
+  font-family: var(--font-mono); font-size: 10px;
+  color: rgba(201,168,76,0.4); letter-spacing: 2px;
 }
 
-/* ── 5. Desktop 1200px–1439px ── */
-@media (min-width: 1200px) and (max-width: 1439px) {
-  .branch-cards { grid-template-columns: repeat(4, 1fr); gap: 22px; }
-  .hero h1 { font-size: 5.5rem; }
+/* ── KEYFRAMES ────────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
 }
 
-/* ── 4. Small Laptop 992px–1199px ── */
-@media (min-width: 992px) and (max-width: 1199px) {
-  nav { padding: 16px 40px; }
-  nav.scrolled { padding: 12px 40px; }
-  .hero { padding: 130px 40px 80px; }
-  .hero h1 { font-size: 4.2rem; }
-  .sec, .cta-sec, .guarantee-sec, .proof-sec, .health-sec { padding: 90px 40px; }
-  .oak-sec { padding: 100px 40px; }
-  .branch-cards { grid-template-columns: repeat(4, 1fr); gap: 16px; }
-  .branch-card { padding: 26px 20px; }
-  .bc-title { font-size: 1.3rem; }
-  .bc-desc { font-size: 0.82rem; }
-  .problem-grid { gap: 50px; }
-  .health-inner { gap: 50px; }
-  .network-inner { gap: 50px; }
-  .footer-inner { grid-template-columns: 1.5fr 1fr 1fr; gap: 40px; }
-  footer { padding: 44px 40px; }
-}
-
-/* ── 3. Tablet 768px–991px ── */
-@media (min-width: 768px) and (max-width: 991px) {
-  nav { padding: 14px 32px; }
-  nav.scrolled { padding: 10px 32px; }
-  .nav-links { gap: 24px; }
-  .nav-links a { font-size: 0.72rem; }
-  .nav-cta { padding: 9px 18px; font-size: 0.72rem; }
-
-  .hero { padding: 120px 32px 70px; }
-  .hero h1 { font-size: 3.4rem; }
-  .hero-sub { font-size: 0.95rem; max-width: 100%; }
-  .hero-oak { width: 45%; opacity: 0.7; }
-  .hero-stats { flex-wrap: wrap; }
-  .h-stat { flex: 1 1 45%; padding: 20px 12px 0; }
-  .h-stat-num { font-size: 2.4rem; }
-
-  .sec, .cta-sec, .guarantee-sec, .proof-sec, .health-sec { padding: 80px 32px; }
-  .oak-sec { padding: 90px 32px; }
-
-  .problem-grid { grid-template-columns: 1fr; gap: 40px; }
-  .health-inner { grid-template-columns: 1fr; gap: 40px; }
-  .network-inner { grid-template-columns: 1fr; gap: 40px; }
-  .network-visual { max-width: 360px; margin: 0 auto; }
-
-  .branch-cards { grid-template-columns: 1fr 1fr; gap: 16px; }
-  #our-services { grid-template-columns: 1fr 1fr !important; }
-
-  .why-grid { grid-template-columns: 1fr 1fr; }
-  .proof-inner { grid-template-columns: 1fr 1fr; }
-  .g-cards { flex-wrap: wrap; }
-  .g-card { flex: 1 1 140px; }
-
-  .footer-inner { grid-template-columns: 1fr 1fr; gap: 32px; }
-  .footer-bottom { flex-direction: column; text-align: center; gap: 8px; }
-  footer { padding: 40px 32px; }
-
-  .cta-actions { flex-direction: column; align-items: center; }
-  .btn-outline-light { justify-content: center; }
-}
-
-/* ── 2. Large Mobile 480px–767px ── */
-@media (min-width: 480px) and (max-width: 767px) {
-  nav { padding: 14px 20px; }
-  nav.scrolled { padding: 10px 20px; }
-  .nav-links, .nav-cta { display: none; }
-  .hamburger { display: flex; }
-
-  .hero { padding: 110px 20px 60px; }
-  .hero h1 { font-size: 2.8rem; }
-  .hero-sub { font-size: 0.95rem; }
-  .hero-oak { display: none; }
-  .hero-stats { flex-wrap: wrap; border-top: 1px solid rgba(201,168,76,0.12); }
-  .h-stat { flex: 1 1 45%; padding: 20px 10px 0; border-right: none; border-bottom: 1px solid rgba(201,168,76,0.08); }
-  .h-stat-num { font-size: 2rem; }
-
-  .sec, .cta-sec, .guarantee-sec, .proof-sec, .health-sec { padding: 70px 20px; }
-  .oak-sec { padding: 80px 20px; }
-
-  .problem-grid, .health-inner, .network-inner { grid-template-columns: 1fr; gap: 36px; }
-
-  .branch-cards { grid-template-columns: 1fr 1fr; gap: 12px; }
-  #our-services { grid-template-columns: 1fr 1fr !important; }
-
-  .why-grid { grid-template-columns: 1fr; }
-  .proof-inner { grid-template-columns: 1fr; }
-  .g-cards { flex-direction: column; }
-  .g-card { min-width: unset; }
-
-  .footer-inner { grid-template-columns: 1fr; gap: 28px; }
-  .footer-bottom { flex-direction: column; text-align: center; }
-  footer { padding: 36px 20px; }
-
-  .cta-actions { flex-direction: column; align-items: stretch; text-align: center; }
-  .btn-outline-light { justify-content: center; }
-  .sec-title { font-size: 2rem; }
-  .quote-card blockquote { font-size: 1.4rem; }
-}
-
-/* ── 1. Small Mobile 0px–479px ── */
-@media (max-width: 479px) {
-  nav { padding: 12px 16px; }
-  nav.scrolled { padding: 10px 16px; }
-  .nav-links, .nav-cta { display: none; }
-  .hamburger { display: flex; }
-
-  .hero { padding: 100px 16px 50px; }
-  .hero h1 { font-size: 2rem; line-height: 1.1; }
-  .hero-sub { font-size: 0.88rem; margin-bottom: 36px; }
-  .hero-eyebrow { font-size: 0.65rem; }
-  .hero-oak { display: none; }
-  .hero-actions { flex-direction: column; align-items: stretch; gap: 14px; }
-  .btn-primary { text-align: center; padding: 14px 20px; }
-  .hero-stats { flex-wrap: wrap; }
-  .h-stat { flex: 1 1 45%; padding: 16px 8px 0; border-right: none; }
-  .h-stat-num { font-size: 1.7rem; }
-  .h-stat-lbl { font-size: 0.62rem; }
-
-  .sec, .cta-sec, .guarantee-sec, .proof-sec, .health-sec { padding: 60px 16px; }
-  .oak-sec { padding: 70px 16px; }
-  .sec-title { font-size: 1.8rem; }
-
-  .problem-grid, .health-inner, .network-inner { grid-template-columns: 1fr; gap: 28px; }
-  .prob-text { font-size: 0.9rem; }
-  .quote-card { padding: 32px 24px; }
-  .quote-card blockquote { font-size: 1.25rem; }
-
-  .branch-cards { grid-template-columns: 1fr; gap: 12px; }
-  #our-services { grid-template-columns: 1fr !important; }
-  .branch-card { padding: 24px 20px; }
-  .bc-title { font-size: 1.4rem; }
-
-  .why-grid { grid-template-columns: 1fr; gap: 2px; }
-  .proof-inner { grid-template-columns: 1fr; }
-  .g-cards { flex-direction: column; }
-  .g-card { min-width: unset; padding: 22px 20px; }
-  .g-card-num { font-size: 2rem; }
-
-  .score-widget { padding: 28px 20px; }
-  .network-visual { max-width: 280px; margin: 0 auto; }
-
-  .cta-title { font-size: 2rem; }
-  .cta-actions { flex-direction: column; align-items: stretch; text-align: center; }
-  .btn-outline-light { justify-content: center; }
-
-  .footer-inner { grid-template-columns: 1fr; gap: 24px; }
-  .footer-bottom { flex-direction: column; text-align: center; gap: 8px; }
-  footer { padding: 32px 16px; }
-  .footer-brand-name { font-size: 1.2rem; }
-
-  .mobile-menu a { font-size: 1.9rem; }
-  .g-title { font-size: 1.9rem; }
-}
-
-/* ═══════════════════════════════
-   KRISHNA FLUTE DECORATION
-═══════════════════════════════ */
-.krishna-accent {
-  position: absolute; width: 2px;
-  background: linear-gradient(to bottom, transparent, rgba(111,179,255,0.3), transparent);
-  animation: krishnaGlow 3s ease-in-out infinite;
-}
-@keyframes krishnaGlow {
-  0%, 100% { opacity: 0.2; }
-  50% { opacity: 0.8; }
-}
-
-/* Progress indicator */
-.scroll-progress {
-  position: fixed; top: 0; left: 0; height: 2px;
-  background: linear-gradient(90deg, var(--gold), var(--gold-light));
-  z-index: 1000; transition: width 0.1s;
+/* ── MOBILE ───────────────────────────────────────────── */
+@media (max-width: 900px) {
+  nav { padding: 0 24px; }
+  .nav-links { display: none; }
+  section { padding: 80px 6vw; }
+  .about-grid, .services-intro, .process-intro,
+  .founder-inner, .services-cards { grid-template-columns: 1fr; gap: 48px; }
+  .services-cards { grid-template-columns: 1fr; }
+  .hero-arc { display: none; }
+  .form-row { flex-direction: column; }
+  .footer-top { flex-direction: column; gap: 28px; }
+  .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
 }
 </style>
 </head>
 <body>
 
-<!-- CURSOR -->
-<div class="cursor" id="cursor" style="left: 719px; top: 318px;"></div>
-<div class="cursor-ring" id="cursorRing" style="left: 719px; top: 318px;"></div>
-<div class="grain"></div>
-<div class="scroll-progress" id="scrollProgress" style="width: 7.37284%;"></div>
+<!-- Custom cursor -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
 
-<!-- MOBILE MENU -->
-<div class="mobile-menu" id="mobileMenu">
-  <a href="#home" onclick="closeMobile()">About</a>
-  <a href="#services" onclick="closeMobile()">Services</a>
-  <a href="lead_form.html" onclick="closeMobile()">Health Check</a>
-  <a href="#network" onclick="closeMobile()">Our Network</a>
-  <a href="lead_form.html" class="m-cta" onclick="closeMobile()">Book Free Startup Health Check</a>
-</div>
-
-<!-- NAV -->
-<nav id="mainNav" class="scrolled">
-  <a href="#home" class="nav-logo">
-    <div class="nav-logo-mark">
-      <img src="BlueOak_final_logo.png" alt="BlueOak Logo" style="height:52px;width:auto;display:block;background:transparent;">
-    </div>
-    <div class="logo-wordmark">
-      <span class="logo-name">BlueOak Ventures</span>
-      <span class="logo-sub">Startup Growth Advisory</span>
-    </div>
+<!-- ══ NAVBAR ══════════════════════════════════════════ -->
+<nav id="navbar">
+  <a href="#hero" class="nav-logo">
+    <div class="nav-logo-mark">BO</div>
+    <span class="nav-brand">BlueOak Ventures</span>
   </a>
   <ul class="nav-links">
-    <li><a href="#home">About</a></li>
+    <li><a href="#about">About</a></li>
     <li><a href="#services">Services</a></li>
-    <li><a href="lead_form.html">Health Check</a></li>
-    <li><a href="#network">Our Network</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#founder">Story</a></li>
+    <li><a href="#contact" class="nav-cta">Book a Call</a></li>
   </ul>
-  <a href="lead_form.html" class="nav-cta">Free Startup Health Check</a>
-  <div class="hamburger" id="hamburger" onclick="toggleMobile()">
-    <span></span><span></span><span></span>
-  </div>
 </nav>
 
-<!-- HERO -->
-<section class="hero" id="home">
-  <div class="hero-bg-glow"></div>
-  <div class="particles" id="particles"><div class="particle" style="width: 2.5501px; height: 2.5501px; left: 37.7638%; bottom: 12.9713%; animation-duration: 8.69537s; animation-delay: 3.76955s;"></div><div class="particle" style="width: 3.05277px; height: 3.05277px; left: 3.97202%; bottom: 3.81221%; animation-duration: 9.3774s; animation-delay: 1.14483s;"></div><div class="particle" style="width: 4.54942px; height: 4.54942px; left: 18.8672%; bottom: 17.1378%; animation-duration: 12.3698s; animation-delay: 5.62809s;"></div><div class="particle" style="width: 3.19364px; height: 3.19364px; left: 11.6747%; bottom: 17.6317%; animation-duration: 12.3032s; animation-delay: 7.10088s;"></div><div class="particle" style="width: 2.97772px; height: 2.97772px; left: 70.8392%; bottom: 5.34322%; animation-duration: 17.5168s; animation-delay: 5.71146s;"></div><div class="particle" style="width: 4.0494px; height: 4.0494px; left: 31.2097%; bottom: 0.322638%; animation-duration: 15.1067s; animation-delay: 5.05692s;"></div><div class="particle" style="width: 4.81393px; height: 4.81393px; left: 86.1814%; bottom: 21.0962%; animation-duration: 13.8804s; animation-delay: 0.585244s;"></div><div class="particle" style="width: 5.51154px; height: 5.51154px; left: 73.9761%; bottom: 26.2546%; animation-duration: 16.7289s; animation-delay: 2.67091s;"></div><div class="particle" style="width: 2.26978px; height: 2.26978px; left: 43.1627%; bottom: 22.1471%; animation-duration: 16.8633s; animation-delay: 4.55566s;"></div><div class="particle" style="width: 5.68682px; height: 5.68682px; left: 61.0237%; bottom: 4.53837%; animation-duration: 17.2367s; animation-delay: 1.4287s;"></div><div class="particle" style="width: 4.41906px; height: 4.41906px; left: 37.2506%; bottom: 24.9438%; animation-duration: 17.7584s; animation-delay: 4.83927s;"></div><div class="particle" style="width: 4.73584px; height: 4.73584px; left: 69.5662%; bottom: 0.0516772%; animation-duration: 14.6531s; animation-delay: 5.65372s;"></div><div class="particle" style="width: 3.07929px; height: 3.07929px; left: 22.9095%; bottom: 27.4464%; animation-duration: 15.9477s; animation-delay: 3.06333s;"></div><div class="particle" style="width: 3.81683px; height: 3.81683px; left: 61.8688%; bottom: 3.79613%; animation-duration: 10.5488s; animation-delay: 1.06412s;"></div><div class="particle" style="width: 2.59803px; height: 2.59803px; left: 44.2597%; bottom: 8.04942%; animation-duration: 8.84565s; animation-delay: 1.32661s;"></div><div class="particle" style="width: 3.69945px; height: 3.69945px; left: 26.6321%; bottom: 4.90957%; animation-duration: 14.2804s; animation-delay: 4.44083s;"></div><div class="particle" style="width: 5.40449px; height: 5.40449px; left: 34.5469%; bottom: 4.44177%; animation-duration: 12.5641s; animation-delay: 7.49126s;"></div><div class="particle" style="width: 5.11582px; height: 5.11582px; left: 93.3065%; bottom: 3.81784%; animation-duration: 15.4458s; animation-delay: 1.98674s;"></div><div class="particle" style="width: 4.32109px; height: 4.32109px; left: 75.7175%; bottom: 11.3016%; animation-duration: 11.3276s; animation-delay: 5.58081s;"></div><div class="particle" style="width: 4.54031px; height: 4.54031px; left: 20.2481%; bottom: 19.7962%; animation-duration: 10.2292s; animation-delay: 6.43661s;"></div></div>
+<!-- ══ HERO ════════════════════════════════════════════ -->
+<section id="hero">
+  <p class="hero-eyebrow">Fundraising Advisory</p>
+  <h1 class="hero-headline">We build the company<br><em>investors are already</em><br>looking for.</h1>
+  <p class="hero-sub">Not a matchmaker. A builder.</p>
+  <p class="hero-slogan"><span></span>Fundable First. Funded Next.<span></span></p>
+  <div class="hero-actions">
+    <a href="#contact" class="btn-primary">Book a Discovery Call</a>
+    <a href="#about" class="btn-ghost">
+      How it works
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+  </div>
 
-  <!-- Hero decorative graphic — abstract investor network -->
-  <svg class="hero-oak" viewBox="0 0 680 800" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-      <radialGradient id="glowCenter" cx="50%" cy="50%" r="50%">
-        <stop offset="0%" stop-color="#c9a84c" stop-opacity="0.18"/>
-        <stop offset="100%" stop-color="#c9a84c" stop-opacity="0"/>
-      </radialGradient>
-      <radialGradient id="glowBlue" cx="50%" cy="50%" r="50%">
-        <stop offset="0%" stop-color="#6fb3ff" stop-opacity="0.12"/>
-        <stop offset="100%" stop-color="#6fb3ff" stop-opacity="0"/>
-      </radialGradient>
-      <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stop-color="#c9a84c" stop-opacity="0.5"/>
-        <stop offset="100%" stop-color="#2a6644" stop-opacity="0.1"/>
-      </linearGradient>
-    </defs>
-
-    <!-- Background glow blobs -->
-    <ellipse cx="340" cy="400" rx="280" ry="320" fill="url(#glowCenter)"/>
-    <ellipse cx="480" cy="200" rx="160" ry="160" fill="url(#glowBlue)"/>
-
-    <!-- Outer ring -->
-    <circle cx="340" cy="400" r="260" stroke="#c9a84c" stroke-width="0.6" stroke-opacity="0.12" stroke-dasharray="6 10"/>
-    <circle cx="340" cy="400" r="200" stroke="#c9a84c" stroke-width="0.5" stroke-opacity="0.1" stroke-dasharray="4 14"/>
-    <circle cx="340" cy="400" r="130" stroke="#2a6644" stroke-width="0.8" stroke-opacity="0.25"/>
-
-    <!-- Network connection lines -->
-    <line x1="340" y1="400" x2="120" y2="180" stroke="url(#lineGrad)" stroke-width="0.8" stroke-opacity="0.4"/>
-    <line x1="340" y1="400" x2="560" y2="160" stroke="url(#lineGrad)" stroke-width="0.8" stroke-opacity="0.4"/>
-    <line x1="340" y1="400" x2="600" y2="420" stroke="url(#lineGrad)" stroke-width="0.8" stroke-opacity="0.3"/>
-    <line x1="340" y1="400" x2="500" y2="640" stroke="url(#lineGrad)" stroke-width="0.8" stroke-opacity="0.3"/>
-    <line x1="340" y1="400" x2="160" y2="600" stroke="url(#lineGrad)" stroke-width="0.8" stroke-opacity="0.3"/>
-    <line x1="340" y1="400" x2="80" y2="420" stroke="url(#lineGrad)" stroke-width="0.8" stroke-opacity="0.25"/>
-    <line x1="340" y1="400" x2="220" y2="100" stroke="url(#lineGrad)" stroke-width="0.6" stroke-opacity="0.2"/>
-    <line x1="340" y1="400" x2="460" y2="80" stroke="url(#lineGrad)" stroke-width="0.6" stroke-opacity="0.2"/>
-
-    <!-- Secondary connections between nodes -->
-    <line x1="120" y1="180" x2="560" y2="160" stroke="#c9a84c" stroke-width="0.5" stroke-opacity="0.12"/>
-    <line x1="560" y1="160" x2="600" y2="420" stroke="#c9a84c" stroke-width="0.5" stroke-opacity="0.12"/>
-    <line x1="600" y1="420" x2="500" y2="640" stroke="#c9a84c" stroke-width="0.5" stroke-opacity="0.1"/>
-    <line x1="120" y1="180" x2="80" y2="420" stroke="#c9a84c" stroke-width="0.5" stroke-opacity="0.1"/>
-    <line x1="80" y1="420" x2="160" y2="600" stroke="#c9a84c" stroke-width="0.5" stroke-opacity="0.1"/>
-
-    <!-- Center node — main hub -->
-    <circle cx="340" cy="400" r="22" fill="#0e2a1a" stroke="#c9a84c" stroke-width="1.5" stroke-opacity="0.7"/>
-    <circle cx="340" cy="400" r="14" fill="#c9a84c" fill-opacity="0.15"/>
-    <circle cx="340" cy="400" r="6" fill="#c9a84c" fill-opacity="0.9"/>
-
-    <!-- Outer nodes -->
-    <circle cx="120" cy="180" r="10" fill="#0e2a1a" stroke="#c9a84c" stroke-width="1" stroke-opacity="0.6"/>
-    <circle cx="120" cy="180" r="4" fill="#c9a84c" fill-opacity="0.8"/>
-
-    <circle cx="560" cy="160" r="14" fill="#0e2a1a" stroke="#c9a84c" stroke-width="1.2" stroke-opacity="0.6"/>
-    <circle cx="560" cy="160" r="5" fill="#c9a84c" fill-opacity="0.9"/>
-
-    <circle cx="600" cy="420" r="10" fill="#0e2a1a" stroke="#2a6644" stroke-width="1" stroke-opacity="0.5"/>
-    <circle cx="600" cy="420" r="4" fill="#3d8a5c" fill-opacity="0.8"/>
-
-    <circle cx="500" cy="640" r="8" fill="#0e2a1a" stroke="#c9a84c" stroke-width="1" stroke-opacity="0.4"/>
-    <circle cx="500" cy="640" r="3" fill="#c9a84c" fill-opacity="0.6"/>
-
-    <circle cx="160" cy="600" r="10" fill="#0e2a1a" stroke="#2a6644" stroke-width="1" stroke-opacity="0.5"/>
-    <circle cx="160" cy="600" r="4" fill="#3d8a5c" fill-opacity="0.7"/>
-
-    <circle cx="80" cy="420" r="8" fill="#0e2a1a" stroke="#c9a84c" stroke-width="0.8" stroke-opacity="0.4"/>
-    <circle cx="80" cy="420" r="3" fill="#c9a84c" fill-opacity="0.5"/>
-
-    <circle cx="220" cy="100" r="6" fill="#0e2a1a" stroke="#c9a84c" stroke-width="0.8" stroke-opacity="0.35"/>
-    <circle cx="220" cy="100" r="2.5" fill="#c9a84c" fill-opacity="0.5"/>
-
-    <circle cx="460" cy="80" r="7" fill="#0e2a1a" stroke="#6fb3ff" stroke-width="0.8" stroke-opacity="0.4"/>
-    <circle cx="460" cy="80" r="3" fill="#6fb3ff" fill-opacity="0.6"/>
-
-    <!-- Krishna blue accent node -->
-    <circle cx="340" cy="400" r="40" stroke="#6fb3ff" stroke-width="0.5" stroke-opacity="0.15" stroke-dasharray="3 8"/>
-
-    <!-- Floating small dots -->
-    <circle cx="260" cy="280" r="2.5" fill="#c9a84c" fill-opacity="0.35"/>
-    <circle cx="430" cy="260" r="2" fill="#c9a84c" fill-opacity="0.3"/>
-    <circle cx="480" cy="500" r="2.5" fill="#3d8a5c" fill-opacity="0.4"/>
-    <circle cx="200" cy="480" r="2" fill="#c9a84c" fill-opacity="0.3"/>
-    <circle cx="380" cy="560" r="2" fill="#c9a84c" fill-opacity="0.25"/>
-    <circle cx="300" cy="200" r="2" fill="#6fb3ff" fill-opacity="0.3"/>
-    <circle cx="520" cy="320" r="2.5" fill="#c9a84c" fill-opacity="0.3"/>
-
-    <!-- Subtle grid lines in background -->
-    <line x1="0" y1="200" x2="680" y2="200" stroke="#2a6644" stroke-width="0.4" stroke-opacity="0.08"/>
-    <line x1="0" y1="400" x2="680" y2="400" stroke="#2a6644" stroke-width="0.4" stroke-opacity="0.08"/>
-    <line x1="0" y1="600" x2="680" y2="600" stroke="#2a6644" stroke-width="0.4" stroke-opacity="0.08"/>
-    <line x1="200" y1="0" x2="200" y2="800" stroke="#2a6644" stroke-width="0.4" stroke-opacity="0.08"/>
-    <line x1="400" y1="0" x2="400" y2="800" stroke="#2a6644" stroke-width="0.4" stroke-opacity="0.08"/>
-    <line x1="600" y1="0" x2="600" y2="800" stroke="#2a6644" stroke-width="0.4" stroke-opacity="0.08"/>
-  </svg>
-
-  <div class="hero-content">
-    <div class="hero-eyebrow">
-      <div class="hero-eyebrow-line"></div>
-      Pan-India Investor Network · Startup Growth Advisory
-    </div>
-    <h1>
-      Your Vision Deserves<br>
-      <span class="accent">Real Capital</span> &amp;<br>
-      <span class="krishna-word">Real Partners</span>
-    </h1>
-    <p class="hero-sub">
-      BlueOak Capital Partners guides serious Indian founders from idea to funded — with investor-grade preparation, 300+ warm investor connections, and a partnership built on trust and results.
-    </p>
-    <div class="hero-actions">
-      <a href="lead_form.html" class="btn-primary"><span>Book Your Free Startup Health Check</span></a>
-      <a href="#services" class="btn-outline">Explore Our Services <span class="arrow-icon">→</span></a>
-    </div>
-    <div class="hero-stats">
-      <div class="h-stat">
-        <span class="h-stat-num">300<span style="font-size:1.5rem;color:var(--gold-muted)">+</span></span>
-        <span class="h-stat-lbl">Investor Network</span>
+  <!-- Arc Symbol -->
+  <div class="hero-arc">
+    <div class="arc-stages">
+      <!-- Acorn -->
+      <div class="arc-stage">
+        <div class="arc-icon">
+          <svg width="52" height="72" viewBox="0 0 52 72" fill="none">
+            <rect x="23" y="0" width="6" height="16" rx="3" fill="#8B6520" opacity="0.8"/>
+            <ellipse cx="26" cy="22" rx="22" ry="10" fill="#C9A84C" opacity="0.85"/>
+            <ellipse cx="26" cy="18" rx="22" ry="7" fill="#A07830" opacity="0.5"/>
+            <ellipse cx="26" cy="44" rx="20" ry="28" fill="#C9A84C" opacity="0.9"/>
+            <ellipse cx="18" cy="36" rx="8" ry="12" fill="#E8C46A" opacity="0.2"/>
+          </svg>
+        </div>
+        <span class="arc-label">Acorn</span>
       </div>
-      <div class="h-stat">
-        <span class="h-stat-num">3</span>
-        <span class="h-stat-lbl">Structured Phases</span>
+      <div class="arc-arrow">→</div>
+      <!-- Blueprint -->
+      <div class="arc-stage">
+        <div class="arc-icon">
+          <svg width="68" height="84" viewBox="0 0 68 84" fill="none">
+            <rect x="2" y="2" width="64" height="80" rx="4" fill="#0D2E4A" stroke="#4A8AB5" stroke-width="1.5"/>
+            <line x1="2" y1="18" x2="66" y2="18" stroke="#4A8AB5" stroke-width="0.6" opacity="0.4"/>
+            <line x1="2" y1="34" x2="66" y2="34" stroke="#4A8AB5" stroke-width="0.6" opacity="0.4"/>
+            <line x1="2" y1="50" x2="66" y2="50" stroke="#4A8AB5" stroke-width="0.6" opacity="0.4"/>
+            <line x1="2" y1="66" x2="66" y2="66" stroke="#4A8AB5" stroke-width="0.6" opacity="0.4"/>
+            <line x1="22" y1="2" x2="22" y2="82" stroke="#4A8AB5" stroke-width="0.6" opacity="0.4"/>
+            <line x1="46" y1="2" x2="46" y2="82" stroke="#4A8AB5" stroke-width="0.6" opacity="0.4"/>
+            <rect x="28" y="54" width="12" height="22" fill="none" stroke="#5BB8E8" stroke-width="1.5"/>
+            <line x1="34" y1="54" x2="34" y2="34" stroke="#5BB8E8" stroke-width="1.5"/>
+            <line x1="34" y1="44" x2="20" y2="32" stroke="#5BB8E8" stroke-width="1.2"/>
+            <line x1="34" y1="44" x2="48" y2="32" stroke="#5BB8E8" stroke-width="1.2"/>
+            <line x1="34" y1="34" x2="26" y2="18" stroke="#5BB8E8" stroke-width="1.2"/>
+            <line x1="34" y1="34" x2="42" y2="18" stroke="#5BB8E8" stroke-width="1.2"/>
+            <circle cx="20" cy="32" r="3" fill="none" stroke="#5BB8E8" stroke-width="1.2"/>
+            <circle cx="48" cy="32" r="3" fill="none" stroke="#5BB8E8" stroke-width="1.2"/>
+            <circle cx="26" cy="18" r="3" fill="none" stroke="#5BB8E8" stroke-width="1.2"/>
+            <circle cx="42" cy="18" r="3" fill="none" stroke="#5BB8E8" stroke-width="1.2"/>
+            <circle cx="34" cy="10" r="3" fill="none" stroke="#5BB8E8" stroke-width="1.2"/>
+            <rect x="2" y="2" width="64" height="12" rx="4" fill="#1A4A6E"/>
+            <rect x="2" y="11" width="64" height="3" fill="#1A4A6E"/>
+          </svg>
+        </div>
+        <span class="arc-label">Blueprint</span>
       </div>
-      <div class="h-stat">
-        <span class="h-stat-num">45</span>
-        <span class="h-stat-lbl">Day Guarantee</span>
-      </div>
-      <div class="h-stat">
-        <span class="h-stat-num">15</span>
-        <span class="h-stat-lbl">Min. Investor Meetings</span>
+      <div class="arc-arrow">→</div>
+      <!-- Oak -->
+      <div class="arc-stage">
+        <div class="arc-icon">
+          <svg width="80" height="110" viewBox="0 0 80 110" fill="none">
+            <line x1="28" y1="98" x2="10" y2="110" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round" opacity="0.7"/>
+            <line x1="36" y1="98" x2="33" y2="110" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+            <line x1="44" y1="98" x2="47" y2="110" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+            <line x1="52" y1="98" x2="70" y2="110" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round" opacity="0.7"/>
+            <path d="M32 98 C30 70 32 50 34 38 L46 38 C48 50 50 70 48 98Z" fill="#C9A84C" opacity="0.85"/>
+            <path d="M34 80 C20 72 6 60 2 46" stroke="#C9A84C" stroke-width="5" stroke-linecap="round" fill="none" opacity="0.8"/>
+            <path d="M46 80 C60 72 74 60 78 46" stroke="#C9A84C" stroke-width="5" stroke-linecap="round" fill="none" opacity="0.8"/>
+            <path d="M34 60 C22 50 12 38 10 22" stroke="#C9A84C" stroke-width="3.5" stroke-linecap="round" fill="none" opacity="0.8"/>
+            <path d="M46 60 C58 50 68 38 70 22" stroke="#C9A84C" stroke-width="3.5" stroke-linecap="round" fill="none" opacity="0.8"/>
+            <path d="M36 38 C28 22 24 10 26 0" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.8"/>
+            <path d="M44 38 C52 22 56 10 54 0" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.8"/>
+            <ellipse cx="6"  cy="40" rx="18" ry="14" fill="#A07830" opacity="0.55"/>
+            <ellipse cx="74" cy="40" rx="18" ry="14" fill="#A07830" opacity="0.55"/>
+            <ellipse cx="18" cy="14" rx="16" ry="13" fill="#A07830" opacity="0.55"/>
+            <ellipse cx="62" cy="14" rx="16" ry="13" fill="#A07830" opacity="0.55"/>
+            <ellipse cx="40" cy="6"  rx="18" ry="14" fill="#A07830" opacity="0.6"/>
+            <ellipse cx="6"  cy="38" rx="16" ry="13" fill="#C9A84C" opacity="0.88"/>
+            <ellipse cx="74" cy="38" rx="16" ry="13" fill="#C9A84C" opacity="0.88"/>
+            <ellipse cx="18" cy="12" rx="14" ry="12" fill="#C9A84C" opacity="0.88"/>
+            <ellipse cx="62" cy="12" rx="14" ry="12" fill="#C9A84C" opacity="0.88"/>
+            <ellipse cx="40" cy="4"  rx="16" ry="13" fill="#C9A84C" opacity="0.92"/>
+            <ellipse cx="40" cy="28" rx="26" ry="30" fill="#C9A84C" opacity="0.7"/>
+            <ellipse cx="34" cy="22" rx="12" ry="10" fill="#E8C46A" opacity="0.25"/>
+          </svg>
+        </div>
+        <span class="arc-label">Oak</span>
       </div>
     </div>
+    <div class="arc-baseline"></div>
+  </div>
+
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="hero-scroll-line"></div>
   </div>
 </section>
 
-<!-- TICKER -->
-<div class="ticker" aria-hidden="true">
-  <div class="ticker-inner" id="ticker">
-    <span class="ticker-item">Investor-Grade Pitch Decks <span class="ticker-dot"></span></span>
-    <span class="ticker-item">300+ Investor Network <span class="ticker-dot"></span></span>
-    <span class="ticker-item">Warm Personal Introductions <span class="ticker-dot"></span></span>
-    <span class="ticker-item">Non-Dilutive Funding First <span class="ticker-dot"></span></span>
-    <span class="ticker-item">Company Registration &amp; Compliance <span class="ticker-dot"></span></span>
-    <span class="ticker-item">Financial Modelling <span class="ticker-dot"></span></span>
-    <span class="ticker-item">Pitch Coaching &amp; Mock Meetings <span class="ticker-dot"></span></span>
-    <span class="ticker-item">Startup Health Check — Free <span class="ticker-dot"></span></span>
-    <!-- duplicate for seamless loop -->
-    <span class="ticker-item">Investor-Grade Pitch Decks <span class="ticker-dot"></span></span>
-    <span class="ticker-item">300+ Investor Network <span class="ticker-dot"></span></span>
-    <span class="ticker-item">Warm Personal Introductions <span class="ticker-dot"></span></span>
-    <span class="ticker-item">Non-Dilutive Funding First <span class="ticker-dot"></span></span>
-    <span class="ticker-item">Company Registration &amp; Compliance <span class="ticker-dot"></span></span>
-    <span class="ticker-item">Financial Modelling <span class="ticker-dot"></span></span>
-    <span class="ticker-item">Pitch Coaching &amp; Mock Meetings <span class="ticker-dot"></span></span>
-    <span class="ticker-item">Startup Health Check — Free <span class="ticker-dot"></span></span>
-  </div>
-</div>
-
-<!-- PROBLEM / ABOUT -->
-<section class="problem-sec sec" id="about">
-  <div class="problem-grid">
-    <div class="problem-left reveal visible">
-      <div class="sec-eyebrow"><div class="sec-eyebrow-line"></div>The Founder's Challenge</div>
-      <h2 class="sec-title dark">
-        Great Ideas Deserve<br><em>Every Chance to Grow</em>
-      </h2>
-      <p class="prob-text">
-        India's startup ecosystem is full of brilliant founders — but most never get in front of the right investor. Not because their business isn't good enough. Because the preparation wasn't there.
-      </p>
-      <div class="prob-points">
-        <div class="prob-point reveal reveal-d1 visible">
-          <div class="prob-point-icon">📋</div>
-          <p>Company structure and legal compliance that investors look for on day one — missing or incomplete</p>
-        </div>
-        <div class="prob-point reveal reveal-d2 visible">
-          <div class="prob-point-icon">📊</div>
-          <p>Pitch materials that look amateur and financial models that don't survive due diligence</p>
-        </div>
-        <div class="prob-point reveal reveal-d3 visible">
-          <div class="prob-point-icon">🌐</div>
-          <p>Cold outreach to investors who have no context — and no reason to respond</p>
-        </div>
-        <div class="prob-point reveal reveal-d4 visible">
-          <div class="prob-point-icon">💡</div>
-          <p>No clarity on valuation, cap table, or what investors actually want to see</p>
+<!-- ══ ABOUT / PROBLEM ═════════════════════════════════ -->
+<section id="about">
+  <div class="section-eyebrow reveal">About BlueOak</div>
+  <h2 class="section-title reveal reveal-delay-1">The fundraising industry<br>has a <em>broken promise.</em></h2>
+  <div class="about-grid">
+    <div class="about-left reveal reveal-delay-2">
+      <p class="big-quote">"Most firms introduce founders to investors. We build founders into the company investors can't say no to."</p>
+      <p class="section-body">BlueOak Ventures is a fundraising advisory firm that takes early-stage founders through a structured, end-to-end system — from preparation to placement to close.</p>
+      <br/>
+      <p class="section-body">We stand for quality over volume, preparation over chance, and outcomes over activity.</p>
+    </div>
+    <div class="about-right reveal reveal-delay-3">
+      <div class="problem-stat">
+        <div class="problem-num">01</div>
+        <div class="problem-text">
+          <strong>Founders get meetings. Not rounds.</strong>
+          <span>Consultants deliver decks and introductions — and disappear. The first meeting is sold as success. The close is nobody's problem.</span>
         </div>
       </div>
-    </div>
-    <div class="reveal reveal-d2 visible">
-      <div class="quote-card">
-        <blockquote>
-          Fundraising is less about asking for money and more about proving you deserve it.
-        </blockquote>
-        <div class="quote-author">— BlueOak Ventures</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- OAK TREE SERVICES / PHASES -->
-<section class="oak-sec" id="services">
-  <div class="oak-sec-bg"></div>
-  <div class="oak-header reveal visible">
-    <div class="sec-eyebrow" style="justify-content:center;"><div class="sec-eyebrow-line"></div>Three Branches<div class="sec-eyebrow-line" style="transform:rotate(180deg)"></div></div>
-    <h2 class="sec-title" style="text-align:center;"> One Mighty Oak.<br><em>Our Services &amp; Journey.</em>
-    </h2>
-    <p style="max-width:580px;margin:0 auto;font-size:0.95rem;color:rgba(255,255,255,0.45);font-weight:300;line-height:1.8;text-align:center;">
-      Like an oak tree — strong roots, broad branches, growing upward — every founder's journey with BlueOak starts at the foundation and grows into real funding.
-    </p>
-  </div>
-
-  <!-- Tree Visual -->
-  <div class="tree-canvas-wrap reveal visible">
-    <img src="Venturesleaf(1080 x 1080 px).png" alt="BlueOak Tree" style="width:100%;max-width:600px;display:block;margin:0 auto;opacity:0.92;">
-  <!-- Three Branch Cards -->
-  <div class="branch-cards" id="our-services" style="grid-template-columns: repeat(4, 1fr);">
-    <!-- Service 1: Oak1 -->
-    <div class="branch-card reveal reveal-d1 visible" id="oak1-card" onclick="togglePhases(this)" style="cursor:pointer;">
-      <div class="bc-num">01</div>
-      <div class="bc-phase">Service One</div>
-      <div class="bc-icon">�</div>
-      <div class="bc-title">Oak1</div>
-      <div class="bc-hindi">Foundation for First-Time Founders</div>
-      <p class="bc-desc">
-        Everything a first-time founder needs to get started right — legal structure, compliance, and investor-readiness from day one.
-      </p>
-      <div class="bc-items">
-        <div class="bc-item">Company Registration &amp; Legal Setup</div>
-        <div class="bc-item">DPIIT Startup India Recognition</div>
-        <div class="bc-item">MSME &amp; GST Registration</div>
-        <div class="bc-item">Founder Strategy Session</div>
-      </div>
-      <div class="bc-timeline" style="color:var(--gold);margin-top:16px;">Click to explore our journey &rarr;</div>
-    </div>
-
-    <!-- Service 2: AIF Advisory -->
-    <div class="branch-card reveal reveal-d2 visible">
-      <div class="bc-num">02</div>
-      <div class="bc-phase">Service Two</div>
-      <div class="bc-icon">📈</div>
-      <div class="bc-title">AIF Advisory</div>
-      <div class="bc-hindi">Alternative Investment Fund Guidance</div>
-      <p class="bc-desc">
-        Expert advisory for founders seeking AIF-backed capital — navigating fund structures, eligibility, and investor alignment.
-      </p>
-      <div class="bc-items">
-        <div class="bc-item">AIF Fund Eligibility Assessment</div>
-        <div class="bc-item">Investor-Grade Pitch Deck</div>
-        <div class="bc-item">Financial Model &amp; Projections</div>
-        <div class="bc-item">Warm AIF Investor Introductions</div>
-      </div>
-    </div>
-
-    <!-- Service 3: Women Entrepreneurs -->
-    <div class="branch-card reveal reveal-d3 visible">
-      <div class="bc-num">03</div>
-      <div class="bc-phase">Service Three</div>
-      <div class="bc-icon">💼</div>
-      <div class="bc-title">Women Entrepreneurs</div>
-      <div class="bc-hindi">Empowering Women-Led Startups</div>
-      <p class="bc-desc">
-        Dedicated support for women founders — from government schemes and grants to investor introductions and pitch coaching.
-      </p>
-      <div class="bc-items">
-        <div class="bc-item">Women-Focused Grant &amp; Scheme Access</div>
-        <div class="bc-item">Pitch Deck &amp; Brand Foundation</div>
-        <div class="bc-item">Mentorship &amp; Coaching Sessions</div>
-        <div class="bc-item">Curated Investor Network Access</div>
-      </div>
-    </div>
-
-    <!-- Service 4: Personal Business Development -->
-    <div class="branch-card reveal reveal-d4 visible">
-      <div class="bc-num">04</div>
-      <div class="bc-phase">Service Four</div>
-      <div class="bc-icon">🚀</div>
-      <div class="bc-title">Personal Business Development</div>
-      <div class="bc-hindi">Your Growth, Personalised</div>
-      <p class="bc-desc">
-        One-on-one advisory tailored to your unique business goals — strategy, positioning, and execution support at every stage.
-      </p>
-      <div class="bc-items">
-        <div class="bc-item">1:1 Business Strategy Sessions</div>
-        <div class="bc-item">Market Positioning &amp; GTM Planning</div>
-        <div class="bc-item">Revenue Model Optimisation</div>
-        <div class="bc-item">Ongoing Advisory &amp; Accountability</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Phases: Shuruaat, Taiyaari, Asli Game -->
-  <div class="branch-cards" id="phases-section" style="margin-top: 60px; display: none;">
-    <!-- Phase 1 -->
-    <div class="branch-card reveal reveal-d1 visible">
-      <div class="bc-num">01</div>
-      <div class="bc-phase">Phase One · Foundation</div>
-      <div class="bc-icon">🌱</div>
-      <div class="bc-title">Shuruaat</div>
-      <div class="bc-hindi">The Beginning — Strong Roots</div>
-      <p class="bc-desc">
-        Every oak starts with deep roots. Before you can raise capital, your business must be legally sound, officially recognized, and investor-ready from the ground up.
-      </p>
-      <div class="bc-items">
-        <div class="bc-item">Private Limited / LLP Company Registration</div>
-        <div class="bc-item">MSME Registration</div>
-        <div class="bc-item">DPIIT Startup India Recognition</div>
-        <div class="bc-item">GST Registration &amp; Compliance Setup</div>
-      </div>
-      <div class="bc-timeline">⏱ 7–15 Working Days</div>
-    </div>
-
-    <!-- Phase 2 -->
-    <div class="branch-card reveal reveal-d2 visible active">
-      <div class="bc-num">02</div>
-      <div class="bc-phase">Phase Two · Preparation</div>
-      <div class="bc-icon">🏗️</div>
-      <div class="bc-title">Taiyaari</div>
-      <div class="bc-hindi">The Build — Grow Your Branches</div>
-      <p class="bc-desc">
-        Branches grow strong before bearing fruit. We build every material an investor will evaluate — from your deck to your financials — while exploring non-dilutive grants to protect your equity first.
-      </p>
-      <div class="bc-items">
-        <div class="bc-item">Government Grants &amp; Non-Dilutive Schemes</div>
-        <div class="bc-item">Investor-Grade Pitch Deck</div>
-        <div class="bc-item">Realistic Financial Model</div>
-        <div class="bc-item">Executive One-Pager</div>
-        <div class="bc-item">Brand Foundation &amp; Basic Website</div>
-        <div class="bc-item">Founder Strategy Session</div>
-      </div>
-      <div class="bc-timeline">⏱ 15–25 Working Days</div>
-    </div>
-
-    <!-- Phase 3 -->
-    <div class="branch-card reveal reveal-d3 visible">
-      <div class="bc-num">03</div>
-      <div class="bc-phase">Phase Three · Fundraising</div>
-      <div class="bc-icon">🏆</div>
-      <div class="bc-title">Asli Game</div>
-      <div class="bc-hindi">The Harvest — Reach the Sky</div>
-      <p class="bc-desc">
-        The oak bears fruit when it is ready. We personally introduce you to 15+ qualified angels and VCs from our 300+ investor network — warm, trusted introductions that open real doors.
-      </p>
-      <div class="bc-items">
-        <div class="bc-item">15+ Warm, Personal Investor Introductions</div>
-        <div class="bc-item">1:1 Pitch Coaching Sessions</div>
-        <div class="bc-item">Mock Investor Meetings</div>
-        <div class="bc-item">Data Room Setup</div>
-        <div class="bc-item">Term Sheet Guidance &amp; Support</div>
-      </div>
-      <div class="bc-timeline">⏱ Intros Begin Within 15–30 Days After Phase 2</div>
-    </div>
-  </div>
-</section>
-
-<!-- HEALTH CHECK -->
-<section class="health-sec sec" id="health">
-  <div class="health-inner">
-    <div class="reveal visible">
-      <div class="sec-eyebrow"><div class="sec-eyebrow-line"></div>Start Here — It's Free</div>
-      <h2 class="sec-title">
-        Your Free 30-Minute<br><em>Startup Health Check</em>
-      </h2>
-      <p class="health-desc">
-        Before anything else, we want to understand exactly where you stand. Our free Startup Health Check gives you a real Funding Readiness Score across 6 critical categories — and a 1-page written report with your strengths and the top 3 gaps to close.
-        <br><br>
-        No sales pitch. No obligation. Just a senior advisor's honest view of your funding readiness.
-      </p>
-      <a href="lead_form.html" class="btn-primary"><span>Book Your Free Startup Health Check</span></a>
-    </div>
-    <div class="score-widget reveal reveal-d2 visible">
-      <div class="sw-title">Funding Readiness Score</div>
-      <div class="sw-sub">100-point evaluation across 6 investor criteria</div>
-      <div class="score-rows" id="scoreRows">
-        <div class="sr">
-          <div class="sr-header"><span class="sr-label">Team &amp; Founder Quality</span><span class="sr-pts">25 pts</span></div>
-          <div class="sr-bar"><div class="sr-fill animated" style="width:100%"></div></div>
+      <div class="problem-stat">
+        <div class="problem-num">02</div>
+        <div class="problem-text">
+          <strong>Preparation stops at the pitch.</strong>
+          <span>Most founders are built for the deck. Not for the scrutiny, the follow-ups, the milestone questions, or the 90 days after the first call.</span>
         </div>
-        <div class="sr">
-          <div class="sr-header"><span class="sr-label">Idea &amp; Market Opportunity</span><span class="sr-pts">20 pts</span></div>
-          <div class="sr-bar"><div class="sr-fill animated" style="width:100%"></div></div>
-        </div>
-        <div class="sr">
-          <div class="sr-header"><span class="sr-label">Traction &amp; Validation</span><span class="sr-pts">20 pts</span></div>
-          <div class="sr-bar"><div class="sr-fill animated" style="width:100%"></div></div>
-        </div>
-        <div class="sr">
-          <div class="sr-header"><span class="sr-label">Financial Readiness</span><span class="sr-pts">15 pts</span></div>
-          <div class="sr-bar"><div class="sr-fill animated" style="width:100%"></div></div>
-        </div>
-        <div class="sr">
-          <div class="sr-header"><span class="sr-label">Legal &amp; Compliance</span><span class="sr-pts">10 pts</span></div>
-          <div class="sr-bar"><div class="sr-fill animated" style="width:100%"></div></div>
-        </div>
-        <div class="sr">
-          <div class="sr-header"><span class="sr-label">Pitch &amp; Communication</span><span class="sr-pts">10 pts</span></div>
-          <div class="sr-bar"><div class="sr-fill animated" style="width:100%"></div></div>
+      </div>
+      <div class="problem-stat">
+        <div class="problem-num">03</div>
+        <div class="problem-text">
+          <strong>Interest is not commitment.</strong>
+          <span>Investors don't commit based on presentations. They commit based on conviction — built in every interaction after the meeting, not in it.</span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- INVESTOR NETWORK -->
-<section class="network-sec sec" id="network">
-  <div class="network-inner">
-    <div class="network-visual reveal visible">
-      <div class="net-circle"></div>
-      <div class="net-circle"></div>
-      <div class="net-circle"></div>
-      <div class="net-dots" id="netDots"><div class="net-dot" style="left: 96.2111%; top: 50%; animation-delay: 0s; width: 8.36149px; height: 8.13397px;"></div><div class="net-dot" style="left: 87.5004%; top: 71.6509%; animation-delay: 0.15s; width: 5.44285px; height: 8.40208px;"></div><div class="net-dot" style="left: 71.6111%; top: 87.4316%; animation-delay: 0.3s; width: 7.63142px; height: 6.94005px;"></div><div class="net-dot" style="left: 50%; top: 96.5351%; animation-delay: 0.45s; width: 8.7337px; height: 7.66606px;"></div><div class="net-dot" style="left: 27.2434%; top: 89.4155%; animation-delay: 0.6s; width: 8.55188px; height: 6.65388px;"></div><div class="net-dot" style="left: 9.61427%; top: 73.3167%; animation-delay: 0.75s; width: 7.1688px; height: 5.40518px;"></div><div class="net-dot" style="left: 6.48138%; top: 50%; animation-delay: 0.9s; width: 8.37658px; height: 6.35138px;"></div><div class="net-dot" style="left: 10.3936%; top: 27.1332%; animation-delay: 1.05s; width: 5.5583px; height: 5.31213px;"></div><div class="net-dot" style="left: 27.5127%; top: 11.0508%; animation-delay: 1.2s; width: 7.57196px; height: 7.73978px;"></div><div class="net-dot" style="left: 50%; top: 5.2821%; animation-delay: 1.35s; width: 5.83483px; height: 6.53195px;"></div><div class="net-dot" style="left: 71.5454%; top: 12.6824%; animation-delay: 1.5s; width: 8.05575px; height: 5.07034px;"></div><div class="net-dot" style="left: 89.3748%; top: 27.267%; animation-delay: 1.65s; width: 8.20934px; height: 5.17313px;"></div></div>
-      <div class="net-center">
-        <div class="net-center-num">300<span style="font-size:1rem">+</span></div>
-        <div class="net-center-lbl">Investors</div>
-      </div>
-    </div>
-    <div class="network-content reveal reveal-d2 visible">
-      <div class="sec-eyebrow"><div class="sec-eyebrow-line"></div>Our Investor Network</div>
-      <h2 class="sec-title dark">
-        300+ Investors.<br><em>Zero Cold Emails.</em>
-      </h2>
-      <p class="net-desc">
-        Our network spans angels, family offices, sector-focused VCs, and government-backed funds across India. Every introduction we make is personal — built on context, trust, and the right fit for your stage and sector.
-      </p>
-      <div class="net-points">
-        <div class="net-point">
-          <div class="net-point-icon">🎯</div>
-          <div>
-            <h4>Warm, Contextual Introductions</h4>
-            <p>We don't blast your deck to a list. Every introduction is personal, curated, and comes with our endorsement from a place of existing trust.</p>
-          </div>
-        </div>
-        <div class="net-point">
-          <div class="net-point-icon">🏛️</div>
-          <div>
-            <h4>Non-Dilutive First</h4>
-            <p>Before approaching equity investors, we explore government grants and schemes — protecting your cap table from the very start.</p>
-          </div>
-        </div>
-        <div class="net-point">
-          <div class="net-point-icon">🤝</div>
-          <div>
-            <h4>15+ Guaranteed Introductions</h4>
-            <p>Phase 3 includes a minimum of 15 warm investor introductions — qualified, relevant, and personally facilitated by our team.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- GUARANTEE -->
-<section class="guarantee-sec" id="guarantee">
-  <div class="guarantee-badge reveal visible"><span>🛡️</span> Our Commitment to You</div>
-  <h2 class="g-title reveal visible">
-    If We Don't Deliver<br><em>15 Qualified Meetings</em><br>in 45 Days — We Work Free.
-  </h2>
-  <p class="g-desc reveal visible">
-    After completing Phase 2, if we don't arrange at least 15 qualified investor meetings within 45 days, the following month of advisory support is entirely on us. We back our work — because we only work with founders we believe in.
-  </p>
-  <div class="g-cards reveal visible">
-    <div class="g-card">
-      <div class="g-card-num">15+</div>
-      <div class="g-card-lbl">Qualified Meetings Guaranteed</div>
-    </div>
-    <div class="g-card">
-      <div class="g-card-num">45</div>
-      <div class="g-card-lbl">Days After Phase 2</div>
-    </div>
-    <div class="g-card">
-      <div class="g-card-num">Free</div>
-      <div class="g-card-lbl">Next Month if We Fall Short</div>
-    </div>
-  </div>
-  <a href="lead_form.html" class="btn-primary reveal visible"><span>Book Your Free Startup Health Check</span></a>
-</section>
-
-<!-- WHY BLUEOAK -->
-<section class="why-sec sec" id="why">
-  <div class="reveal visible">
-    <div class="sec-eyebrow"><div class="sec-eyebrow-line"></div>Why BlueOak</div>
-    <h2 class="sec-title dark">
-      Built Different.<br><em>By Design.</em>
-    </h2>
-  </div>
-  <div class="why-grid">
-    <div class="why-card reveal reveal-d1 visible">
-      <div class="wc-num">01</div>
-      <div class="wc-icon">🌿</div>
-      <h4 class="wc-title">Selective by Nature</h4>
-      <p class="wc-text">We work with a small number of founders at a time — intentionally. Every client gets our full attention, personal involvement, and real commitment. Quality over volume, always.</p>
-    </div>
-    <div class="why-card reveal reveal-d2 visible">
-      <div class="wc-num">02</div>
-      <div class="wc-icon">🏛️</div>
-      <h4 class="wc-title">Equity-Protection First</h4>
-      <p class="wc-text">We explore every non-dilutive avenue — government grants, schemes, and programs — before moving to equity investors. Your ownership matters to us as much as it does to you.</p>
-    </div>
-    <div class="why-card reveal reveal-d3 visible">
-      <div class="wc-num">03</div>
-      <div class="wc-icon">📐</div>
-      <h4 class="wc-title">Materials Built to Survive Due Diligence</h4>
-      <p class="wc-text">Our pitch decks, models, and one-pagers are built to withstand hard investor questions — not just to look impressive at first glance. We prepare you for the full conversation.</p>
-    </div>
-    <div class="why-card reveal reveal-d4 visible">
-      <div class="wc-num">04</div>
-      <div class="wc-icon">🤝</div>
-      <h4 class="wc-title">A Partner, Not a Vendor</h4>
-      <p class="wc-text">We stand with you through every meeting, negotiation, and term sheet. Our success fee is tied to your actual raise — so our interests are perfectly aligned with yours from day one.</p>
-    </div>
-  </div>
-</section>
-
-<!-- PROOF POINTS -->
-<section class="proof-sec">
-  <div class="proof-inner">
-    <div class="proof-card reveal reveal-d1 visible">
-      <div class="proof-icon">📋</div>
-      <div class="proof-title">End-to-End Execution</div>
-      <p class="proof-text">From company registration on day one to investor introductions at the end — we handle every step so you can focus on building your business, not navigating paperwork and processes.</p>
-    </div>
-    <div class="proof-card reveal reveal-d2 visible">
-      <div class="proof-icon">🔒</div>
-      <div class="proof-title">Transparent &amp; Trustworthy</div>
-      <p class="proof-text">No hidden fees, no vague promises, no guaranteed-funding claims. We are completely transparent about what we do, how we work, and what you can realistically expect at each stage.</p>
-    </div>
-    <div class="proof-card reveal reveal-d3 visible">
-      <div class="proof-icon">🌐</div>
-      <div class="proof-title">Pan-India Reach</div>
-      <p class="proof-text">Our investor network and advisory reach spans the entire country — across sectors, stages, and geographies. Whether you're in a metro or a tier-2 city, the right investor is in our network.</p>
-    </div>
-  </div>
-</section>
-
-<!-- CTA FINAL -->
-<section class="cta-sec" id="contact">
-  <div class="sec-eyebrow reveal visible">
-    <div class="sec-eyebrow-line" style="background:rgba(201,168,76,0.4)"></div>
-    Take the First Step
-    <div class="sec-eyebrow-line" style="background:rgba(201,168,76,0.4);transform:rotate(180deg)"></div>
-  </div>
-  <h2 class="cta-title reveal visible">
-    Your Funding Journey<br>
-    Starts with a<br>
-    <em>Free Conversation</em>
-  </h2>
-  <p class="cta-desc reveal visible">
-    Book your free 30-minute Startup Health Check. Walk away with a clear Funding Readiness Score, honest insights on your gaps, and a path forward — at zero cost.
-  </p>
-  <div class="cta-actions reveal visible">
-    <a href="lead_form.html" class="btn-primary"><span>Book Your Free Startup Health Check</span></a>
-    <a href="https://wa.me/917744841015" class="btn-outline-light">💬 Message on WhatsApp</a>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer-inner">
+<!-- ══ SERVICES ════════════════════════════════════════ -->
+<section id="services">
+  <div class="services-intro">
     <div>
-      <div class="footer-brand-name">BlueOak Ventures</div>
-      <div class="footer-brand-sub">Startup Growth Advisory · Pan-India</div>
-      <p class="footer-tagline">From Idea to Real Funding —<br>Simple, Fast &amp; Reliable.</p>
+      <div class="section-eyebrow reveal">Services</div>
+      <h2 class="section-title reveal reveal-delay-1">Three phases.<br><em>One outcome.</em></h2>
     </div>
-    <div class="footer-col">
-      <h5>Our Services</h5>
-      <ul>
-        <li><a href="#services">Oak1</a></li>
-        <li><a href="#services">AIF Advisory</a></li>
-        <li><a href="#services">Women Entrepreneurship</a></li>
-        <li><a href="lead_form.html">Free Startup Health Check</a></li>
+    <p class="section-body reveal reveal-delay-2">
+      BlueOak operates end-to-end. We don't just prepare you for the first meeting — we stay in until the round is closed. Every phase is designed around one question: are you the company investors are already looking for?
+    </p>
+  </div>
+  <div class="services-cards">
+    <div class="service-card reveal reveal-delay-1">
+      <span class="service-num">01</span>
+      <span class="service-tag">Phase 01</span>
+      <h3 class="service-title">Build</h3>
+      <span class="service-timing">Weeks 1–4</span>
+      <ul class="service-items">
+        <li>Business model stress-test</li>
+        <li>Investor narrative construction</li>
+        <li>Financial model depth & review</li>
+        <li>90-day milestone planning</li>
+        <li>Due diligence preparation</li>
+        <li>Founder Q&A coaching</li>
       </ul>
+      <p class="service-outcome">"A business that holds up under investor scrutiny."</p>
     </div>
-    <div class="footer-col">
-      <h5>Connect</h5>
-      <ul>
-        <li><a href="mailto:official@blueoakventures.co.in">official@blueoakventures.co.in</a></li>
-        <li><a href="https://www.linkedin.com/in/soham-upadhyay-headofoperations/" target="_blank" rel="noopener">LinkedIn</a></li>
-        <li><a href="https://wa.me/917744841015" target="_blank" rel="noopener">WhatsApp</a></li>
-        <li><a href="lead_form.html">Book a Call</a></li>
+    <div class="service-card reveal reveal-delay-2">
+      <span class="service-num">02</span>
+      <span class="service-tag">Phase 02</span>
+      <h3 class="service-title">Structure</h3>
+      <span class="service-timing">Weeks 3–5</span>
+      <ul class="service-items">
+        <li>Raise strategy & valuation framing</li>
+        <li>Investor targeting — long & short list</li>
+        <li>Round structure & terms guidance</li>
+        <li>Outreach sequencing plan</li>
+        <li>Data room organisation</li>
+        <li>SAFE / equity framework review</li>
       </ul>
+      <p class="service-outcome">"A raise with a plan — not a hope."</p>
     </div>
+    <div class="service-card reveal reveal-delay-3">
+      <span class="service-num">03</span>
+      <span class="service-tag">Phase 03</span>
+      <h3 class="service-title">Close</h3>
+      <span class="service-timing">Weeks 5–12+</span>
+      <ul class="service-items">
+        <li>Precision investor introductions</li>
+        <li>First call briefing & preparation</li>
+        <li>Post-meeting follow-up management</li>
+        <li>Investor update cadence</li>
+        <li>Term sheet guidance</li>
+        <li>Close coordination</li>
+      </ul>
+      <p class="service-outcome">"A closed round — not a pipeline of maybes."</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PROCESS ══════════════════════════════════════════ -->
+<section id="process">
+  <div class="process-intro">
+    <div>
+      <div class="section-eyebrow reveal">How It Works</div>
+      <h2 class="section-title reveal reveal-delay-1"><strong>Fundable First.</strong><br><em>Funded Next.</em></h2>
+    </div>
+    <p class="section-body reveal reveal-delay-2">
+      We don't start with outreach. We start with the business. Here is the exact sequence we take every founder through — from the first conversation to a closed round.
+    </p>
+  </div>
+  <div class="process-timeline">
+    <div class="process-step reveal">
+      <div class="process-step-num">1</div>
+      <div class="process-step-content">
+        <p class="process-step-label">Discovery</p>
+        <h3 class="process-step-title">We assess fit before anything else.</h3>
+        <p class="process-step-desc">Not every founder is ready to raise. Not every founder is right for BlueOak. We start with an honest assessment of your business, your raise, and whether we are the right fit for each other.</p>
+      </div>
+    </div>
+    <div class="process-step reveal reveal-delay-1">
+      <div class="process-step-num">2</div>
+      <div class="process-step-content">
+        <p class="process-step-label">Build Phase</p>
+        <h3 class="process-step-title">We build the company before we build the deck.</h3>
+        <p class="process-step-desc">Narrative, financials, milestone plan, due diligence preparation. We go deep before we go wide. The goal: a business that holds up under any investor's scrutiny.</p>
+      </div>
+    </div>
+    <div class="process-step reveal reveal-delay-2">
+      <div class="process-step-num">3</div>
+      <div class="process-step-content">
+        <p class="process-step-label">Structure Phase</p>
+        <h3 class="process-step-title">We design the raise before we run it.</h3>
+        <p class="process-step-desc">Amount, structure, valuation, investor targeting, outreach sequencing. The round is planned in detail before a single email is sent. No improvising. No hoping.</p>
+      </div>
+    </div>
+    <div class="process-step reveal reveal-delay-3">
+      <div class="process-step-num">4</div>
+      <div class="process-step-content">
+        <p class="process-step-label">Close Phase</p>
+        <h3 class="process-step-title">We manage every touchpoint until commitment.</h3>
+        <p class="process-step-desc">Introductions made with precision. Every meeting briefed. Every follow-up managed. Every investor update sent on time. BlueOak stays in until the round is closed — not just until the first meeting is booked.</p>
+      </div>
+    </div>
+    <div class="process-step reveal reveal-delay-4">
+      <div class="process-step-num">5</div>
+      <div class="process-step-content">
+        <p class="process-step-label">Close</p>
+        <h3 class="process-step-title">The round closes. That is the only metric that matters.</h3>
+        <p class="process-step-desc">We don't measure success in meetings booked or decks sent. We measure it in capital committed. A closed round is the only outcome we work toward.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOUNDER STORY ════════════════════════════════════ -->
+<section id="founder">
+  <div class="founder-inner">
+    <div class="founder-left">
+      <div class="section-eyebrow reveal">Why BlueOak Exists</div>
+      <h2 class="section-title reveal reveal-delay-1">Built from watching<br>the system <em>fail founders.</em></h2>
+      <blockquote class="founder-quote reveal reveal-delay-2">
+        "I watched the same story play out again and again — founders with real businesses, polished decks, and good meetings who raised nothing. Not because the idea was weak. Because no one owned what came after the first call."
+      </blockquote>
+      <p class="founder-truth reveal reveal-delay-3">"Don't start fundraising when you need money. Start when you are ready to be taken seriously."</p>
+    </div>
+    <div class="founder-right">
+      <div class="belief-card reveal reveal-delay-1">
+        <p class="belief-label">We believe</p>
+        <p class="belief-text">Quality over <em>volume.</em> Every time.</p>
+      </div>
+      <div class="belief-card reveal reveal-delay-2">
+        <p class="belief-label">We believe</p>
+        <p class="belief-text">Preparation over <em>chance.</em> Always.</p>
+      </div>
+      <div class="belief-card reveal reveal-delay-3">
+        <p class="belief-label">We believe</p>
+        <p class="belief-text">Outcomes over <em>activity.</em> Without exception.</p>
+      </div>
+      <div class="belief-card reveal reveal-delay-4">
+        <p class="belief-label">We believe</p>
+        <p class="belief-text">The fastest way to fail a raise is to <em>start it too early.</em></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CONTACT ══════════════════════════════════════════ -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="section-eyebrow contact-eyebrow reveal">Book a Discovery Call</div>
+    <h2 class="contact-title reveal reveal-delay-1">Ready to raise <em>right?</em></h2>
+    <p class="contact-sub reveal reveal-delay-2">
+      We don't take every founder. We take the right ones. Tell us about your business and your raise — and we'll tell you honestly whether BlueOak is the right fit.
+    </p>
+    <form class="contact-form reveal reveal-delay-3" onsubmit="handleSubmit(event)">
+      <div class="form-row">
+        <div class="form-field">
+          <label>Your name</label>
+          <input type="text" placeholder="Full name" required/>
+        </div>
+        <div class="form-field">
+          <label>Company name</label>
+          <input type="text" placeholder="Company" required/>
+        </div>
+      </div>
+      <div class="form-field">
+        <label>Email address</label>
+        <input type="email" placeholder="you@company.com" required/>
+      </div>
+      <div class="form-field">
+        <label>Raise target</label>
+        <select>
+          <option value="">Select amount</option>
+          <option>Less than $250K</option>
+          <option>$250K – $500K</option>
+          <option>$500K – $1M</option>
+          <option>$1M – $2M</option>
+          <option>$2M – $5M</option>
+          <option>$5M+</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label>Tell us about your business</label>
+        <textarea placeholder="What you do, your traction, and where you are in the fundraising process..."></textarea>
+      </div>
+      <button type="submit" class="form-submit">Request a Discovery Call</button>
+    </form>
+    <p class="contact-or reveal reveal-delay-4">— or —</p>
+    <p class="contact-direct reveal reveal-delay-5">Email us directly at <a href="mailto:hello@blueoakventures.com">hello@blueoakventures.com</a></p>
+  </div>
+</section>
+
+<!-- ══ FOOTER ═══════════════════════════════════════════ -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <span class="footer-name">BLUEOAK VENTURES</span>
+      <span class="footer-slogan">Fundable First. Funded Next.</span>
+    </div>
+    <ul class="footer-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="https://linkedin.com/company/blueoakventures">LinkedIn</a></li>
+    </ul>
   </div>
   <div class="footer-bottom">
-    <div class="footer-copy">© 2026 BlueOak Capital Partners. All rights reserved.</div>
-    <div class="footer-krishna">Named after the wisdom of the oak and the grace of the divine blue — BlueOak.</div>
+    <span class="footer-copy">© 2025 BlueOak Ventures. All rights reserved.</span>
+    <span class="footer-tagline">Built to be funded.</span>
   </div>
 </footer>
 
 <script>
-/* ── CURSOR ── */
+// ── Cursor ──────────────────────────────────────────────
 const cursor = document.getElementById('cursor');
-const ring = document.getElementById('cursorRing');
+const ring   = document.getElementById('cursorRing');
 let mx = 0, my = 0, rx = 0, ry = 0;
-document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; cursor.style.left = mx+'px'; cursor.style.top = my+'px'; });
-function animRing() { rx += (mx - rx) * 0.12; ry += (my - ry) * 0.12; ring.style.left = rx+'px'; ring.style.top = ry+'px'; requestAnimationFrame(animRing); }
-animRing();
-
-/* ── SCROLL PROGRESS ── */
-const prog = document.getElementById('scrollProgress');
-window.addEventListener('scroll', () => {
-  const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
-  prog.style.width = pct + '%';
+document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+(function animCursor() {
+  cursor.style.left = mx + 'px'; cursor.style.top = my + 'px';
+  rx += (mx - rx) * 0.12; ry += (my - ry) * 0.12;
+  ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+  requestAnimationFrame(animCursor);
+})();
+document.querySelectorAll('a, button, .service-card, .belief-card, .process-step').forEach(el => {
+  el.addEventListener('mouseenter', () => { cursor.style.transform = 'translate(-50%,-50%) scale(2)'; ring.style.transform = 'translate(-50%,-50%) scale(1.5)'; });
+  el.addEventListener('mouseleave', () => { cursor.style.transform = 'translate(-50%,-50%) scale(1)'; ring.style.transform = 'translate(-50%,-50%) scale(1)'; });
 });
 
-/* ── NAV SCROLL ── */
-const nav = document.getElementById('mainNav');
+// ── Navbar scroll ───────────────────────────────────────
 window.addEventListener('scroll', () => {
-  nav.classList.toggle('scrolled', window.scrollY > 60);
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
 });
 
-/* ── MOBILE MENU ── */
-const menu = document.getElementById('mobileMenu');
-const burger = document.getElementById('hamburger');
-function toggleMobile() { menu.classList.toggle('open'); burger.classList.toggle('open'); document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : ''; }
-function closeMobile() { menu.classList.remove('open'); burger.classList.remove('open'); document.body.style.overflow = ''; }
-
-/* ── SCROLL REVEAL ── */
-const reveals = document.querySelectorAll('.reveal');
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+// ── Reveal on scroll ────────────────────────────────────
+const revealObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
 }, { threshold: 0.12 });
-reveals.forEach(el => observer.observe(el));
+document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
 
-/* ── SCORE BAR ANIMATION ── */
-const scoreObserver = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      const fills = e.target.querySelectorAll('.sr-fill');
-      fills.forEach((f, i) => { setTimeout(() => f.classList.add('animated'), i * 150); });
-      scoreObserver.unobserve(e.target);
-    }
-  });
-}, { threshold: 0.4 });
-const scoreWidget = document.getElementById('scoreRows');
-if (scoreWidget) scoreObserver.observe(scoreWidget);
-
-/* ── PARTICLES ── */
-const particleContainer = document.getElementById('particles');
-for (let i = 0; i < 20; i++) {
-  const p = document.createElement('div');
-  p.className = 'particle';
-  const size = Math.random() * 4 + 2;
-  p.style.cssText = `
-    width:${size}px; height:${size}px;
-    left:${Math.random()*100}%;
-    bottom:${Math.random()*30}%;
-    animation-duration:${8 + Math.random()*12}s;
-    animation-delay:${Math.random()*8}s;
-  `;
-  particleContainer.appendChild(p);
+// ── Form submit ─────────────────────────────────────────
+function handleSubmit(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('.form-submit');
+  btn.textContent = '✓ Request Received — We\'ll Be In Touch';
+  btn.style.background = '#2E7D32';
+  btn.style.color = '#fff';
+  btn.disabled = true;
 }
 
-/* ── NETWORK DOTS ── */
-const dotsContainer = document.getElementById('netDots');
-if (dotsContainer) {
-  for (let i = 0; i < 12; i++) {
-    const d = document.createElement('div');
-    d.className = 'net-dot';
-    const angle = (i / 12) * 2 * Math.PI;
-    const r1 = 42 + Math.random() * 5;
-    const x = 50 + r1 * Math.cos(angle);
-    const y = 50 + r1 * Math.sin(angle);
-    d.style.cssText = `left:${x}%;top:${y}%;animation-delay:${i*0.15}s;width:${5+Math.random()*4}px;height:${5+Math.random()*4}px;`;
-    dotsContainer.appendChild(d);
-  }
-}
-
-/* ── SMOOTH ANCHOR SCROLL ── */
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-  a.addEventListener('click', e => {
-    const target = document.querySelector(a.getAttribute('href'));
-    if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
-  });
+// ── Active nav link ─────────────────────────────────────
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a:not(.nav-cta)');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) current = s.id; });
+  navLinks.forEach(a => { a.style.color = a.getAttribute('href') === '#' + current ? 'var(--gold)' : ''; });
 });
-
-/* ── BRANCH CARD HOVER ACTIVE ── */
-document.querySelectorAll('.branch-card').forEach(card => {
-  card.addEventListener('mouseenter', () => {
-    document.querySelectorAll('.branch-card').forEach(c => c.classList.remove('active'));
-    card.classList.add('active');
-  });
-});
-
-/* ── OAK1 TOGGLE PHASES ── */
-function togglePhases(card) {
-  const phases = document.getElementById('phases-section');
-  const isOpen = phases.style.display !== 'none';
-  phases.style.display = isOpen ? 'none' : 'grid';
-  card.classList.toggle('active', !isOpen);
-  const hint = card.querySelector('.bc-timeline');
-  if (hint) hint.innerHTML = isOpen ? 'Click to explore our journey &rarr;' : 'Click to hide &uarr;';
-  if (!isOpen) phases.scrollIntoView({ behavior: 'smooth', block: 'start' });
-}
 </script>
-
-
-</body></html>
+</body>
+</html>
